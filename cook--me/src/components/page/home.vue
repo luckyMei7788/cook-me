@@ -84,9 +84,12 @@
 </template>
 
 <script>
-    import
+    import lunbo from "./home/lunbo.vue"
     export default {
-        name: "home"
+        name: "home",
+        components:{
+            lunbo
+        }
     }
 </script>
 

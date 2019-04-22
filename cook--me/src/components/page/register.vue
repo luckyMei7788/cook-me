@@ -1,6 +1,6 @@
 <template>
     <div>
-        这里是注册
+        这里是注册，这里是锦锦
     </div>
 </template>
 

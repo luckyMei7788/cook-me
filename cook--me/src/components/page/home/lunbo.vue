@@ -1,11 +1,11 @@
 <template>
     <div class="lunbo">
         <div class="big-k">
-            <img src="../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-            <img src="../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-            <img src="../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-            <img src="../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-            <img src="../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+            <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+            <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+            <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+            <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+            <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
         </div>
         <div class="kuang">
 
