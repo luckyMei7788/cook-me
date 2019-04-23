@@ -52,8 +52,8 @@ app.post("/sys/user/register", function(req, res){
     var usPassword = req.body.usPassword;
     var verifyCode = req.query.verifyCode;
     res.json({
-        code : 1,
-        msg : "接收注册信息成功",
+        code : 0,
+        msg : "注册成功",
         usMobile,
         usPassword,
         verifyCode
