@@ -87,7 +87,86 @@
                 文字
             </div>
             <div class="main-r">
-                文字
+                
+                    <ul>
+                        <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic2.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                       <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic2.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                       <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic2.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                       <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                         <li>
+                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic2.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        
+                    
+                    
+                    </ul>
+                   
+               
             </div>
             
 
@@ -96,16 +175,20 @@
 
         </div>
        
-       <div class="foot">
+       
 
-       </div>
-        
+        <foot></foot>
     </div>
 </template>
 
 <script>
+    import foot from "./home/foot.vue"
+
     export default {
-        name: "shipu"
+        name: "shipu",
+        components:{
+            foot
+        }
     }
 </script>
 
@@ -195,13 +278,40 @@ a{
         width:200px;height:300px;float:left;background:darkkhaki;
     }
     .main-r{
-        width:500px;float:right;background:darkcyan;
+        width:756px;float:right;
+        ul{
+            li{
+                float:left;margin-left:20px;height:342px;overflow:hidden;
+                text-align:left;
+                img{display:block;}
+                b{display: block;
+                    height: 24px;
+                    line-height: 24px;
+                    padding: 0 14px;margin-top:12px;
+                    font-size: 14px;
+                    color: #333;
+                    font-weight: bold;
+                }
+                span{display: block;
+                    height: 26px;
+                    line-height: 26px;
+                    padding: 0px 14px 0px;
+                    font-size: 12px;
+                    color: #999;
+                }
+                em{    display: block;
+                    height: 23px;
+                    line-height: 23px;
+                    padding: 0px 14px 0px;
+                    font-size: 12px;
+                    color: #ff3232;
+                    font-style: normal;
+                }
+            }
+        }
     }
     
 }
-.main-clear{float:clear;}
-//底部
-.foot{
-    height:700px;background:dimgrey;
-}
+.main-clear{clear:both;}
+
 </style>

@@ -44,7 +44,7 @@
         margin:0 auto;
         background:url(../../static/syImg/01/banner0.1.png) center top no-repeat;
         .head{
-            background:rgba(0,0,0,0.2);
+            background:rgba(178,170,152,0.1);
             width:100%;
             margin:0 auto;
             overflow: hidden;
@@ -62,7 +62,7 @@
                 span{
                     padding:27px 20px;
                     float:right;
-                    color:#e9e9e9;
+                    color:#999898;
                     font-size:24px;
                 }
                 .shu{
