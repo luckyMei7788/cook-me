@@ -9,8 +9,7 @@ Vue.config.productionTip = false
 Vue.use(ElementUI);
 
 
-import axios from "axios"
-
+import axios from "axios";
 Vue.config.productionTip = false
 Vue.prototype.$axios = axios;
 new Vue({

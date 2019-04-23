@@ -72,10 +72,10 @@
 				        this.$axios.post("http://127.0.0.1/sys/user/findMobile", {
 				            usMobile
 				        }).then(({data})=>{
-				            if(data.code === 0){
-				                alert(data.msg)
+				            if(data.R.code === 0){
+				                alert(data.R.msg)
 				            }else{
-								alert(data.msg);
+								alert(data.R.msg);
 							}
 				        })   
 				    } else {
@@ -97,13 +97,13 @@
 							usMobile,
 							verifycode
 						}).then(({data})=>{
-							console.log(66666, data);
-							if(data.code === 0){
-								alert(data.msg);
+							console.log(66666, data.R);
+							if(data.R.code === 0){
+								alert(data.R.msg);
 								//登录成功跳转首页
 								this.$router.push({name : "home"});
 							}else{
-								alert(data.msg);
+								alert(data.R.msg);
 							}
 						})
 				    }else{
@@ -120,7 +120,7 @@
 <style lang="less">
 body{
         width : 100%;
-		height: 100%;
+		min-height: 800px;
         //min-height : 580px;
         background : url("../../static/login/img/background.png") no-repeat;
         background-size : 100% 100%;
