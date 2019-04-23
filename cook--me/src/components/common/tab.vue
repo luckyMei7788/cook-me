@@ -5,10 +5,10 @@
                 <img src="../../static/syImg/01/icon-1.png" alt="">
             </div>
             <div id="tt" class="tt">
-                <router-link  to="/register">
+                <router-link  to="/reg">
                     <span>注册</span>
                 </router-link>
-                <router-link to="/login">
+                <router-link to="/passwordLogin">
                     <span class="shu">|</span><span>登录</span>
                 </router-link>
                 <router-link to="/people">
@@ -37,6 +37,7 @@
 </script>
 
 <style lang="less">
+    
     .top{
         width:100%;
         overflow: hidden;
