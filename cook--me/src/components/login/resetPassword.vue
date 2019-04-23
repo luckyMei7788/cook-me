@@ -84,13 +84,13 @@
 							usMobile,
 							usPassword
 						}).then(({data})=>{
-							console.log(data);
-							if(data.code === 0){
-								alert(data.msg);
+							console.log(data.R);
+							if(data.R.code === 0){
+								alert(data.R.msg);
 								//重置密码成功跳转到密码登录页面
 								this.$router.push({name : "passwordLogin"});
 							}else{
-								alert(data.msg)
+								alert(data.R.msg)
 							} 
 						})
 					}else{
@@ -107,7 +107,7 @@
 <style lang="less">
 body{
 		width : 100%;
-		height: 100%;
+		min-height: 800px;
 		//min-height : 580px;
 		background : url("../../static/login/img/background.png") no-repeat;
 		background-size : 100% 100%;

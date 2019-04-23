@@ -66,10 +66,10 @@
                         this.$axios.post("http://127.0.0.1/sys/user/selectMobile", {
                             usMobile
                         }).then(({data})=>{
-							if(data.code === 0){
+							if(data.R.code === 0){
 								console.log("手机号可用")
 							}else{
-								alert(data.msg);
+								alert(data.R.msg);
 							}
                         })
                        
@@ -116,13 +116,13 @@
                         this.$axios.post("http://127.0.0.1/sys/user/sendCode", {
                             usMobile
                         }).then(({data})=>{
-                            console.log(data.msg);
-                            if(data.code === 0){
-                                alert(data.msg);
+                            console.log(data.R.msg);
+                            if(data.R.code === 0){
+                                alert(data.R.msg);
                                 // console.log(typeof data);
                                 // console.log(data.usMobile);
                             }else{
-                                alert(data.msg);
+                                alert(data.R.msg);
                             }
                         })   
                     } else {
@@ -152,13 +152,13 @@
 											        usPassword,
 											        verifyCode
 											    }).then(({data})=>{
-                                                    console.log(data);
-                                                    if(data.code === 0){
-                                                        alert(data.msg);
+                                                    console.log(data.R);
+                                                    if(data.R.code === 0){
+                                                        alert(data.R.msg);
                                                         //注册成功跳转到密码登陆界面
 								                        this.$router.push({name : "passwordLogin"});
                                                     }else{
-                                                        alert(data.msg);
+                                                        alert(data.R.msg);
                                                     }
 											    })
 											}else{
@@ -239,6 +239,7 @@
     /* 注册板块的内容 */
     .section .reg{
         width : 800px;
+		min-height: 580px;
         margin : 80px auto 0;
         background: rgba(252, 248, 233, 0.8);
         overflow: hidden;
