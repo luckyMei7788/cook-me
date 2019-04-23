@@ -114,6 +114,13 @@
 </script>
 
 <style lang="less">
+body{
+        width : 100%;
+		height: 100%;
+        //min-height : 580px;
+        background : url("../../static/login/img/background.png") no-repeat;
+        background-size : 100% 100%;
+    }	
 .resetPassword{
 	width : 800px;
 	min-height : 492px;
