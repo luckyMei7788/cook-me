@@ -67,9 +67,9 @@
                             usMobile
                         }).then(({data})=>{
 							if(data.code === 0){
-								console.log("1111后台手机验证成功");
+								console.log("手机号可用")
 							}else{
-								alert(data.msg)
+								alert(data.msg);
 							}
                         })
                        
@@ -117,11 +117,13 @@
                             usMobile
                         }).then(({data})=>{
                             console.log(data.msg);
-                            /* if(data.ok === 1){
+                            if(data.code === 0){
                                 alert(data.msg);
-                                console.log(typeof data);
-                                console.log(data.usMobile);
-                            } */
+                                // console.log(typeof data);
+                                // console.log(data.usMobile);
+                            }else{
+                                alert(data.msg);
+                            }
                         })   
                     } else {
                         this.showError = !this.showError;
@@ -150,7 +152,14 @@
 											        usPassword,
 											        verifyCode
 											    }).then(({data})=>{
-											        console.log(data);
+                                                    console.log(data);
+                                                    if(data.code === 0){
+                                                        alert(data.msg);
+                                                        //注册成功跳转到密码登陆界面
+								                        this.$router.push({name : "passwordLogin"});
+                                                    }else{
+                                                        alert(data.msg);
+                                                    }
 											    })
 											}else{
 											    alert("请认真阅读《CookMe用户协议》并勾选同意");

@@ -94,7 +94,10 @@
 							usPassword
 						}).then(({data})=>{
 							if(data.code === 0){
-								console.log(data);
+								//console.log(data);
+								alert(data.msg);
+								//登录成功跳转首页
+								this.$router.push({name : "home"});
 								// console.log(111111, "登陆成功");
 							}else{
 								alert(data.msg);

@@ -94,7 +94,7 @@
 						}).then(({data})=>{
 							//console.log(66666, data);
 							if(data.code === 0){
-								console.log(data);
+								alert(data.msg);
 								//同页面的跳转
 								this.$router.push({name : "resetPassword"});
 								// console.log(111111, "登陆成功");

@@ -86,10 +86,11 @@
 						}).then(({data})=>{
 							console.log(data);
 							if(data.code === 0){
-								console.log(data);
-								console.log("重置密码成功");
+								alert(data.msg);
+								//重置密码成功跳转到密码登录页面
+								this.$router.push({name : "passwordLogin"});
 							}else{
-								console.log(22222, "用户名或密码错误");
+								alert(data.msg)
 							} 
 						})
 					}else{

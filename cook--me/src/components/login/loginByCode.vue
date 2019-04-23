@@ -73,8 +73,7 @@
 				            usMobile
 				        }).then(({data})=>{
 				            if(data.code === 0){
-				                //alert(data.msg)
-				                console.log(data.msg);
+				                alert(data.msg)
 				            }else{
 								alert(data.msg);
 							}
@@ -100,8 +99,9 @@
 						}).then(({data})=>{
 							console.log(66666, data);
 							if(data.code === 0){
-								console.log(data);
-								// console.log(111111, "登陆成功");
+								alert(data.msg);
+								//登录成功跳转首页
+								this.$router.push({name : "home"});
 							}else{
 								alert(data.msg);
 							}
