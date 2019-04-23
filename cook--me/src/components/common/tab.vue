@@ -2,7 +2,7 @@
     <div class="top">
         <div class="head">
             <div class="head-i">
-                <img src="../../static/syImg/01/icon-1.png" alt="">
+                <i class="el-icon-star-on"></i><i class="el-icon-star-on"></i><i class="el-icon-star-on"></i>
             </div>
             <div id="tt" class="tt">
                 <router-link  to="/register">
@@ -43,16 +43,16 @@
         margin:0 auto;
         background:url(../../static/syImg/01/banner0.1.png) center top no-repeat;
         .head{
-            background:rgba(178,170,152,0.1);
+            background:rgba(0,0,0,0.2);
             width:100%;
             margin:0 auto;
             overflow: hidden;
             .head-i{
                 float:left;
-                padding:27px 20px;
-                img{
-                    width:36px;
-                    height:30px;
+                padding:27px 30px;
+                i{
+                    font-size:30px;
+                    color:hotpink;
                 }
             }
             .tt{
@@ -61,8 +61,8 @@
                 span{
                     padding:27px 20px;
                     float:right;
-                    color:#999898;
-                    font-size:20px;
+                    color:#e9e9e9;
+                    font-size:24px;
                 }
                 .shu{
                     padding:27px 0;
