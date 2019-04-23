@@ -46,6 +46,8 @@
 </script>
 
 <style lang="less">
+//引入小图标
+@import "../../static/login/iconfont/iconfont.css";
 @import "../../style/public.less";
 
     .top-h{

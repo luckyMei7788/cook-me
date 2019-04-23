@@ -4,8 +4,11 @@ import home from './components/page/home'
 import shipu from './components/page/shipu'
 import cai from './components/page/cai'
 import people from './components/page/people'
-import login from './components/page/login'
-import register from './components/page/register'
+import passwordLogin from './components/login/passwordLogin'
+import reg from './components/login/reg'
+
+
+import loginRouter from "./router/login/loginRouter";
 
 Vue.use(Router)
 
@@ -34,15 +37,16 @@ export default new Router({
       component: people
     },
     {
-      path:'/login',
-      name:'login',
-      component:login
+      path:'/passwordLogin',
+      name:'passwordLogin',
+      component:passwordLogin
     },
     {
-      path:'/register',
-      name:'register',
-      component:register
-    }
+      path:'/reg',
+      name:'reg',
+      component:reg
+    },
+    
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
@@ -50,5 +54,5 @@ export default new Router({
       //   return import(/* webpackChunkName: "about" */ './views/About.vue')
       // }
 
-  ]
+  ].concat(loginRouter)
 })

@@ -40,7 +40,7 @@
             float:left;
             cursor:pointer;
             img{
-                width:195px;
+                width:194px;
                 height:196px;
                 cursor:pointer;
             }
