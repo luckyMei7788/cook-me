@@ -7,6 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
     "vue": "^2.6.6",
@@ -14,6 +15,10 @@
   },
   "devDependencies": {
     "@vue/cli-service": "^3.5.0",
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "mongodb": "^3.2.3",
+    "request": "^2.88.0",
     "vue-template-compiler": "^2.5.21"
   }
 }
