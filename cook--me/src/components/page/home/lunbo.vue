@@ -43,12 +43,21 @@
         data() {
             return {
                 value6: 0,
-                value7: 0
+                value7: 0,
+                //sum:0
             }
         },
         methods:{
-
+            fnTime(){
+               /* $axios.post('/127.0.0.1/SUM',{
+                    a:2,
+                    b:3
+                }).then({data}=>{
+                    this.sum = data.msg;
+                })*/
+            }
         }
+
     }
 </script>
 

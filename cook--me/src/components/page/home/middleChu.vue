@@ -9,7 +9,13 @@
                     <div><img src="../../../static/syImg/04/tx01.jpg" alt=""></div>
                     <div><span>Tony</span></div>
                     <div><p>820个关注</p></div>
-                    <div><button>更多</button></div>
+                    <div><button><i class="el-icon-more-outline"></i></button></div>
+                    <div class="text">
+                        <p>我来自：</p>
+                        <p>性别：</p>
+                        <p>我的粉丝：</p>
+                        <p>我发布了菜谱数：</p>
+                    </div>
                 </li>
             </ul>
             <div class="middle-huan">
@@ -21,7 +27,13 @@
 
 <script>
     export default {
-        name: "middleChu"
+        name: "middleChu",
+
+        methods:{
+            text(){
+
+            }
+        }
     }
 </script>
 
@@ -41,23 +53,31 @@
         float:right;
         li {
             div{
+                overflow: hidden;
                 float:left;
-                padding:14px 30px;
+                padding:14px 32px;
                 button{
                     background:#d8316c;
                     font-size:18px;
-                    width:80px;
-                    height:40px;
+                    width:66px;
+                    height:39px;
                     color:white;
                     border:none;
                     border-radius:10px;
                     cursor:pointer;
                     box-shadow:2px 2px 20px #999;
+                    i{
+                        color:#fff;
+                        font-size:30px;
+                    }
                 }
                 img{
                     width:35px;
                     border-radius:50%;
                 }
+            }
+            .text{
+                display: none;
             }
         }
     }
@@ -73,6 +93,7 @@
             border-radius:20px;
             cursor:pointer;
             box-shadow:2px 2px 20px #999;
+
         }
     }
 }
