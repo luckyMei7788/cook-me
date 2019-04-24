@@ -36,7 +36,7 @@
     }
 </script>
 
-<style lang="less">
+<style scoped lang="less">
     
     .top{
         width:100%;
