@@ -225,7 +225,13 @@
                              <em>随心所欲</em>
                         </li>
                        <li>
-                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <img src="../../static/menu/pic8.jpg" alt="">
+                             <b>韩国部队锅</b>
+                             <span>6000人气</span>
+                             <em>随心所欲</em>
+                        </li>
+                        <li>
+                             <img src="../../static/menu/pic8.jpg" alt="">
                              <b>韩国部队锅</b>
                              <span>6000人气</span>
                              <em>随心所欲</em>
@@ -237,13 +243,7 @@
                              <em>随心所欲</em>
                         </li>
                         <li>
-                             <img src="../../static/menu/pic2.jpg" alt="">
-                             <b>韩国部队锅</b>
-                             <span>6000人气</span>
-                             <em>随心所欲</em>
-                        </li>
-                        <li>
-                             <img src="../../static/menu/pic1.jpg" alt="">
+                             <img src="../../static/menu/pic7.jpg" alt="">
                              <b>韩国部队锅</b>
                              <span>6000人气</span>
                              <em>随心所欲</em>
@@ -269,7 +269,7 @@
                         
                     </ul>
                     <div class="pagelsm"> 
-                        文字
+                        &nbsp;
                         <!--分页-->
                         <el-pagination
                             background
@@ -515,7 +515,8 @@ a{
         width:756px;float:right;
         ul{
             li{
-                float:left;margin-left:20px;height:342px;overflow:hidden;
+                float:left;margin-left:20px;margin-bottom:16px;height:342px;
+                overflow:hidden;
                 text-align:left;
                 img{display:block;}
                 b{display: block;
@@ -544,7 +545,7 @@ a{
             }
             li:hover{background:rgb(240, 234, 234);}
         }
-        .pagelsm{
+        .pagelsm{padding-bottom:40px;text-align:right;
             .btn-prev{
                     height:40px;width:40px;text-align: center;
                     line-height: 40px;
