@@ -267,10 +267,17 @@
                              <em>随心所欲</em>
                         </li>
                         
-                    
-                    
                     </ul>
-                   
+                    <div class="pagelsm"> 
+                        文字
+                        <!--分页-->
+                        <el-pagination
+                            background
+                            layout="prev, pager, next"
+                            :total="1000">
+                        </el-pagination>
+                    </div>
+                  
                
             </div>
             
@@ -536,6 +543,37 @@ a{
                 }
             }
             li:hover{background:rgb(240, 234, 234);}
+        }
+        .pagelsm{
+            .btn-prev{
+                    height:40px;width:40px;text-align: center;
+                    line-height: 40px;
+            }
+            .btn-next{
+                    height:40px;width:40px;text-align: center;
+                    line-height: 40px;
+            }
+            .el-pager{
+                
+                
+                .number{
+                    height:40px;width:40px;text-align: center;
+                    line-height: 40px;
+                }
+                .active{
+                    height:40px;
+                }
+                .el-icon-more{
+                    height:40px;width:40px;text-align: center;
+                    line-height: 40px;
+                
+                }
+                .more:hover{
+                   height:40px;width:40px;text-align: center;
+                    line-height: 40px;
+                }
+                
+            }
         }
     }
     
