@@ -4,7 +4,9 @@ import home from './components/page/home'
 import shipu from './components/page/shipu'
 import cai from './components/page/cai'
 import people from './components/page/people'
-import gexin from './components/page/gexin'
+import information from './components/personal/information'
+import personlRouter from './router/personal/personlRouter'
+
 import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
@@ -39,9 +41,9 @@ export default new Router({
       component:people
     },
     {
-      path:"/gexin",
-      name:'gexin',
-      component:gexin
+      path:"/information",
+      name:'information',
+      component:information
     },
     {
       path:"/guanzhu",
@@ -71,5 +73,5 @@ export default new Router({
       //   return import(/* webpackChunkName: "about" */ './views/About.vue')
       // }
 
-  ].concat(loginRouter,shoppingRouter)
+  ].concat(loginRouter,shoppingRouter, personlRouter)
 })

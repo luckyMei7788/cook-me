@@ -96,6 +96,8 @@
 							if(data.R.code === 0){
 								//console.log(data);
 								alert(data.R.msg);
+								//将手机号记录到localStorage，方便其他页面判断是否登录执行相应的功能
+								localStorage.usMobile = usMobile;
 								//登录成功跳转首页
 								this.$router.push({name : "home"});
 								// console.log(111111, "登陆成功");
