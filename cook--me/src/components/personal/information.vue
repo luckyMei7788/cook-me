@@ -25,7 +25,7 @@
 		name : "information",
 		data() {
 			return {
-				activeName: 'second',
+				activeName: 'first',
 			}
 		},
 		methods: {
