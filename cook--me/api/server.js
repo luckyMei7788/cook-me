@@ -145,6 +145,69 @@ app.post("/sys/user/verifyCode", function(req, res){
 })
 
 
+//***************************************shopping*****************************************
+app.post("/sys/user/selectCommodityDetails",function (req,res) {
+	console.log(req.body);
+	res.json({
+		product:{
+			"productId":1,
+			"productName":"金针菇",
+			"pice":5,
+			"unit":"g",
+			"sales":16,
+			"merit":"1、金针菇氨基酸的含量非常丰富，高于一般菇类，尤其是赖氨酸的含量特别高，赖氨酸具有促进儿童智力发育的功能。\n" +
+				"2、金针菇，不仅可以预防和治疗肝脏病，而且也适合高血压患者、肥胖者和中老年人食用，这主要是因为它是一种高钾低钠食品[2]\n" +
+				"3、金针菇可抑制血脂升高，降低胆固醇，防治心脑血管疾病。食用金针菇具有抵抗疲劳、抗菌消炎、消除重金属盐类物质、抗肿瘤的作用。\n" +
+				"⒋ 金针菇可抑制血脂升高，降低胆固醇，防治心脑血管疾病；\n" +
+				"⒌ 食用金针菇具有抵抗疲劳，抗菌消炎、[3]。\n" +
+				"⒍经常食用金针菇，不仅可以预防和治疗肝脏病及胃、肠道溃疡，而且也适合高血压患者、肥胖者和中老年人食用，这主要是因为它是一种高钾低钠食品。\n" +
+				"7.金针菇营养成分十分丰富，如蛋白质、维生素B1、B2等，具有利湿热、宽胸、利尿、止血、下乳的功效，并且治产后乳汁不下，用金针菇炖瘦猪肉食用，极有功效。\n",
+		},
+		ok:1,
+		msg:"获取数据库商品信息成功"
+	})
+})
+app.post("/sys/user/myshopcar",function (req,res) {
+	res.json({
+		"list": [
+			{
+				"productId":"1",
+				"carId":"1",
+				"usId":"123456789",
+				"productName": "金针菇",
+				"price": "6",
+				"carCount":"2",
+			},
+			{
+				"productId":"2",
+				"carId":"2",
+				"usId":"123456789",
+				"productName": "A1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+				"price": "6",
+				"carCount":"2",
+			},l
+		],
+		ok:1,
+		msg:"用户添加了商品"
+	})
+})
+app.post("/sys/user/shopcardel",function(req,res){
+	res.json({
+		R:{
+			code:0,
+			msg:"进行删除成功"
+		}
+	})
+})
+app.post("/sys/user/shopcar",function(req,res){
+	res.json({
+		R:{
+			code:0,
+			msg:"进行修改成功"
+		}
+	})
+})
+
 app.listen(80, function(){
     console.log("success");
 })
