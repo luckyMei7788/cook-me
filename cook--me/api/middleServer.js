@@ -17,7 +17,7 @@ app.post("*", function(req, res){
 	var body = req.body;
     //URL请求的地址，第二个参数-回调，err报错信息，responseText返回信息，body返回所有信息
     request({
-		url
+		url,
 		body
 	}, function(err, responseText,body){
         if(!err && responseText.statusCode === 200){
