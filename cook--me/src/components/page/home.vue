@@ -68,7 +68,7 @@
 
         .siyue{
             width:100%;
-            margin:0 auto;
+            margin:0 auto 50px;
             font-size:22px;
             text-align:center;
             padding:30px 0;

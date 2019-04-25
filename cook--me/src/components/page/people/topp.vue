@@ -14,15 +14,24 @@
             </div>
         </div>
         <div class="right">
-            <p>点我设置个人信息哦<i class="el-icon-edit"></i></p>
+            <div><i class="iconfont">&#xe84d;</i>   我的粉丝</div>
+            <p @click="gexin">点我设置个人信息哦<i class="el-icon-edit"></i></p>
         </div>
-        <button>+关注</button>
+        <button @click="guanzhu"><i class="el-icon-view"></i>  关注</button>
     </div>
 </template>
 
 <script>
     export default {
         name: "topp",
+        methods:{
+            gexin(){
+                this.$router.push({name:'gexin'})
+            },
+            guanzhu(){
+                this.$router.push({name:'guanzhu'})
+            }
+        }
 
     }
 </script>
@@ -40,6 +49,7 @@
               float:left;
                img{
                    border-radius:50%;
+                   box-shadow:2px 2px 10px pink;
                    width:100px;
                }
             }
@@ -67,34 +77,55 @@
         .right{
             float:right;
             p{
-                margin-top:30px;
-                padding:30px 18px;
-                margin-left:10px;
+                margin-top:48px;
+                padding:16px 18px;
+                margin-left:20px;
+                margin-right:4px;
                 font-size:20px;
                 text-align:center;
                 border-radius:10px;
                 float:left;
                 color:white;
+                cursor:pointer;
                 background:lightskyblue;
-                box-shadow:2px 2px 10px yellowgreen;
                 i{
+                    font-size:30px;
                     padding-left:10px;
                     color:yellow;
                 }
             }
+            div{
+                margin-top:48px;
+                padding:11px 18px;
+                font-size:20px;
+                text-align:center;
+                border-radius:10px;
+                float:left;
+                color:white;
+                cursor:pointer;
+                background:pink;
+                i{
+                    font-size:30px;
+                    padding-left:10px;
+                    color:hotpink;
+                }
+            }
+            :hover{box-shadow:2px 2px 10px yellowgreen;}
         }
         button{
             position: absolute;
             top:0;
             left:238px;
-            width:80px;
+            width:88px;
             height:40px;
             font-size:18px;
+            border:none;
+            cursor:pointer;
             border-radius: 20px;
             background:yellowgreen;
             color:lavenderblush;
             text-align: center;
-            box-shadow:2px 2px 10px yellowgreen;
+            box-shadow: 2px 2px 10px yellowgreen;
         }
     }
 </style>

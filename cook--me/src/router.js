@@ -4,6 +4,8 @@ import home from './components/page/home'
 import shipu from './components/page/shipu'
 import cai from './components/page/cai'
 import people from './components/page/people'
+import gexin from './components/page/gexin'
+import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
 
@@ -34,7 +36,17 @@ export default new Router({
     {
       path:'/people',
       name:'people',
-      component: people
+      component:people
+    },
+    {
+      path:"/gexin",
+      name:'gexin',
+      component:gexin
+    },
+    {
+      path:"/guanzhu",
+      name:'guanzhu',
+      component:guanzhu
     },
     {
       path:'/passwordLogin',

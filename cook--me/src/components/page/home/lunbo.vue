@@ -21,6 +21,7 @@
             <div class="timed">
                 <div class="block">
                     <el-slider
+
                             v-model="value7"
                             :step="25"
                             show-stops>
@@ -40,6 +41,7 @@
 <script>
     export default {
         name: "lunbo",
+
         data() {
             return {
                 value6: 0,
@@ -111,6 +113,9 @@
                     position:absolute;
                     top:-16px;
                     left:0;
+                    .el-slider__bar{
+                        background-color:pink;
+                    }
                 }
                 ul{
                     position:absolute;
