@@ -26,7 +26,12 @@
         name: "topp",
         methods:{
             gexin(){
-                this.$router.push({name:'gexin'})
+                if(!localStorage.usMobile){
+                    this.$router.push({name:'gexin'})
+                }
+               else{
+                   this.$router.push({name:'passwordLogin'})
+                }
             },
             guanzhu(){
                 this.$router.push({name:'guanzhu'})

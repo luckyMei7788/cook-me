@@ -8,8 +8,6 @@ import gexin from './components/page/gexin'
 import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
-
-
 import loginRouter from "./router/login/loginRouter";
 
 Vue.use(Router)

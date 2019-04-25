@@ -58,7 +58,7 @@
         background:url(../../static/syImg/01/banner0.1.png) center no-repeat;
         .middle{
             width:100%;
-            margin:0 auto;
+            margin:0 auto 30px;
             background:#FEF6E1;
             text-align: center;
             padding:52px 0;

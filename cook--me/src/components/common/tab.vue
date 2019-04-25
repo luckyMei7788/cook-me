@@ -11,7 +11,7 @@
                 <router-link to="/passwordLogin">
                     <span class="shu">|</span><span>登录</span>
                 </router-link>
-                <router-link to="/people">
+                <router-link to="/people" @click.native="decide">
                     <span>个人中心</span>
                 </router-link>
                 <router-link to="/cai">
@@ -32,7 +32,18 @@
 
 <script>
     export default {
-        name: "tab"
+        name: "tab",
+        methods:{
+            decide(){
+                if(localStorage.usMobile){
+                    this.$router.push({name:'people'})
+                }
+                else{
+                    alert("您还没有登陆，请先登录！");
+                    this.$router.push({name:'passwordLogin'})
+                }
+            }
+        }
     }
 </script>
 

@@ -45,44 +45,51 @@
     .middle-chu-down {
         img {
             width: 682px;
-            height: 375px;
+            height: 400px;
             float: left;
         }
     }
     .paihang{
         float:right;
-        li {
-            font-size:17px;
-            div{
+        ul{
+            overflow: hidden;
+            li {
                 overflow: hidden;
-                float:left;
-                padding:14px 32px;
-                button{
-                    background:#d8316c;
-                    font-size:18px;
-                    width:66px;
-                    height:39px;
-                    color:white;
-                    border:none;
-                    border-radius:10px;
-                    cursor:pointer;
-                    i{
-                        color:#fff;
-                        font-size:30px;
+                font-size:18px;
+                div{
+                    overflow: hidden;
+                    float:left;
+                    padding:14px 32px;
+                    span{
+                        color:brown;
+                        font-size:20px;
+
+                    }
+                    button{
+                        background:#d8316c;
+                        font-size:18px;
+                        width:66px;
+                        height:39px;
+                        color:white;
+                        border:none;
+                        border-radius:10px;
+                        cursor:pointer;
+                        i{
+                            color:#fff;
+                            font-size:30px;
+                        }
+                    }
+                    button:hover{
+                        box-shadow:2px 2px 20px #999;
+                    }
+                    img{
+                        width:38px;
+                        border-radius:50%;
                     }
                 }
-                button:hover{
-                    box-shadow:2px 2px 20px #999;
-                }
-                img{
-                    width:35px;
-                    border-radius:50%;
-                }
-            }
-            .text{
-                display: none;
             }
         }
+
     }
     .middle-huan {
         margin-left:210px;
@@ -95,8 +102,9 @@
             height:30px;
             border-radius:20px;
             cursor:pointer;
+        }
+        button:hover{
             box-shadow:2px 2px 20px #999;
-
         }
     }
 }
