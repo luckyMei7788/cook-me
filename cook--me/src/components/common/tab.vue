@@ -2,6 +2,7 @@
     <div class="top">
         <div class="head">
             <div class="head-i">
+                <router-link to="/green">A</router-link>
                 <i class="el-icon-star-on"></i><i class="el-icon-star-on"></i><i class="el-icon-star-on"></i>
             </div>
             <div id="tt" class="tt">

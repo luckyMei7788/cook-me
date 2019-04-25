@@ -8,7 +8,9 @@ import gexin from './components/page/gexin'
 import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
+import green from './components/shopping/component-greens-shopping'
 import loginRouter from "./router/login/loginRouter";
+import shoppingRouter from "./router/shopping/shoppingRouter";
 
 Vue.use(Router)
 
@@ -56,6 +58,11 @@ export default new Router({
       name:'reg',
       component:reg
     },
+    {
+      path:'/green',
+      name:'green',
+      component:green,
+    },
     
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
@@ -64,5 +71,5 @@ export default new Router({
       //   return import(/* webpackChunkName: "about" */ './views/About.vue')
       // }
 
-  ].concat(loginRouter)
+  ].concat(loginRouter,shoppingRouter)
 })
