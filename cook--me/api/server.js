@@ -185,7 +185,7 @@ app.post("/sys/user/myshopcar",function (req,res) {
 				"productName": "A1aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
 				"price": "6",
 				"carCount":"2",
-			},l
+			},
 		],
 		ok:1,
 		msg:"用户添加了商品"
