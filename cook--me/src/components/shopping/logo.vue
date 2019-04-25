@@ -13,7 +13,7 @@
         </div>
         <!-- logo -->
         <div class="logo-a">
-            <div class="logo">
+            <div class="logoA">
                 <!-- <img src="../../static/shopping/img/菜市场banner01.jpg" /> -->
             </div>
             <div class="logo-nav">
@@ -81,7 +81,7 @@
         margin:0 auto;
         overflow: hidden;
     }
-    .logo{
+    .logoA{
         width:1100px;
         height:72px;
         background:url(../../static/shopping/img/菜市场banner01-1.jpg) no-repeat ;

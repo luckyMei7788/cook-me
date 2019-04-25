@@ -88,6 +88,7 @@
     margin:0 auto;
     .logo{
         width:990px;
+        height: 212px;
         margin:0 auto;
         overflow: hidden;
         .logo_left{

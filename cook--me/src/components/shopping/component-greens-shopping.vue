@@ -3,7 +3,7 @@
         <!-- header -->
         <!-- logo -->
         <div class="logo-a1">
-            <div class="logo">
+            <div class="logoA">
             </div>
             <div class="logo-nav">
                 <ul class="logo-ul">
