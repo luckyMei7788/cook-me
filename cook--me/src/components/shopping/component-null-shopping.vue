@@ -56,7 +56,7 @@
         name: "component-null-shopping",
         methods:{
             goShopping(){
-                this.$router.push({name:"greensShopping"});
+                this.$router.push({name:"cai"});
             }
         }
     }

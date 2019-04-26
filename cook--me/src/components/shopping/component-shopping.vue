@@ -57,7 +57,7 @@
                         <!--<p>合计:<b>{{sumPrice}}元</b></p>-->
                         <p>合计:<b>16元</b></p>
                         <p>
-                            <input type="button" value="继续购物" />
+                            <input type="button" @click="go" value="继续购物" />
                             <input type="button" @click="account" value="去结算" />
                         </p>
                     </div>
@@ -143,6 +143,9 @@
                         console.log(data.R);
                         console.log(data.R.msg);
                     })
+            },
+            go(){
+                this.$router.push({name:"cai"});
             },
             // //单选接口调用
             // updateisChecked(CarId,type){
