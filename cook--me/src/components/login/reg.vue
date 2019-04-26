@@ -153,7 +153,7 @@
                                     if (usPassword === confirmNum) {
 										if(code !=""){
 											if(this.isChecked === true){
-											    //注册信息的提交
+											    //注册信息的提交-地址栏传参数+json
 											    this.$axios.post("/cookme/sys/user/register/"+code, {
 											        usMobile,
 											        usPassword,
