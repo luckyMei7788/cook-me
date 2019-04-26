@@ -3,7 +3,7 @@
         <!-- header -->
         <!-- logo -->
         <div class="logo-a1">
-            <div class="logo">
+            <div class="logoA">
             </div>
             <div class="logo-nav">
                 <ul class="logo-ul">
@@ -26,7 +26,7 @@
                 <div class="goods-photo"><img src="../../static/shopping/img/金针菇.jpg" /></div>
                 <div class="goods-info">
                     <p class="goodsName"><b>{{goodsList.productName}}</b></p>
-                    <p class="goodsPrice">售&nbsp;&nbsp;价:￥{{goodsList.pice}}</p>
+                    <p class="goodsPrice">售&nbsp;&nbsp;价:￥{{goodsList.price}}</p>
                     <p class="goods-g">单&nbsp;&nbsp;位:{{goodsList.unit}}</p>
                     <div class="shopping-num">
                         <p>购买人数</p>
@@ -35,10 +35,10 @@
                     <div class="shopping-goods">
                         <div class="shopping-goods-header">
                             <p>数量: <el-input-number v-model="num" @change="handleChange" :min="1" label="描述文字"></el-input-number></p>
-                            <p>合计:<b>{{goodsList.pice * num}}元</b></p>
+                            <p>合计:<b>{{goodsList.price * num}}元</b></p>
                         </div>
                         <div class="shopping-goods-btn">
-                            <el-button type="success"@click="joinShopping(goodsList.productId)">加入购物车</el-button><el-button @click="order" type="success">立即购买</el-button>
+                            <el-button type="success" @click="joinShopping(goodsList.productId)">加入购物车</el-button><el-button @click="order" type="success">立即购买</el-button>
                         </div>
                     </div>
                 </div>
@@ -86,7 +86,8 @@
             return{
                 num:1,
                 goodsList:[],
-                list:[]
+                list:[],
+                productId:1,
             };
         },
         methods:{
@@ -94,25 +95,62 @@
                 // console.log(value);
             },
             goodsListA(){//进行获取数据库商品内容
-                this.$axios.post("http://127.0.0.1/sys/user/selectCommodityDetails")
+                // var productId = this.productId;
+                // this.$axios.post("/lh/sys/user/selectCommodityDetails?productId="+productId,{
+                //     headers:{
+                //         "content-type":"application/json"
+                //     }
+                // })
+                //测试假数据
+                this.$axios.post("http://127.0.0.1/sys/user/selectCommodityDetails",{
+                    productId:this.productId,
+                })
                     .then(({data})=>{
                         console.log(data);
-                        console.log(data.msg);
+                        // this.goodsList = data;
                         this.goodsList = data.product;
+                        console.log(data);
                     })
+
             },
             joinShopping(productId){//点击加入购物车
                 //判断用户是否登录
+                //在此处设置跳转到用户注册界面
                 if(!localStorage.usMobile){
-                    console.log("用户请先登录");
-                    //在此处设置跳转到用户注册界面
+                    this.$alert('您还没有登录哦!', {
+                        confirmButtonText: '确定',
+                        callback: action => {
+                            this.$router.push({name:"passwordLogin"});
+                        }
+                    });
+
                 }else{
                     //提交数据到数据库
+                    let shopCarDto = {
+                         productId:this.productId,//商品的Id
+                         carCount : this.num //商品的数量
+                    }
+                    // console.log(shopCarDto);
+                    // this.$axios.post("/lh/sys/user/shopcar?shopCarDto="+shopCarDto,{
+                    //     headers:{
+                    //         "content-type":"application/json"
+                    //     }
+                        //测试假数据
                     this.$axios.post("http://127.0.0.1/sys/user/shopcar",{
-                        productId,
-                        carCount:this.num     //商品的数量
+                        shopCarDto
                     }).then(({data})=>{
-                        alert("加入购物车成功！");//进行判断是否添加成功
+                        //进行判断是否添加成功
+                        this.$alert('加入购物车成功!',{
+                            confirmButtonText:'去购物页面下单',
+                            cancelButtonText:'取消',
+                            center:true
+                        }).then(()=>{
+                            this.$router.push({name:"Shopping"});
+                        }).catch(()=>{
+                            type:'info'
+                        })
+                        console.log('aaaa'+data);
+                        console.log(data.R.msg);
                     })
                 }
 

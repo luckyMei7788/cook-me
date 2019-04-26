@@ -2,7 +2,7 @@
     <div class="body">
         <!-- logo -->
         <div class="logo-a">
-            <div class="logo">
+            <div class="logoA">
                 <!-- <img src="../img/菜市场banner01.jpg" /> -->
             </div>
             <div class="logo-nav">
@@ -59,7 +59,7 @@
                                     <p>商品总价:&nbsp;&nbsp;3.70</p>
                                     <p>应付金额:&nbsp;&nbsp;<b>3.70</b></p>
                                 </div>
-                                <button>去结算</button>
+                                <button @click="zhifu">去结算</button>
                                 <button @click="breakShopping">返回购物车</button>
                             </div>
                         </div>
@@ -122,6 +122,13 @@
             },
             breakShopping(){
                 this.$router.push({name:"Shopping"});
+            },
+            zhifu(){
+                if(this.list.length <=0){
+                    alert("你还没有商品哦");
+                }else{
+                    this.$router.push({name:"zhifubao"});
+                }
             },
         },
         mounted(){

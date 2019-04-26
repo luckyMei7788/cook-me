@@ -2,7 +2,7 @@
     <div class="body">
         <!-- logo -->
         <div class="logo-a">
-            <div class="logo">
+            <div class="logoA">
             </div>
             <div class="logo-nav">
                 <ul class="logo-ul">
@@ -56,7 +56,7 @@
         name: "component-null-shopping",
         methods:{
             goShopping(){
-                this.$router.push({name:"greensShopping"});
+                this.$router.push({name:"cai"});
             }
         }
     }

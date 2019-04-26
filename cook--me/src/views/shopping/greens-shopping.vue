@@ -6,7 +6,7 @@
 
 <script>
     import componentGreensShopping from "@/components/shopping/component-greens-shopping.vue"
-    import publica from "@/components/shopping/public.vue"
+    import publica from "@/components/shopping/logo.vue"
     export default {
         name: "greens-shopping",
         components:{

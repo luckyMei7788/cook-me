@@ -80,17 +80,17 @@
 				if (usPassword != "" && /^[a-zA-Z0-9_]{4,16}$/.test(usPassword)) {
 					if(confirmNum === usPassword){
 						//重置密码发送请求
-						this.$axios.post("http://127.0.0.7/sys/user/resetPwd", {
+						this.$axios.post("/cookme/sys/user/resetPwd", {
 							usMobile,
 							usPassword
 						}).then(({data})=>{
-							console.log(data.R);
-							if(data.R.code === 0){
-								alert(data.R.msg);
+							console.log(data);
+							if(data.code === 0){
+								alert(data.msg);
 								//重置密码成功跳转到密码登录页面
 								this.$router.push({name : "passwordLogin"});
 							}else{
-								alert(data.R.msg)
+								alert(data.msg)
 							} 
 						})
 					}else{

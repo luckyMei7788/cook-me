@@ -416,12 +416,6 @@
 
     export default {
         name: "shipu",
-        methods: {
-            handleOpen(key, keyPath) {
-            },
-            handleClose(key, keyPath) {
-            }
-        },
         data(){
             return {
                 input:'',
@@ -531,9 +525,15 @@ a{
             }
             .el-tabs__item{
                 width:118px;
-                text-align:center;    
-            } 
-            
+                text-align:center;
+                .is-active{
+                    color:red;
+                }
+                
+            }
+            // .is-active{
+            //     color:red;
+            // }
         }
         .el-tabs__content{
             padding:0;
@@ -745,13 +745,9 @@ a{
                 .number{
                     height:40px;width:40px;text-align: center;
                     line-height: 40px;
-                    li{
-                        .active{background-color:red;}
-                    }
                 }
                 .active{
                     height:40px;
-                    background:red;
                 }
                 .el-icon-more{
                     height:40px;width:40px;text-align: center;
