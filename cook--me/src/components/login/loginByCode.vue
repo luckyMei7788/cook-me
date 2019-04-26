@@ -94,7 +94,7 @@
 						}).then(({data})=>{
 							console.log("1111111111111111111");
 						}) */
-						this.$axios.post("/lh/sys/user/findMobile?phone="+usMobile,{
+						this.$axios.post("/cookme/sys/user/findMobile?phone="+usMobile,{
 							headers : {
 								"content-type" : "application/json"
 							}
@@ -120,7 +120,7 @@
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				    if (code != "") {
 				        //登录发送请求
-						this.$axios.post("lh/sys/user/mobileLogin?usMobile="+usMobile+"&code="+code, {
+						this.$axios.post("/cookme/sys/user/mobileLogin?usMobile="+usMobile+"&code="+code, {
 							headers : {
 								"content-type" : "application/json"
 							}

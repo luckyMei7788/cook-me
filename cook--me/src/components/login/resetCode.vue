@@ -71,7 +71,7 @@
 								alert(data.R.msg);
 							}
 				        }) */ 
-						 this.$axios.get("/lh/sys/user/sendCode/"+usMobile).then(({data})=>{
+						 this.$axios.get("/cookme/sys/user/sendCode/"+usMobile).then(({data})=>{
 						 	if(data.code === 0){
 						 	    console.log(data.msg);
 								console.log(data)
@@ -96,7 +96,7 @@
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				    if (code != "") {
 				        //登录发送请求
-						this.$axios.post("/lh/sys/user/verifyCode?usMobile="+usMobile+"&code="+code).then(({data})=>{
+						this.$axios.post("/cookme/sys/user/verifyCode?usMobile="+usMobile+"&code="+code).then(({data})=>{
 							//console.log(66666, data);
 							if(data.code === 0){
 								alert(data.msg);

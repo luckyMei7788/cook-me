@@ -64,7 +64,7 @@
                 if (usMobile != "") {
                     if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
                         //手机号后台验证
-                        this.$axios.post("/lh/sys/user/selectMobile", {
+                        this.$axios.post("/cookme/sys/user/selectMobile", {
                             usMobile
                         }).then(({data})=>{
 							console.log(data);
@@ -125,7 +125,7 @@
                                 alert(data.msg);
                             }
                         }) */  
-						this.$axios.get("/lh/sys/user/sendCode/"+usMobile).then(({data})=>{
+						this.$axios.get("/cookme/sys/user/sendCode/"+usMobile).then(({data})=>{
 							if(data.code === 0){
 							    console.log(data.msg);
 							}else{
@@ -154,7 +154,7 @@
 										if(code !=""){
 											if(this.isChecked === true){
 											    //注册信息的提交
-											    this.$axios.post("/lh/sys/user/register/"+code, {
+											    this.$axios.post("/cookme/sys/user/register/"+code, {
 											        usMobile,
 											        usPassword,
 											    }).then(({data})=>{
@@ -230,7 +230,6 @@
     body{
         width : 100%;
 		height: 100%;
-        //min-height : 580px;
         background : url("../../static/login/img/background.png") no-repeat;
         background-size : 100% 100%;
     }

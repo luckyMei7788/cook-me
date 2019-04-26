@@ -89,7 +89,7 @@
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				    if (usPassword != "" && /^[a-zA-Z0-9_]{4,16}$/.test(usPassword)) {
 				        //登录发送请求
-						this.$axios.post("/lh/sys/user/login", {
+						this.$axios.post("/cookme/sys/user/login", {
 							usMobile,
 							usPassword
 						}).then(({data})=>{
