@@ -115,7 +115,7 @@
             },
             joinShopping(productId){//点击加入购物车
                 //判断用户是否登录
-                在此处设置跳转到用户注册界面
+                //在此处设置跳转到用户注册界面
                 if(!localStorage.usMobile){
                     this.$alert('您还没有登录哦!', {
                         confirmButtonText: '确定',

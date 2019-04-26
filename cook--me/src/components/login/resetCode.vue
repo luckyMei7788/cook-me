@@ -62,7 +62,7 @@
 				if (usMobile!= "") {
 				    if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				        //alert("验证码");
-				        this.$axios.post("http://127.0.0.1/sys/user/sendCode", {
+				        /* this.$axios.post("/lh/sys/user/sendCode", {
 				            usMobile
 				        }).then(({data})=>{
 				            if(data.R.code === 0){
@@ -70,7 +70,15 @@
 				            }else{
 								alert(data.R.msg);
 							}
-				        })   
+				        }) */ 
+						 this.$axios.get("/cookme/sys/user/sendCode/"+usMobile).then(({data})=>{
+						 	if(data.code === 0){
+						 	    console.log(data.msg);
+								console.log(data)
+						 	}else{
+						 	    alert(data.msg);
+						 	}
+						 })
 				    } else {
 				        this.showError = true;
 				    }
@@ -78,28 +86,25 @@
 					alert("手机号不能为空");
 				}
 			},
-			//登录按钮
+			//验证码验证按钮
 			loginBtn(){
 				var usMobile = this.$refs.usMobile.value;
-				var verifycode = this.$refs.verifycode.value;
+				var code = this.$refs.verifycode.value;
 				//将手机号存到localStorage中
 				localStorage.usMobile = usMobile;
 				//手机号和密码不为空且格式正确的情况下
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
-				    if (verifycode != "") {
+				    if (code != "") {
 				        //登录发送请求
-						this.$axios.post("http://127.0.0.7/sys/user/verifyCode", {
-							usMobile,
-							verifycode
-						}).then(({data})=>{
+						this.$axios.get("/cookme/sys/user/verifyCode?usMobile="+usMobile+"&code="+code).then(({data})=>{
 							//console.log(66666, data);
-							if(data.R.code === 0){
-								alert(data.R.msg);
+							if(data.code === 0){
+								alert(data.msg);
 								//同页面的跳转
 								this.$router.push({name : "resetPassword"});
 								// console.log(111111, "登陆成功");
 							}else{
-								alert(data.R.msg);
+								alert(data.msg);
 							}
 						})
 				    }else{

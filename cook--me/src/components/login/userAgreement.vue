@@ -3,7 +3,7 @@
 		<!-- <div class="header">
 			<img src="../static/img/a1.jpg" alt="">
 		</div> -->
-		<div class="content">
+		<div class="content-me">
 			<h1>《COOKME》用户协议</h1>
 			<p>
 				一、总则<br>
@@ -62,12 +62,13 @@ li{
 body{
 	width : 100%;
 	min-height: 800px;
-	background : url("../../static/login/img/background.png") no-repeat;
+	//background : url("../../static/login/img/background.png") no-repeat;
+	background: #f6efde;
 	background-size : 100% 100%;
     }
 
 /* 内容 */
-.content{
+.content-me{
 	width: 1124px;
 	min-height: 1550px;
 	//background: pink;

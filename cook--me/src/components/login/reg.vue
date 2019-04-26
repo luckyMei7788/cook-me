@@ -60,19 +60,21 @@
             hidePhone() {
                 this.isShow = !this.isShow;
                 var usMobile = this.$refs.usMobile.value;
+				console.log(usMobile);
                 if (usMobile != "") {
                     if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
                         //手机号后台验证
-                        this.$axios.post("http://127.0.0.1/sys/user/selectMobile", {
+                        this.$axios.post("/cookme/sys/user/selectMobile", {
                             usMobile
                         }).then(({data})=>{
-							if(data.R.code === 0){
+							console.log(data);
+							if(data.code === 0){
 								console.log("手机号可用")
 							}else{
-								alert(data.R.msg);
+								alert(data.msg);
 							}
                         })
-                       
+						
                     } else {
                         //console.log(111111, usMobile);
                         this.showError = !this.showError;
@@ -111,20 +113,25 @@
                 //发送验证码只需要判断手机号符合规则即可
                 var usMobile = this.$refs.usMobile.value;
                 if (usMobile != "") {
-                    if (/^1(3|4|5|7|8|9)\d{9}$/.test(this.$refs.usMobile.value)) {
-                        //alert("验证码");
-                        this.$axios.post("http://127.0.0.1/sys/user/sendCode", {
-                            usMobile
-                        }).then(({data})=>{
-                            console.log(data.R.msg);
-                            if(data.R.code === 0){
-                                alert(data.R.msg);
-                                // console.log(typeof data);
-                                // console.log(data.usMobile);
+                    if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
+                        /* this.$axios.get("/lh/sys/user/sendCode",{
+							params : {usMobile}
+						}).then(({data})=>{
+                            console.log(data.msg);
+                            if(data.code === 0){
+                                //alert(data.msg);
+                                console.log("测试测试测试");
                             }else{
-                                alert(data.R.msg);
+                                alert(data.msg);
                             }
-                        })   
+                        }) */  
+						this.$axios.get("/cookme/sys/user/sendCode/"+usMobile).then(({data})=>{
+							if(data.code === 0){
+							    console.log(data.msg);
+							}else{
+							    alert(data.msg);
+							}
+						})
                     } else {
                         this.showError = !this.showError;
                     }
@@ -137,28 +144,27 @@
                 var usMobile = this.$refs.usMobile.value; //手机号
                 var usPassword = this.$refs.usPassword.value; //密码
 				var confirmNum = this.$refs.confirmNum.value; //确认密码 
-                var verifyCode = this.$refs.verifyCode.value; //验证码
+                var code = this.$refs.verifyCode.value; //验证码
 				if (usMobile != "") { //手机号不能为空
                     if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {//手机号符合正则表达式
                         if (usPassword!= "") {//密码不为空
                             if (/^[a-zA-Z0-9_]{4,16}$/.test(usPassword)) {//密码符合规则
                                 if (confirmNum != "") {//确认密码不为空
                                     if (usPassword === confirmNum) {
-										if(verifyCode !=""){
+										if(code !=""){
 											if(this.isChecked === true){
-											    //注册信息的提交
-											    this.$axios.post("http://127.0.0.1/sys/user/register", {
+											    //注册信息的提交-地址栏传参数+json
+											    this.$axios.post("/cookme/sys/user/register/"+code, {
 											        usMobile,
 											        usPassword,
-											        verifyCode
 											    }).then(({data})=>{
-                                                    console.log(data.R);
-                                                    if(data.R.code === 0){
-                                                        alert(data.R.msg);
+                                                    console.log(data);
+                                                    if(data.code === 0){
+                                                        alert(data.msg);
                                                         //注册成功跳转到密码登陆界面
 								                        this.$router.push({name : "passwordLogin"});
                                                     }else{
-                                                        alert(data.R.msg);
+                                                        alert(data.msg);
                                                     }
 											    })
 											}else{
@@ -221,12 +227,9 @@
 </script>
 
 <style lang="less">
-    
-
     body{
         width : 100%;
 		height: 100%;
-        //min-height : 580px;
         background : url("../../static/login/img/background.png") no-repeat;
         background-size : 100% 100%;
     }

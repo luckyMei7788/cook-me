@@ -100,14 +100,12 @@
         .content-zhifubao{
             width:772px;
             height:442px;
-            border:1px solid #000000;
             margin:0 auto;
             position: relative;
             top: 26px;
             .zhifubao-header{
                 width:772px;
                 height:101px;
-                border:1px solid #000000;
                 .info-logo{
                     width:779px;
                     height:101px;
