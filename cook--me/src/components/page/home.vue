@@ -53,7 +53,7 @@
 
     .top-h{
         width:100%;
-        height:630px;
+        height:660px;
         margin:0 auto;
         background:url(../../static/syImg/01/banner0.1.png) center no-repeat;
         .middle{

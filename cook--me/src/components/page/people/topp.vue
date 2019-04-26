@@ -115,7 +115,8 @@
                     color:hotpink;
                 }
             }
-            :hover{box-shadow:2px 2px 10px yellowgreen;}
+            div:hover{box-shadow:2px 2px 10px yellowgreen;}
+            p:hover{box-shadow:2px 2px 10px yellowgreen;}
         }
         button{
             position: absolute;

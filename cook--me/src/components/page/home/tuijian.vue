@@ -2,10 +2,10 @@
     <div class="tuijian">
         <h1>CookMe · 今日推荐</h1>
         <ul>
-            <li v-for="items in 5">
+            <li v-for="(items,index) in bookList">
                 <img src="../../../static/syImg/02/02-xiawucha-sangshengnaixi.jpg" alt="">
-                <p>桑葚奶昔</p>
-                <p>下午茶</p>
+                <p>{{items.bookName}}</p>
+                <p>{{items.bookDetails}}</p>
             </li>
         </ul>
     </div>
@@ -13,7 +13,25 @@
 
 <script>
     export default {
-        name: "tuijian"
+        name: "tuijian",
+        data(){
+            return{
+                bookList:[],
+                JavaUrl:"http://39.106.68.255:8080"
+            }
+        },
+        methods:{
+            tuiJian(){
+                this.$axios.get("/cookme/sys/book/selectByBest").then(({data})=>{
+                    this.bookName=data.bookName;
+                    this.bookDetails=data.bookDetails;
+                    this.bookList=data.bestType;
+                })
+            }
+        },
+        mounted(){
+            this.tuiJian()
+        }
     }
 </script>
 

@@ -5,11 +5,11 @@
         </div>
         <div class="paihang">
             <ul>
-                <li v-for="item in 5">
-                    <div><img src="../../../static/syImg/04/tx01.jpg" alt=""></div>
-                    <div><span>Tony</span></div>
-                    <div><p>820个关注</p></div>
-                    <div><button @click="xiangqing">更多</button></div>
+                <li v-for="(items,index) in userList">
+                    <!--<div><img src="JavaUrl+items.usHead" alt=""></div>-->
+                    <div><span>{{items.usName}}</span></div>
+                    <div><p>{{items.usJob}}</p></div>
+                    <div><button @click="guanzhu">更多</button></div>
                    <!-- <div class="text">
                         <p>我来自：</p>
                         <p>性别：</p>
@@ -19,7 +19,7 @@
                 </li>
             </ul>
             <div class="middle-huan">
-                <button>换一批</button>
+                <button @click="selectUser">换一批</button>
             </div>
         </div>
     </div>
@@ -28,11 +28,31 @@
 <script>
     export default {
         name: "middleChu",
-
-        methods:{
-            xiangqing(){
-                this.$router.push({name:"people"})
+        data(){
+            return{
+                userList:[],
+                JavaUrl:"http://39.106.68.255:8080"
             }
+
+        },
+        methods:{
+            selectUser(){
+                console.log(222)
+                this.$axios.get("/cookme/sys/user/selectBest").then(({data})=>{
+                    this.usName=data.useName;
+                    this.usHead=data.usHead;
+                    this.usJob=data.usJob;
+                    //this.usFanscount=data.usFanscount;
+                    this.userList=data.bestUser;
+                    console.log(data)
+                })
+            },
+            guanzhu(){
+                this.$router.push({name:"guanzhu"})
+            }
+        },
+        mounted(){
+            this.selectUser();
         }
     }
 </script>
@@ -50,17 +70,22 @@
         }
     }
     .paihang{
+        width:420px;
         float:right;
         ul{
             overflow: hidden;
             li {
                 overflow: hidden;
                 font-size:18px;
+                padding-bottom:10px;
                 div{
                     overflow: hidden;
                     float:left;
-                    padding:14px 32px;
+                    p{
+                       width:134px;
+                    }
                     span{
+                        width:134px;
                         color:brown;
                         font-size:20px;
 

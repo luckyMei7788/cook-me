@@ -89,7 +89,7 @@
     .logo{
         width:990px;
         margin:0 auto;
-        overflow: hidden;
+        height:300px;
         .logo_left{
             padding:40px 0;
             float:left;
