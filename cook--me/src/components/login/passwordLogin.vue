@@ -89,20 +89,19 @@
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				    if (usPassword != "" && /^[a-zA-Z0-9_]{4,16}$/.test(usPassword)) {
 				        //登录发送请求
-						this.$axios.post("http://127.0.0.7/sys/user/login", {
+						this.$axios.post("/lh/sys/user/login", {
 							usMobile,
 							usPassword
 						}).then(({data})=>{
-							if(data.R.code === 0){
-								//console.log(data);
-								alert(data.R.msg);
+							if(data.code === 0){
+								alert("登陆成功");
 								//将手机号记录到localStorage，方便其他页面判断是否登录执行相应的功能
 								localStorage.usMobile = usMobile;
 								//登录成功跳转首页
 								this.$router.push({name : "home"});
 								// console.log(111111, "登陆成功");
 							}else{
-								alert(data.R.msg);
+								alert(data.msg);
 							}
 						})
 				    }else{

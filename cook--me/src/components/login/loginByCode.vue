@@ -69,15 +69,42 @@
 				if (usMobile!= "") {
 				    if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				        //alert("验证码");
-				        this.$axios.post("http://127.0.0.1/sys/user/findMobile", {
+				        /* this.$axios.post("/lh/sys/user/findMobile", {
 				            usMobile
 				        }).then(({data})=>{
-				            if(data.R.code === 0){
-				                alert(data.R.msg)
+				            if(data.code === 0){
+				                alert(data.msg)
 				            }else{
-								alert(data.R.msg);
+								alert(data.msg);
 							}
-				        })   
+				        }) */  
+						/* this.$axios.post("/lh/sys/user/findMobile/"+usMobile).then(({data})=>{
+							console.log("验证码登录获取验证码");
+						}) */
+						/* this.$axios.get("/lh/sys/user/findMobile/"+usMobile).then(({data})=>{
+							console.log("验证码登录获取验证码");
+						}) */
+						/* this.$axios({
+							method : "post",
+							url : "/lh/sys/user/findMobile",
+							data : "usMobile="+usMobile,
+							headers : {
+								"content-type" : "application/x-www-form-urlencoded"
+							}
+						}).then(({data})=>{
+							console.log("1111111111111111111");
+						}) */
+						this.$axios.post("/lh/sys/user/findMobile?phone="+usMobile,{
+							headers : {
+								"content-type" : "application/json"
+							}
+						}).then(({data})=>{
+							if(data.code === 0){
+							    console.log(data)
+							}else{
+								alert(data.msg);
+							}
+						})
 				    } else {
 				        this.showError = true;
 				    }
@@ -85,27 +112,28 @@
 					alert("手机号不能为空");
 				}
 			},
-			//登录按钮
+			//验证码登录按钮
 			loginBtn(){
 				var usMobile = this.$refs.usMobile.value;
-				var verifycode = this.$refs.verifycode.value;
+				var code = this.$refs.verifycode.value;
 				//手机号和密码不为空且格式正确的情况下
 				if (usMobile != "" && /^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
-				    if (verifycode != "") {
+				    if (code != "") {
 				        //登录发送请求
-						this.$axios.post("http://127.0.0.7/sys/user/mobileLogin", {
-							usMobile,
-							verifycode
+						this.$axios.post("lh/sys/user/mobileLogin?usMobile="+usMobile+"&code="+code, {
+							headers : {
+								"content-type" : "application/json"
+							}
 						}).then(({data})=>{
-							console.log(66666, data.R);
-							if(data.R.code === 0){
-								alert(data.R.msg);
+							console.log(66666, data);
+							if(data.code === 0){
+								alert("登陆成功");
 								//将手机号记录到localStorage，方便其他页面判断是否登录执行相应的功能
 								localStorage.usMobile = usMobile;
 								//登录成功跳转首页
 								this.$router.push({name : "home"});
 							}else{
-								alert(data.R.msg);
+								alert(data.msg);
 							}
 						})
 				    }else{
