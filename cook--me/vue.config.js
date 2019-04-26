@@ -1,7 +1,16 @@
 module.exports={
     devServer:{
-        port:8088,
+        port:8080,
         host:"127.0.0.1",
-        open:true
+        open:true,
+		proxy : {
+			"/lh" : {
+				target : "http://39.106.68.255:8080",
+				changeOrigin : true,
+				pathRewrite : {
+					"^/lh" : ""
+				}
+			}
+		}
     }
 }
