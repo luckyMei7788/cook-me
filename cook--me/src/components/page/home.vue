@@ -1,6 +1,8 @@
 <template>
     <div class="top-h">
-        <router-view></router-view>
+        <keep-alive>
+            <router-view></router-view>
+        </keep-alive>
 
         <top-m></top-m>
 

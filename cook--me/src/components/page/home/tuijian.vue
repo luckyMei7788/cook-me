@@ -22,7 +22,7 @@
         },
         methods:{
             tuiJian(){
-                this.$axios.get("/cookme/sys/book/selectByBest").then(({data})=>{
+                this.$axios.post("/cookme/sys/book/selectByBest").then(({data})=>{
                     this.bookName=data.bookName;
                     this.bookDetails=data.bookDetails;
                     this.bookList=data.bestType;

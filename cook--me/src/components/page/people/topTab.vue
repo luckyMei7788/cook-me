@@ -1,4 +1,5 @@
 <template>
+    <div>
     <mu-container>
         <mu-tabs :value.sync="active1" inverse color="secondary" text-color="rgba(0, 0, 0, .54)"  center>
             <mu-tab>概览</mu-tab>
@@ -15,7 +16,7 @@
             <shoucang></shoucang>
         </div>
     </mu-container>
-
+    </div>
 </template>
 <script>
     import gailan from "./topTab/gailan"
@@ -25,7 +26,7 @@
         components:{
             gailan,
             caipu,
-          shoucang
+            shoucang
         },
         data () {
             return {

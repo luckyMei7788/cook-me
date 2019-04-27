@@ -140,23 +140,29 @@ i{
 		width : 1000px;
 		min-height : 800px;
 		margin-left : 100px;
+<<<<<<< HEAD
 		margin-bottom: 60px;
+=======
+		margin-top:20px;
+		padding-top:20px;
+		background:rgba(187,194,195,.3);
+		color:#7d0035;
+>>>>>>> 1ca32a301f53b335f15195208dd4711d9533eb49
 		//margin-bottom: 60px;
-		background: rgba(252, 248, 233, 0.8)!important;
 		.el-input__inner{
 			 width : 220px;
 			 background: none;
-			 border: 1px solid #000000;
+			 border: 1px solid #999;
 			 font-size: 16px;
 			 
 		}
 		//input文本框中placeholder字体颜色修改
 		.el-input__inner::-webkit-input-placeholder{
-			color: #000000;
+			color: #7d0035;
 		}
 		input{
 			font-size: 16px;
-			color: #000000;
+			color: #7d0035;
 		}
 		p:nth-child(1){
 			font-size : 30px;
@@ -165,7 +171,7 @@ i{
 			input{
 				//display: inline-block;
 				outline: none;
-				border: 1px solid #000000;
+				border: 1px solid #999;
 				width : 376px;
 				height: 40px;
 				position: relative;
@@ -194,7 +200,7 @@ i{
 				outline: none;
 				margin-left : 26px;
 				background: none;
-				border: 1px solid #000000;
+				border: 1px solid #999;
 				font-size: 20px;
 			}
 		}
@@ -246,11 +252,14 @@ i{
 			width: 100%;
 			text-align: center;
 			.userInfo{
-				width : 120px;
+				width : 140px;
 				height: 40px;
+				color:white;
+				font-size:20px;
 				outline: none;
-				background: none;
-				border: 1px solid #000000;
+				background: deeppink;
+				border-radius: 10px;
+				border:none;
 				margin : 50px auto;
 			}
 		}
