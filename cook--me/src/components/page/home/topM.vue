@@ -6,8 +6,8 @@
             <p>了解 "银耳雪梨羹" 的做法</p>
         </div>
         <div class="top-m-ipt">
-            <input type="text" placeholder="搜索食谱/食材" @focus="sousuo">
-            <button>搜索</button>
+            <input type="text" placeholder="搜索食谱/食材" v-model="formCai">
+            <button @click="sousuo">搜索</button>
         </div>
     </div>
 </template>
@@ -16,14 +16,22 @@
     export default {
         name: "topM",
         data(){
-            JavaUrl:"http://39.106.68.255:8080"
-
+            return{
+                JavaUrl:"http://39.106.68.255:8080",
+                 formCai:""
+            }
         },
         methods:{
             sousuo(){
-                /*this.$axios.post("/cookme//sys/book/fuzzySelectBook?search="+this.search).then(({data})=>{
+                // var formCai= JSON.stringify(this.$refs.formCai.value);
+                console.log(this.formCai);
+                this.$axios.get("/cookme/sys/book/fuzzySelectBook?Search="+this.formCai,{
+                    // contentType: 'application/json;charset=UTF-8'
+                }).then(({data})=>{
+                    // localStorage.caiData=data;
+
                     console.log(data);
-                })*/
+                })
             }
         },
         mounted(){

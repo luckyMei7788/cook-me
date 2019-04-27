@@ -15,7 +15,7 @@
         </div>
         <div class="right">
             <div><i class="iconfont">&#xe84d;</i>   我的粉丝</div>
-            <p @click="gexin">点我设置个人信息哦<i class="el-icon-edit"></i></p>
+            <p>点我设置个人信息哦<i class="el-icon-edit"></i></p>
         </div>
         <button @click="guanzhu"><i class="el-icon-view"></i>  关注</button>
     </div>
@@ -25,14 +25,7 @@
     export default {
         name: "topp",
         methods:{
-            gexin(){
-                if(!localStorage.usMobile){
-                    this.$router.push({name:'gexin'})
-                }
-               else{
-                   this.$router.push({name:'passwordLogin'})
-                }
-            },
+
             guanzhu(){
                 this.$router.push({name:'guanzhu'})
             }

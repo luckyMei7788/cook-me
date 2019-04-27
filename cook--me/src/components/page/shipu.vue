@@ -526,14 +526,19 @@ a{
             .el-tabs__item{
                 width:118px;
                 text-align:center;
-                .is-active{
-                    color:red;
+                .is-top{
+                    .is-active{
+                        color:red;
+                    }
                 }
-                
+
             }
-            // .is-active{
-            //     color:red;
-            // }
+            .el-tabs__item:not(.is-disabled):hover{
+                color: deeppink;
+            }
+            .el-tabs__item.is-active {
+                color: deeppink;
+            }
         }
         .el-tabs__content{
             padding:0;
