@@ -25,8 +25,7 @@
             sousuo(){
                 // var formCai= JSON.stringify(this.$refs.formCai.value);
                 console.log(this.formCai);
-                this.$axios.post("/cookme/sys/book/fuzzySelectBook/search"+this.formCai,{
-                }).then(({data})=>{
+                this.$axios.post("/cookme/sys/book/fuzzySelectBook/search"+this.formCai,{}).then(({data})=>{
                     this.search=data.search;
                     console.log(data);
                 })
