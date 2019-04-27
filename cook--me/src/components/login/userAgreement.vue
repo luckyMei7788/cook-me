@@ -1,8 +1,5 @@
 <template>
-	<div>
-		<!-- <div class="header">
-			<img src="../static/img/a1.jpg" alt="">
-		</div> -->
+	<div class="user">
 		<div class="content-me">
 			<h1>《COOKME》用户协议</h1>
 			<p>
@@ -28,7 +25,7 @@
 				4、用户账号注销删除。<br>
 				用户可通过联系客服证明账号归属后，删除注销账号，COOKME也会在符合法律规定前提下及时删除用户数据。<br>
 				5、用户有义务保证密码和帐号的安全，用户利用该密码和帐号所进行的一切活动引起的任何损失或损害，由用户自行承担全部责任，COOKME不承担任何责任。如用户发
-现帐号遭到未授权的使用或发生其他任何安全问题，应立即修改帐号密码并妥善保管，如有必要，请通知。因黑客行为或用户的保管疏忽导致帐号非法使用，COOKME不承担任何责任。 用户帐号的所有权归COOKME，用户仅享有使用权。<br>
+				现帐号遭到未授权的使用或发生其他任何安全问题，应立即修改帐号密码并妥善保管，如有必要，请通知。因黑客行为或用户的保管疏忽导致帐号非法使用，COOKME不承担任何责任。 用户帐号的所有权归COOKME，用户仅享有使用权。<br>
 			</p>
 			<input type="button" value="返回" @click="$router.push('/reg')">
 		</div>
@@ -40,64 +37,57 @@
 		name : "user-agreement",
 		data() {
 			return {
-				
+
 			};
 		}
 	}
 </script>
 
 <style lang="less">
-/* 用户协议 */
-*{
-	margin : 0;
-	padding : 0;
-	box-sizing: border-box;
-}
-a{
-	text-decoration: none ;
-}
-li{
-	list-style: none;
-}
-body{
-	width : 100%;
-	min-height: 800px;
-	//background : url("../../static/login/img/background.png") no-repeat;
-	background: #f6efde;
-	background-size : 100% 100%;
-    }
-
-/* 内容 */
-.content-me{
-	width: 1124px;
-	min-height: 1550px;
-	//background: pink;
-	margin : 0 auto;
-	text-align: center;
-	overflow: hidden;
-	h1{
-		font-size: 40px;
-		font-weight: normal;
-		margin-top: 50px;
+	/* 用户协议 */
+	*{
+		margin : 0;
+		padding : 0;
+		box-sizing: border-box;
 	}
-	p{
-		font-size: 20px;
-		text-align: left;
-		line-height: 36px;
+	a{
+		text-decoration: none ;
 	}
-	input{
-		width : 100px;
-		height: 36px;
-		border: none;
-		outline: none;
-		background: #fbc201;
-		color: #FFFFFF;
-		border-radius: 10px;
-		font-size: 20px;
-		margin-top : 40px;
+	li{
+		list-style: none;
 	}
-}
-
-
-
-</style>
+	/* 内容 */
+	.user{
+		background : url("../../static/login/img/background.png") no-repeat;
+		background-size : 100% 100%;
+		.content-me{
+			width: 1124px;
+			min-height: 1550px;
+			//background: pink;
+			margin : 0 auto;
+			text-align: center;
+			overflow: hidden;
+			h1{
+				font-size: 40px;
+				font-weight: normal;
+				margin-top: 50px;
+			}
+			p{
+				font-size: 20px;
+				text-align: left;
+				line-height: 36px;
+			}
+			input{
+				width : 100px;
+				height: 36px;
+				border: none;
+				outline: none;
+				background: #fbc201;
+				color: #FFFFFF;
+				border-radius: 10px;
+				font-size: 20px;
+				margin-top : 40px;
+			}
+		}
+	}
+	</style>

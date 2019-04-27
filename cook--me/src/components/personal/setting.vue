@@ -141,6 +141,8 @@ i{
 		min-height : 800px;
 		margin-left : 100px;
 		margin-bottom: 60px;
+		//margin-bottom: 60px;
+		background: rgba(252, 248, 233, 0.8)!important;
 		.el-input__inner{
 			 width : 220px;
 			 background: none;
@@ -222,7 +224,7 @@ i{
 				position: relative;
 				top : 6px;
 			}
-			
+
 		}
 		.block{
 			margin-top : 50px;

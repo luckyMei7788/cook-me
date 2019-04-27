@@ -40,7 +40,7 @@
                                     <li>合计</li>
                                 </ol>
                             </div>
-                            <div class="goodsInfo" v-for="item in list">
+                            <div class="goodsInfo" v-for="(item,index) in list">
                                 <div class="info-goods-a">
                                     <ul>
                                         <li>{{item.productName}}</li>
@@ -51,13 +51,13 @@
                                 </div>
                             </div>
                             <div class="sumPrice">
-                                <p class="sum">12.00</p>
+                                <p class="sum">{{sumPrice}}元</p>
                             </div>
                             <div class="goodsA">
                                 <div class="goodsA-sum">
-                                    <p>商品件数:&nbsp;&nbsp;3</p>
-                                    <p>商品总价:&nbsp;&nbsp;3.70</p>
-                                    <p>应付金额:&nbsp;&nbsp;<b>3.70</b></p>
+                                    <p>商品件数:&nbsp;&nbsp;{{indexA}}</p>
+                                    <p>商品总价:&nbsp;&nbsp;2.00</p>
+                                    <p>应付金额:&nbsp;&nbsp;<b>2.00</b></p>
                                 </div>
                                 <button @click="zhifu">去结算</button>
                                 <button @click="breakShopping">返回购物车</button>
@@ -100,6 +100,7 @@
             return {
                 // list:JSON.parse(this.$route.query.listInfo),
                 list:[],
+                indexA:"",
             }
         },
         // created(){
@@ -115,9 +116,9 @@
                 console.log(this.list);
             },
             getGoodsList(){
-                this.$axios.post("http://127.0.0.1/sys/user/myshopcar")
+                this.$axios.post("/cookme/sys/user/myshopcar")
                     .then(({data})=>{
-                        this.list = data.list;
+                        this.list = data;
                     })
             },
             breakShopping(){
@@ -133,6 +134,19 @@
         },
         mounted(){
             this.getGoodsList();
+            this.indexA = this.list.length+1;
+        },
+        computed:{
+            sumPrice(){//合计
+                var sum = 0;
+                //遍历list并判断isChecked是否为true
+                this.list.forEach(v=>{
+                    if(v.isChecked){
+                        sum += v.price*v.carCount;
+                    }
+                })
+                return sum;
+            },
         },
     }
 </script>

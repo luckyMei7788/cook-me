@@ -23,7 +23,7 @@
         </div>
         <div class="demo-text" v-if="active2 === 3">
             <ul>
-                <li v-for="item in 6" ><img src="../../../static/syImg/02/02-wancan-banlihongshaorou.jpg" alt=""></li>
+                <li v-for="item in 6" ><img src="../../../../api/img/02-wancan-banlihongshaorou.jpg" alt=""></li>
             </ul>
         </div>
     </mu-container>

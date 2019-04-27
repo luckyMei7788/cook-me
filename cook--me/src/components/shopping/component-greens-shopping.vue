@@ -95,20 +95,16 @@
                 // console.log(value);
             },
             goodsListA(){//进行获取数据库商品内容
-                // var productId = this.productId;
-                // this.$axios.post("/lh/sys/user/selectCommodityDetails?productId="+productId,{
-                //     headers:{
-                //         "content-type":"application/json"
-                //     }
-                // })
+                var productId = this.productId;
+                this.$axios.get("/cookme/sys/user/selectCommodityDetails?productId="+productId)
                 //测试假数据
-                this.$axios.post("http://127.0.0.1/sys/user/selectCommodityDetails",{
-                    productId:this.productId,
-                })
+                // this.$axios.post("http://127.0.0.1/sys/user/selectCommodityDetails",{
+                //     productId:this.productId,
+                // })
                     .then(({data})=>{
                         console.log(data);
                         // this.goodsList = data;
-                        this.goodsList = data.product;
+                        this.goodsList = data;
                         console.log(data);
                     })
 
@@ -126,18 +122,12 @@
 
                 }else{
                     //提交数据到数据库
-                    let shopCarDto = {
-                         productId:this.productId,//商品的Id
-                         carCount : this.num //商品的数量
-                    }
-                    // console.log(shopCarDto);
-                    // this.$axios.post("/lh/sys/user/shopcar?shopCarDto="+shopCarDto,{
-                    //     headers:{
-                    //         "content-type":"application/json"
-                    //     }
+                    this.$axios.post("/cookme/sys/user/shopcar",{
+                        productId:this.productId,//商品的Id
+                        carCount : this.num //商品的数量
                         //测试假数据
-                    this.$axios.post("http://127.0.0.1/sys/user/shopcar",{
-                        shopCarDto
+                    // this.$axios.post("http://127.0.0.1/sys/user/shopcar",{
+                    //     shopCarDto
                     }).then(({data})=>{
                         //进行判断是否添加成功
                         this.$alert('加入购物车成功!',{
@@ -149,17 +139,16 @@
                         }).catch(()=>{
                             type:'info'
                         })
-                        console.log('aaaa'+data);
-                        console.log(data.R.msg);
+                        console.log(data);
                     })
                 }
 
             },
             order(){//判断用户是否添加了商品
-                this.$axios.post("http://127.0.0.1/sys/user/myshopcar")
+                this.$axios.post("/cookme/sys/user/myshopcar")
                     .then(({data})=>{
                         console.log(data.msg);
-                        this.list = data.list;
+                        this.list = data;
                         console.log(data.list);
                         if(this.list.length <=0){
                             this.$router.push({name:"greensNullShopping"})
@@ -307,7 +296,6 @@
                             padding-right: 0;
                             text-align: center;
                             margin-top: 1px;
-                            margin-left: 40px;
                         }
                     }
                     .shopping-goods-header p{

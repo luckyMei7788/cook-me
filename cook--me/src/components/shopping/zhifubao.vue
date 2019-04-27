@@ -75,11 +75,11 @@
         },
         methods:{
             zhifubao(){
-                this.$axios.post("http://127.0.0.1/sys/alipay/pay")
+                this.$axios.post("/cookme/sys/alipay/pay")
                     .then(({data})=>{
                         console.log(data);
-                        console.log(data.R.result);
-                        this.zhifubaoForm =data.R.result;
+                        console.log(data.result);
+                        this.zhifubaoForm =data.result;
                         // document.getElementByClassName("content").innerHTML = this.zhifubaoForm
                         console.log(this.zhifubaoForm);
                         console.log(this.$refs.zhifubaoFormA);
@@ -153,7 +153,7 @@
                         clear:both;
                         position: relative;
                         top: 77px;
-                        right: 332px;
+                        right: 116px;
                     }
                 }
                 p{
@@ -176,11 +176,13 @@
                             height:26px;
                             position:relative;
                             top: 7px;
-                            right: 12px;
+                            left: 12px;
                         }
                         b{
                             font-style:normal;
                             font-size:12px;
+                            position: relative;
+                            left: 20px;
                             color:#000000;
                         }
                     }

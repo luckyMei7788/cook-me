@@ -151,7 +151,6 @@
 body{
         width : 100%;
 		min-height: 800px;
-        //min-height : 580px;
         background : url("../../static/login/img/background.png") no-repeat;
         background-size : 100% 100%;
     }

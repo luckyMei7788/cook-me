@@ -2,8 +2,11 @@ const express = require('express');
 const db = require('./module/db');
 const bodyParser = require('body-parser');
 const request = require("request");
+const path = require("path")
 const app = express();
 app.use(bodyParser.json());
+app.use(express.static(path.resolve(__dirname,"./img")));
+app.use(express.static(path.resolve(__dirname,"../public/index.html")));
 /************设置跨域**********************************/
 app.all("*", function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -234,6 +237,61 @@ app.post("/sys/alipay/pay",function(req,res){
 		}
 	})
 })
+
+
+//***************************************************************首页lunbo
+app.post("/sys/book/selectByTimeType",function(req,res){
+	var type_id=req.body.type_id;
+	var bookImage=req.body.bookImage;
+	console.log(111,__dirname+"./img")
+	res.json(
+		{
+		"total": 3,
+		"rows": [
+			{
+				"bookId": 1,
+				"bookName": "地三鲜",
+				"typeId": 0,
+				"usId": 1,
+				"bookDetails": "家的味道",
+				"bookComment": null,
+				"bookPageview": 0,
+				"bookGrade": 0,
+				"bookCollect": 0,
+				"bookImage": "/02-wucan-jidanchaoxilanhua.jpg",
+				"bookTime": null
+			},
+			{
+				"bookId": 2,
+				"bookName": "锅包肉",
+				"typeId": 1,
+				"usId": 1,
+				"bookDetails": null,
+				"bookComment": null,
+				"bookPageview": 0,
+				"bookGrade": 0,
+				"bookCollect": 0,
+				"bookImage": "/02-wucan-fanqiejituipai.jpg",
+				"bookTime": null
+			},
+			{
+				"bookId": 3,
+				"bookName": "素拌凉菜",
+				"typeId": 2,
+				"usId": 1,
+				"bookDetails": null,
+				"bookComment": null,
+				"bookPageview": 0,
+				"bookGrade": 0,
+				"bookCollect": 0,
+				"bookImage": "/02-wancan-banlihongshaorou.jpg",
+				"bookTime": null
+			}
+			]
+		})
+})
+//---------------------------------------------------------------
+//app.get("/user/selectBest",function)
 
 app.listen(80, function(){
     console.log("success");

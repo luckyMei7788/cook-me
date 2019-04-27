@@ -1,38 +1,36 @@
 <template>
     <div class="lunbo">
-        <div class="big-k">
+        <div class="demo-text"  v-if="active1 === type_id">
             <div class="big-s">
-                <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-                <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-                <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-                <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
-                <img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt="">
+
+               <!-- <div v-for="(items,index) in picUrl"><img :src="JavaUrl+items.bookImage" alt=""></div>-->
+                    <div v-for="items in 5"><img src="../../../static/syImg/02/02-zaocan-meilingzhou.jpg" alt=""></div>
             </div>
         </div>
         <div class="kuang">
             <div class="left">
 
             </div>
-            <div class="right">
+                <div class="right">
 
             </div>
         </div>
         <div class="timeC">
             <div class="timed">
-                <div class="block">
-                    <el-slider
+                <mu-container>
+                    <mu-tabs :value.sync="active1" inverse color="secondary" text-color="rgba(0, 0, 0, .54)"  center>
+                        <mu-tab @click="lunbo(2)">早餐时间</mu-tab>
+                        <mu-tab @click="lunbo(3)">午餐时间</mu-tab>
+                        <mu-tab @click="lunbo(4)">晚餐时间</mu-tab>
+                    </mu-tabs>
 
-                            v-model="value7"
-                            :step="25"
-                            show-stops>
-                    </el-slider>
-                </div>
+                    <!--<div class="demo-text" v-if="active1 === 1">-->
 
-                <ul>
-                    <li>早餐時間<i class="el-icon-star-on"></i></li>
-                    <li>午餐時間<i class="el-icon-star-on"></i></li>
-                    <li>晚餐時間<i class="el-icon-star-on"></i></li>
-                </ul>
+                    <!--</div>-->
+                    <!--<div class="demo-text" v-if="active1 === 2">-->
+
+                    <!--</div>-->
+                </mu-container>
             </div>
         </div>
     </div>
@@ -41,42 +39,55 @@
 <script>
     export default {
         name: "lunbo",
-
-        data() {
+        data () {
             return {
-                value6: 0,
-                value7: 0,
-                //sum:0
+                picUrl:[],
+                //pic:require(this.bookImage),
+                active1: 2,
+                type_id:2,
+                JavaUrl:"http://39.106.68.255:8080"
+            };
+        },
+        methods: {
+            lunbo(type_id){
+                this.type_id= type_id;
+                //console.log(this.type_id);
+                this.$axios.get("/cookme/sys/book/selectByTimeType?typeId="+this.type_id).then(({data})=>{
+                    this.bookImage=data.bookImage;
+                    this.picUrl= data.timeType;
+                    console.log(data);
+                })
             }
         },
-        methods:{
-            fnTime(){
-               /* $axios.post('/127.0.0.1/SUM',{
-                    a:2,
-                    b:3
-                }).then({data}=>{
-                    this.sum = data.msg;
-                })*/
-            }
+        mounted(){
+            this.lunbo(2)
         }
-
     }
 </script>
 
-<style scoped lang="less">
+<style lang="less">
+
+
     .lunbo{
         width:100%;
         margin:0 auto;
         height:400px;
         position:relative;
-        .big-k{
+        .demo-text{
             width:100%;
             margin:0 auto;
             .big-s{
-                img{
+                margin:0 auto;
+                div{
+                    width:20%;
                     height:100%;
-                     width:20%;
-                 }
+                    float:left;
+                    img{
+                        width:100%;
+                        height:100%;
+                    }
+                }
+
             }
         }
         .kuang{
@@ -108,30 +119,28 @@
             position:relative;
             background: url(../../../static/syImg/01/chi_03.jpg);
             .timed{
-                .block{
-                    width:100%;
-                    position:absolute;
-                    top:-16px;
-                    left:0;
-                    .el-slider__bar{
-                        background-color:pink;
+                .mu-tabs{
+                    background:none;
+                    .mu-tab-link-highlight{
+                        height:5px;
+                        position: absolute;
+                        left:0;
+                        top:0;
+                    }
+                    .mu-tab{
+                        min-width: 253px;
+                        margin-top:32px;
+                        font-size:20px;
                     }
                 }
-                ul{
-                    position:absolute;
-                    top:20px;
-                    left:108px;
-                    li{
-                        float:left;
-                        padding:20px 116px;
-                        font-size:22px;
-                        color:grey;
-                        font-family:SimHei;
-                        i{
-                            color:pink;
-                        }
+
+                /*.demo-text {
+                    padding: 16px;
+                    background: #fff;
+                    p {
+                        margin: 8px 0;
                     }
-                }
+                }*/
             }
 
         }
