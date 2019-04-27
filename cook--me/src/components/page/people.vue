@@ -1,19 +1,16 @@
 <template>
     <div class="people">
-        <router-view></router-view>
         <topp></topp>
-        <top-tab></top-tab>
+        <router-view ></router-view>
     </div>
 </template>
 
 <script>
     import topp from "./people/topp"
-    import topTab from "./people/topTab"
     export default {
         name: "people",
         components:{
-          topp,
-            topTab
+          topp
         }
     }
 </script>

@@ -25,11 +25,9 @@
             sousuo(){
                 // var formCai= JSON.stringify(this.$refs.formCai.value);
                 console.log(this.formCai);
-                this.$axios.get("/cookme/sys/book/fuzzySelectBook?Search="+this.formCai,{
-                    // contentType: 'application/json;charset=UTF-8'
+                this.$axios.post("/cookme/sys/book/fuzzySelectBook/search"+this.formCai,{
                 }).then(({data})=>{
-                    // localStorage.caiData=data;
-
+                    this.search=data.search;
                     console.log(data);
                 })
             }

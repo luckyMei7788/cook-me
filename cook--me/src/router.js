@@ -4,15 +4,19 @@ import home from './components/page/home'
 import shipu from './components/page/shipu'
 import cai from './components/page/cai'
 import people from './components/page/people'
+import topTab from './components/page/people/topTab'
+import guanzhu from './components/page/people/guanzhu'
+import fensi from './components/page/people/fensi'
+ // import peopleSet from './router/peopleSet/peopleSet'
 import information from './components/personal/information'
 import personlRouter from './router/personal/personlRouter'
-
-import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
 import green from './components/shopping/component-greens-shopping'
 import loginRouter from "./router/login/loginRouter";
 import shoppingRouter from "./router/shopping/shoppingRouter";
+import caiRouter from "./router/cai/caiRouter";
+
 
 Vue.use(Router)
 
@@ -38,17 +42,31 @@ export default new Router({
     {
       path:'/people',
       name:'people',
-      component:people
+      component:people,
+      redirect:'/topTab',
+      children:[
+        {
+          path:"/topTab",
+          component:topTab,
+          name:"topTab"
+        },
+        {
+          path:"/guanzhu",
+          component:guanzhu,
+          name:"guanzhu"
+        },
+        {
+          path:"/fensi",
+          component:fensi,
+          name:'fensi'
+
+        }
+      ]
     },
     {
       path:"/information",
       name:'information',
       component:information
-    },
-    {
-      path:"/guanzhu",
-      name:'guanzhu',
-      component:guanzhu
     },
     {
       path:'/passwordLogin',
@@ -73,5 +91,5 @@ export default new Router({
       //   return import(/* webpackChunkName: "about" */ './views/About.vue')
       // }
 
-  ].concat(loginRouter,shoppingRouter, personlRouter)
+  ].concat(loginRouter,shoppingRouter, personlRouter,caiRouter)
 })

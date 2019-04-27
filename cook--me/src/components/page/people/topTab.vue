@@ -1,4 +1,15 @@
 <template>
+    <div>
+    <!--<router-link to="/topTab">-->
+
+    <!--</router-link>-->
+    <!--<router-link to="/guanzhu">-->
+
+    <!--</router-link>-->
+    <!--<router-link to="/fensi">-->
+
+    <!--</router-link>-->
+        <!--<router-view></router-view>-->
     <mu-container>
         <mu-tabs :value.sync="active1" inverse color="secondary" text-color="rgba(0, 0, 0, .54)"  center>
             <mu-tab>概览</mu-tab>
@@ -15,7 +26,7 @@
             <shoucang></shoucang>
         </div>
     </mu-container>
-
+    </div>
 </template>
 <script>
     import gailan from "./topTab/gailan"

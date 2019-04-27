@@ -1,12 +1,12 @@
 <template>
     <div>
-        关注
+        粉丝
     </div>
 </template>
 
 <script>
     export default {
-        name: "guanzhu"
+        name: "fensi"
     }
 </script>
 
