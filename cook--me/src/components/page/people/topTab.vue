@@ -31,7 +31,10 @@
         data () {
             return {
                 active1: 0
-            };
+            }
+        },
+        methods:{
+
         }
     }
 </script>

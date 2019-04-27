@@ -14,13 +14,8 @@
             </div>
         </div>
         <div class="right">
-<<<<<<< HEAD
-            <div><i class="iconfont">&#xe84d;</i>   我的粉丝</div>
-            <p @click="$router.push('/information')">点我设置个人信息哦<i class="el-icon-edit"></i></p>
-=======
             <div><p @click="$router.push('/fensi')">粉丝</p><i>|</i><p @click="$router.push('/guanzhu')">关注</p></div>
             <p @click="$router.push('/information')" class="dian">点我设置个人信息哦<i class="el-icon-edit"></i></p>
->>>>>>> 1ca32a301f53b335f15195208dd4711d9533eb49
         </div>
         <button @click="$router.push('/topTab')">
             我的菜谱
@@ -32,13 +27,7 @@
     export default {
         name: "topp",
         methods:{
-<<<<<<< HEAD
-            guanzhu(){
-                this.$router.push({name:'guanzhu'})
-            }
-=======
 
->>>>>>> 1ca32a301f53b335f15195208dd4711d9533eb49
         }
 
     }
@@ -53,6 +42,7 @@
         .left{
             width:554px;
             float:left;
+            margin-top:10px;
             .tou{
               float:left;
                img{
@@ -129,7 +119,7 @@
         }
         button{
             position: absolute;
-            top:0;
+            top:5px;
             left:238px;
             width:88px;
             height:40px;

@@ -3,7 +3,7 @@
         <div class="top_">
             <div class="top">
                 <p>发布的菜谱（数量）</p>
-                <button>更多</button>
+                <button @click="$router.push('/caipu')">更多</button>
             </div>
             <div class="topG">
                 <ul>

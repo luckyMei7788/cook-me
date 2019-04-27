@@ -140,14 +140,10 @@ i{
 		width : 1000px;
 		min-height : 800px;
 		margin-left : 100px;
-<<<<<<< HEAD
-		margin-bottom: 60px;
-=======
 		margin-top:20px;
 		padding-top:20px;
 		background:rgba(187,194,195,.3);
 		color:#7d0035;
->>>>>>> 1ca32a301f53b335f15195208dd4711d9533eb49
 		//margin-bottom: 60px;
 		.el-input__inner{
 			 width : 220px;
@@ -169,7 +165,6 @@ i{
 			height: 50px;
 			line-height: 50px;
 			input{
-				//display: inline-block;
 				outline: none;
 				border: 1px solid #999;
 				width : 376px;
@@ -230,7 +225,6 @@ i{
 				position: relative;
 				top : 6px;
 			}
-
 		}
 		.block{
 			margin-top : 50px;
