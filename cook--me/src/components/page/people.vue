@@ -8,6 +8,7 @@
 <script>
     import topp from "./people/topp"
 	import topTab from "./people/topTab"
+	// import attentionsFans from "../personal/attentionFans"
     export default {
         name: "people",
         components:{

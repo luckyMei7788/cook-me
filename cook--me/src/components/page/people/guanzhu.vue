@@ -1,6 +1,6 @@
 <template>
-    <div>
-        关注
+    <div class="attention">
+        关注关注关注关注
     </div>
 </template>
 
