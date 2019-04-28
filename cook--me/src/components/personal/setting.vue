@@ -1,52 +1,43 @@
 <template>
 	<div class="details">
-		<!-- <h2>设 置 个 人 中 心</h2>
-		<div class="nav">
-			<a href="#">基本信息</a>
-			<a href="#">设置头像</a>
-		</div> -->
 		<form action="post">
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称
-				<input type="text" placeholder="请输入您的昵称">
+				<input type="text" placeholder="请输入您的昵称" ref="usName">
 				<span>七天之内只能修改一次</span>
 			</p>
 			<div class="person">
 				<span>个人介绍</span>
-				<textarea name="" id="" cols="70" rows="12"></textarea>
+				<textarea name="" id="" cols="70" rows="12" ref="usMessage"></textarea>
 			</div>
-			<p>
+			<p class="sexuality">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别
 				
-				<input type="radio" name="1" checked="checked">男
-				<input type="radio" name="1">女
+				<input type="radio" name="1" checked="checked" value="0" @click="getSex">男
+				<input type="radio" name="1" value="1" @click="getSex">女
 				
 			</p>
 			<div class="block birthday">
 				<span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日</span>
-				<el-date-picker v-model="value1" type="date" placeholder="选择日期">
+				<el-date-picker v-model="value1" type="date" placeholder="选择日期" ref="usBirthday">
 				
 				</el-date-picker>
 			</div>
 			<div class="block">
-				<span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址</span>
-				<el-select v-model="value5" multiple placeholder="请选择">
-					<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value" >
-					</el-option>	
-				</el-select>
-							
-				<el-select v-model="value11" multiple collapse-tags style="margin-left: 20px;" placeholder="请选择">
-					<el-option v-for="item in options" :key="item.value" :label="item.label" :value="item.value">
-					</el-option>
-				</el-select>
-				<el-input v-model="input" placeholder="请输入内容" class="address"></el-input>
+				<span class="demonstration address">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址</span>
+				
+				<area-select :level="2" type="all" v-model="send_search_form.selected" :data="pcaa" :placeholders="placeholders" ref="usNowhome1">
+					
+				</area-select>
+				<el-input v-model="input" placeholder="请输入详细地址" ref="usNowhome2" class="specificAddress"></el-input>
 			</div>
+			
 			<div class="block ">
 				<span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职业</span>
-				<el-input v-model="input" placeholder="请输入内容" class="professional"></el-input>
+				<el-input placeholder="请输入内容" class="professional" ref="usJob" v-model="job"></el-input>
 			</div>
 			<div class="last">
-				<input type="button" value="确定" class="userInfo">
+				<input type="button" value="确定" class="userInfo" @click="userInfoBtn">
 			</div>
 			
 		</form>
@@ -54,7 +45,9 @@
 </template>
 
 <script>
-
+import {AreaSelect} from "vue-area-linkage";
+import {pca, pcaa} from "area-data";
+import 'vue-area-linkage/dist/index.css';
 export default {
 	name : "setting",
 	data() {
@@ -65,33 +58,77 @@ export default {
 				}
 			},
 			value1: '',
-			options : [],
-			/* options: [{
-				  value: '选项1',
-				  label: '黄金糕'
-			}, {
-				  value: '选项2',
-				  label: '双皮奶'
-			}, {
-				  value: '选项3',
-				  label: '蚵仔煎'
-			}, {
-				  value: '选项4',
-				  label: '龙须面'
-			}, {
-				  value: '选项5',
-				  label: '北京烤鸭'
-			}], */
-			value5: [],
-			value11: [],
-			input: ''
-		}
+			value: [], 
+			input: '',
+			job : "",
+			usSex : 0,
+			pca : pca,
+			pcaa : pcaa,
+			placeholders : ["", "", ""],
+			send_search_form : {
+				orderCode : "",
+				itemName : "",
+				orderTime : [],
+				consigneeName : "",
+				state : "",
+				selected : []
+			},
+		}	
 	},
 	methods : {
-		//地址的获取
+		//获取性别
+		getSex(event){//获取目标事件源
+			var sex = event.target.value;
+			console.log(sex);
+			this.usSex = sex;
+		},
 		
+		//个人信息提交按钮
+		userInfoBtn(){
+			//获取个人信息
+			var usName = this.$refs.usName.value;
+			var usMessage = this.$refs.usMessage.value;
+			var usSex = this.usSex;//获取data中的usSex
+			var usBirthday = this.$refs.usBirthday.value;
+			var usNowhome1 = this.$refs.usNowhome1.value; 
+			var usNowhome2 = this.$refs.usNowhome2.value; 
+			var Nowhome = "";
+			var phone = "";
+			//数组中放对象，先遍历数组获得对象然后遍历对象取value值
+			usNowhome1.forEach(function(value, index){
+				var phone = value;
+				for(var key in phone){
+					//console.log(phone[key]);
+					Nowhome += phone[key];
+					console.log(Nowhome);
+				}
+			})
+			//地址拼接
+			var usNowhome = Nowhome.concat(usNowhome2);
+			var usId = 1;
+			var usJob = this.$refs.usJob.value;
+			console.log(usNowhome);
+			this.$axios.put("/cookme/sys/user/changeInfoById", {
+				usId,
+				usName,
+				usMessage,
+				usSex,
+				usBirthday,
+				usNowhome,
+				usJob
+			}).then(({data})=>{
+				console.log(data);
+				if(data.code === 0){
+					alert("设置成功");
+				}else{
+					alert("设置失败")
+				}
+			}) 
+		}
 	},
-	
+	component : {
+			AreaSelect : AreaSelect
+		}
 }
 
 </script>
@@ -110,44 +147,28 @@ li{
 i{
 	font-style: normal;
 }
-.details{
-	/* width : 1200px;
-	background: rgba(252, 248, 233, 0.8);
-	margin : 0 auto;
-	overflow : hidden;
-	h2{
-		margin-left : 100px;
-		margin-top : 30px;
-		font-size : 32px;
+.el-tabs__content{
+	.el-tab-pane{
+		border: none;
+		outline: none;
 	}
-	.nav{
-		margin-left : 100px;
-		a{
-			display: inline-block;
-			margin : 96px 0;
-			margin-right : 180px;
-			font-size : 30px;
-			color : #000000;
-		}
-		a:nth-child(1){
-			color : #fbcf8d;
-		}
-		a:nth-child(2):hover{
-			color : #fbcf8d;
-		}
-	} */
+}
+.details{
 	form{
-		width : 1000px;
+		padding-left: 40px;
+		// padding-right: 40px;
+		width : 1080px;
 		min-height : 800px;
 		margin-left : 100px;
-		//margin-bottom: 60px;
-		background: rgba(252, 248, 233, 0.8)!important;
+		margin-top:20px;
+		padding-top:20px;
+		background:rgba(187,194,195,.3);
+		color:#7d0035;
 		.el-input__inner{
-			 width : 220px;
+			 width : 200px;
 			 background: none;
 			 border: 1px solid #000000;
 			 font-size: 16px;
-			 
 		}
 		//input文本框中placeholder字体颜色修改
 		.el-input__inner::-webkit-input-placeholder{
@@ -155,7 +176,7 @@ i{
 		}
 		input{
 			font-size: 16px;
-			color: #000000;
+			color: #7d0035;
 		}
 		p:nth-child(1){
 			font-size : 30px;
@@ -163,7 +184,7 @@ i{
 			line-height: 50px;
 			input{
 				outline: none;
-				border: 1px solid #000000;
+				border: 1px solid #999;
 				width : 376px;
 				height: 40px;
 				position: relative;
@@ -185,15 +206,16 @@ i{
 			margin-top : 50px;
 			span{
 				position: relative;
-				top : -156px;
+				top : -338px;
 				font-size : 30px;
 			}
 			textarea{
 				outline: none;
 				margin-left : 26px;
 				background: none;
-				border: 1px solid #000000;
+				border: 1px solid #999;
 				font-size: 20px;
+				color : #7d0035;
 			}
 		}
 		p:nth-child(3){
@@ -232,11 +254,38 @@ i{
 				top : 6px;
 			}
 			.address{
-				width : 220px;
-				margin-left : 20px;
+				top : 14px;
 			}
 			.professional{
-				width : 220px;
+				width : 200px;
+			}
+			.area-select-wrap{
+				display: inline-block;
+				background: none;
+				//float: left;
+				.area-select{
+					display: inline-block;
+					width : 200px;
+					height: 40px;
+					margin-left: 0;
+					margin-right: 14px;
+					background: none;
+					border: 1px solid #000000;
+					.area-selected-trigger{
+						color: #606266;
+						font-size: 16px;
+					}
+				}	
+			}
+			.specificAddress{
+				width: 200px;
+				float: right;
+				position: relative;
+				top: 18px;
+				left: -102px;
+				.el-input__inner{
+					margin-left : 60px;
+				}
 			}
 		}
 		.last{
@@ -246,8 +295,11 @@ i{
 				width : 120px;
 				height: 40px;
 				outline: none;
-				background: none;
-				border: 1px solid #000000;
+				border: none;
+				background: deeppink;
+				border-radius: 10px;
+				border: none;
+				color:white;
 				margin : 50px auto;
 			}
 		}

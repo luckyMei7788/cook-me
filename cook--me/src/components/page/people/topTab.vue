@@ -25,7 +25,7 @@
         components:{
             gailan,
             caipu,
-          shoucang
+			shoucang,
         },
         data () {
             return {

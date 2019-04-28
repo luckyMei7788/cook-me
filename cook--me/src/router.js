@@ -7,7 +7,6 @@ import people from './components/page/people'
 import information from './components/personal/information'
 import personlRouter from './router/personal/personlRouter'
 
-import guanzhu from './components/page/guanzhu'
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
 import green from './components/shopping/component-greens-shopping'
@@ -44,11 +43,6 @@ export default new Router({
       path:"/information",
       name:'information',
       component:information
-    },
-    {
-      path:"/guanzhu",
-      name:'guanzhu',
-      component:guanzhu
     },
     {
       path:'/passwordLogin',

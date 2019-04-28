@@ -3,10 +3,15 @@ import App from './App.vue'
 import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+//引入地址联动的插件
+import VueAreaLinkage from "vue-area-linkage";
+import "vue-area-linkage/dist/index.css";
+
 
 import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
 
+Vue.use(VueAreaLinkage);
 Vue.use(ElementUI);
 Vue.use(MuseUI);
 Vue.config.productionTip = false

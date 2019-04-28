@@ -13,7 +13,7 @@
         name: "people",
         components:{
           topp,
-            topTab
+          topTab
         }
     }
 </script>

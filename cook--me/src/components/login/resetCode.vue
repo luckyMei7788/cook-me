@@ -59,6 +59,7 @@
 			//获取验证码的点击事件
 			getCode(){
 				var usMobile = this.$refs.usMobile.value;
+				console.log(typeof usMobile);
 				if (usMobile!= "") {
 				    if (/^1(3|4|5|7|8|9)\d{9}$/.test(usMobile)) {
 				        //alert("验证码");

@@ -5,7 +5,11 @@ export default [
   {
     path: '/setting',
     name: 'setting',
-    component: setting
+    component: setting,
+		meta : {
+			keepAlive : true,
+			isAuthorization : true
+		}
   },
 
 ]

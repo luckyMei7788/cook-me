@@ -80,7 +80,7 @@
 				if (usPassword != "" && /^[a-zA-Z0-9_]{4,16}$/.test(usPassword)) {
 					if(confirmNum === usPassword){
 						//重置密码发送请求
-						this.$axios.post("/cookme/sys/user/resetPwd", {
+						this.$axios.put("/cookme/sys/user/resetPwd", {
 							usMobile,
 							usPassword
 						}).then(({data})=>{
