@@ -26,11 +26,7 @@
         components:{
             gailan,
             caipu,
-<<<<<<< HEAD
 			shoucang,
-=======
-            shoucang
->>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
         },
         data () {
             return {

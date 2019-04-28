@@ -6,12 +6,12 @@
 			<h2><i class="iconfont">&#xeb8d;</i>设 置 个 人 中 心</h2>
 			<div class="nav">
 				<el-tabs v-model="activeName" @tab-click="handleClick">
-					<el-tab-pane label="基本信息" name="first" @click="bgcolor()" tabindex="0" aria-selected="true">
+					<el-tab-pane label="基本信息" name="first" @click="bgcolor" tabindex="0" aria-selected="true">
 						<keep-alive ><setting ></setting></keep-alive>
 						
 						<!-- <setting></setting> -->
 					</el-tab-pane>
-					<el-tab-pane label="设置头像" name="second" @click="bgcolor()" tabindex="-1">
+					<el-tab-pane label="设置头像" name="second" @click="bgcolor" tabindex="-1">
 						<headPortrait></headPortrait>
 					</el-tab-pane>
 				</el-tabs>
@@ -85,17 +85,6 @@ i{
 			border-radius: 2px;
 			cursor: pointer;
 			box-shadow: 2px 2px 2px 10px #bfbebe;
-		.btn{
-			background:#999;
-			color:white;
-			border:none;
-			width:60px;
-			height:22px;
-			font-size:16px;
-			margin:10px 10px;
-			border-radius: 2px;
-			cursor: pointer;
-			box-shadow: 2px 2px 2px 10px #999;
 		}
 		h2{
 			margin-left : 100px;
@@ -120,7 +109,6 @@ i{
 					display: inline-block;
 					margin:96px 0 50px 100px;
 					font-size : 30px;
-					//color: #000000;
 				}
 				.el-tabs__item:hover {
 					color:pink;
@@ -130,18 +118,12 @@ i{
 					width:150px;
 					border-radius:20px;
 				}
-				/* .el-tabs__item.is-top:hover{
-					color: #fbcf8d;
-				}
-				#tab-first{
-					color: #fbcf8d;
-				} */
 				border-bottom: 3px dashed pink;
-
 			}
 		}
 
 	}
 }
+
 
 </style>

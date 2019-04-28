@@ -14,18 +14,12 @@
             </div>
         </div>
         <div class="right">
-<<<<<<< HEAD
-            <div><i class="iconfont">&#xe84d;</i>   我的粉丝</div>
-            <p @click="$router.push('/information')">点我设置个人信息哦<i class="el-icon-edit"></i></p>
-        </div>
-=======
             <div><p @click="$router.push('/fensi')">粉丝</p><i>|</i><p @click="$router.push('/guanzhu')">关注</p></div>
             <p @click="$router.push('/information')" class="dian">点我设置个人信息哦<i class="el-icon-edit"></i></p>
         </div>
         <button @click="$router.push('/topTab')">
             我的菜谱
         </button>
->>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
     </div>
 </template>
 
@@ -33,11 +27,7 @@
     export default {
         name: "topp",
         methods:{
-<<<<<<< HEAD
-           
-=======
 
->>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
         }
 
     }

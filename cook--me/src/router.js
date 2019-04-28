@@ -9,10 +9,7 @@ import guanzhu from './components/page/people/guanzhu'
 import fensi from './components/page/people/fensi'
 import information from './components/personal/information'
 import personlRouter from './router/personal/personlRouter'
-<<<<<<< HEAD
 
-=======
->>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
 import passwordLogin from './components/login/passwordLogin'
 import reg from './components/login/reg'
 import green from './components/shopping/component-greens-shopping'

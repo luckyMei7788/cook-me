@@ -191,9 +191,10 @@ i{
 				top : -6px;
 				margin-left: 16px;
 				background: none;
+				color : #7d0035;
 			}
 			input::-webkit-input-placeholder{
-				color : #000000;
+				color : #7d0035;
 			}
 			span{
 				font-size: 18px;
@@ -270,9 +271,9 @@ i{
 					margin-left: 0;
 					margin-right: 14px;
 					background: none;
-					border: 1px solid #000000;
+					border: 1px solid #999;
 					.area-selected-trigger{
-						color: #606266;
+						color: #7d0035;
 						font-size: 16px;
 					}
 				}	

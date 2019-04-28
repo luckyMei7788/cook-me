@@ -7,15 +7,12 @@
 
 <script>
     import topp from "./people/topp"
+	import topTab from "./people/topTab"
     export default {
         name: "people",
         components:{
-<<<<<<< HEAD
           topp,
           topTab
-=======
-          topp
->>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
         }
     }
 </script>
