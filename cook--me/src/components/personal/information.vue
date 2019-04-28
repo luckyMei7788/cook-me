@@ -2,6 +2,7 @@
 	<div class="detail">
 		<div class="details">
 			<button @click="$router.go(-1)" class="btn"><i class="iconfont">&#xe7ec;</i>返回个人中心</button>
+
 			<h2><i class="iconfont">&#xeb8d;</i>设 置 个 人 中 心</h2>
 			<div class="nav">
 				<el-tabs v-model="activeName" @tab-click="handleClick">
@@ -84,6 +85,17 @@ i{
 			border-radius: 2px;
 			cursor: pointer;
 			box-shadow: 2px 2px 2px 10px #bfbebe;
+		.btn{
+			background:#999;
+			color:white;
+			border:none;
+			width:60px;
+			height:22px;
+			font-size:16px;
+			margin:10px 10px;
+			border-radius: 2px;
+			cursor: pointer;
+			box-shadow: 2px 2px 2px 10px #999;
 		}
 		h2{
 			margin-left : 100px;

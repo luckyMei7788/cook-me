@@ -18,8 +18,8 @@
                 <div class="content-header">
                     <div class="content-header-nav">
                         <ul>
-                            <!--<li><img src="AllisChecked?'../img/全选.png':'../img/未选.png'" @click="AllisChecked(AllisChecked?2:1)" />&nbsp;&nbsp;<i>全选</i></li>-->
-                            <li><img src="../../static/shopping/img/全选.png" />&nbsp;&nbsp;<i>全选</i></li>
+                            <li><input type="checkbox" @click="handleChecked()" v-model="allChecked"/>&nbsp;&nbsp;<i>全选</i></li>
+                            <!--<img src="AllisChecked?'../img/全选.png':'../img/未选.png'" @click="AllisChecked(AllisChecked?false:true)" />-->
                             <li>商品名称</li>
                             <li>单价</li>
                             <li>数量</li>
@@ -31,8 +31,8 @@
                 <div class="content-shopping">
                     <div class="content-shopping-nav">
                         <ul>
-                            <!--<li><img :src="item.isCkecked?'../img/全选.png':'../img/未选.png'" @click="updateisChecked(item.carId,item.isChecked?1:0)" /></li>-->
-                            <li><img src="../../static/shopping/img/全选.png" /></li>
+                            <li><input type="checkbox" @click="isCheckedA(item.isChecked)" v-model="item.isChecked"  name="all"/></li>
+                            <!--<img :src="item.isChecked?'../../static/shopping/img/全选.png':'../../static/shopping/img/未选.png'" @click="updateisChecked(item.carId,item.isChecked?false:true)"/>-->
                             <li>{{item.productName}}</li>
                             <li>{{item.price}}</li>
                             <li>
@@ -43,19 +43,18 @@
                                 </ol>
                             </li>
                             <li>{{item.price * item.carCount}}</li>
-                            <li><a href="#" @click="deleteGoods(item.productId)"><img src="../../static/shopping/img/删除1.png" /></a></li>
+                            <li><a href="#" @click="deleteGoods(item.carId)" ><img src="../../static/shopping/img/删除1.png" /></a></li>
                         </ul>
                     </div>
                 </div>
                 </div>
                 <div class="content-footer">
                     <div class="content-footer-header">
-                        <p>共&nbsp;&nbsp;3&nbsp;&nbsp;件商品</p>
+                        <p>共&nbsp;&nbsp;{{indexA}}&nbsp;&nbsp;件商品</p>
                         <p>已选择&nbsp;&nbsp;3&nbsp;&nbsp;件</p>
                     </div>
                     <div class="content-footer-nav">
-                        <!--<p>合计:<b>{{sumPrice}}元</b></p>-->
-                        <p>合计:<b>16元</b></p>
+                        <p>合计:<b>{{sumPrice}}元</b></p>
                         <p>
                             <input type="button" @click="go" value="继续购物" />
                             <input type="button" @click="account" value="去结算" />
@@ -101,7 +100,9 @@
         data(){
           return {
               num:1,
-              list:[]
+              indexA:"",
+              list:[],
+              allChecked:true
           }
         },
         methods:{
@@ -110,17 +111,43 @@
                 return index
 
             },
+            //全选
+            handleChecked: function(item) {
+                //全选
+                if (this.allChecked == false) {
+                   this.list.forEach(v=>{
+                        v.isChecked = true;
+                    })
+                } else {  //取消全选
+                    this.list.forEach(v=>{
+                        v.isChecked = false;
+                    })
+                }
+                this.allChecked = !this.allChecked;
+            },
+            //单选
+            isCheckedA:function(itemIsChecked){
+                if(itemIsChecked == true){
+                    this.allChecked = false;
+                    console.log("true");
+                }else{
+                    this.allChecked = false;
+                    console.log("false");
+                }
+                itemIsChecked = !itemIsChecked;
+            },
             add:function(id){
                 console.log("这是点击获取的id"+id);
                 console.log(this.list[id].carCount);
                 var productId = this.list[id].productId;
                 var carCount = this.list[id].carCount++;
-                this.$axios.post("http://127.0.0.1/sys/user/shopcar",{  //修改好数量之后上传后台
-                    productId,
-                    carCount,
-                }).then(({data})=>{
-                    console.log(data.R.msg);
-                })
+                console.log(carCount);
+                // this.$axios.post("/cookme/sys/user/allOrder",{  //修改好数量之后上传后台
+                //     productId,
+                //     carCount,
+                // }).then(({data})=>{
+                //     console.log(data);
+                // })
             },
             subtract:function(id){
                 if(this.list[id].carCount <=1){
@@ -130,37 +157,64 @@
                 }
             },
             getGoodsList(){
-                this.$axios.post("http://127.0.0.1/sys/user/myshopcar")
+                this.$axios.post("/cookme/sys/user/myshopcar")
                     .then(({data})=>{
                         console.log(data);
-                        this.list = data.list;
+                        this.list = data;
+                        console.log(this.list);
                     })
             },
             deleteGoods(carId){
-                this.$axios.post("http://127.0.0.1/sys/user/shopcardel")
+                var carIda = [
+                    {
+                        carId
+                    }
+                ]
+                console.log(carIda,carId);
+                this.$axios.post("/cookme/sys/user/shopcardel",carIda,{
+                    headers:{
+                        "content-type":"application/json"
+                    }
+                })
                     .then(({data})=>{
+                        console.log("******data******");
                         console.log(data);
-                        console.log(data.R);
-                        console.log(data.R.msg);
+                        console.log("******msg******");
+                        console.log(data.msg);
+                        this.getGoodsList();
                     })
             },
             go(){
                 this.$router.push({name:"cai"});
             },
             // //单选接口调用
-            // updateisChecked(CarId,type){
-            //     this.$axios.post("后端接口路径",{+
-            //         carId,
-            //         type
+            // updateisChecked(carId,type){
+            //     var isChecked = [{
+            //         carId:carId,
+            //         isChecked:type
+            //     }]
+            //     this.$axios.post("/cookme/sys/user/multiple",isChecked,{
+            //         headers:{
+            //             "content-type":"application/json"
+            //         }
             //     }).then(({data})=>{
+            //         // this.list[index].isChevked=type;
+            //         console.log("******未选多选按钮******");
+            //         console.log(data.code);
             //         this.getGoodsList();
+            //         // console.log(data.list[index].isChevked);
             //     })
             // },
             // //全选接口调用
-            // updatrAllisChecked(type){
-            //     this.$axios.post("后端接口路径",{
-            //         userId:localStorage.userId,
-            //         type
+            // updatrAllisChecked(carId,type){
+            //     var isChecked = [{
+            //         carId:carId,
+            //         isChecked:type
+            //     }]
+            //     this.$axios.post("/cookme/sys/user/multiple",isChecked,{
+            //         headers:{
+            //             "content-type":"application/json"
+            //         }
             //     }).then(({data})=>{
             //         this.getGoodsList();
             //     })
@@ -174,6 +228,7 @@
         },
         mounted(){
             this.getGoodsList();
+            this.indexA = this.list.length+1;
         },
         computed:{
             sumPrice(){//合计
@@ -186,16 +241,16 @@
                 })
                 return sum;
             },
-            AllisChecked(){//全选
-                var isAll = true;
-                for(var i; i<this.list.length;i++){
-                    if(!this.list[i].isChecked){
-                        isAll = false;
-                        break;
-                    }
-                }
-                return isAll;
-            },
+            // AllisChecked(){//全选
+            //     var isAll = true;
+            //     for(var i; i<this.list.length;i++){
+            //         if(!this.list[i].isChecked){
+            //             isAll = false;
+            //             break;
+            //         }
+            //     }
+            //     return isAll;
+            // },
         }
 
     }
@@ -319,8 +374,12 @@
             width:192px;
             float:right;
             height:86px;
+            p:nth-child(1){
+                position:relative;
+                top:-20px;
+            }
             p{
-                margin-top:16px;
+                margin-top:37px;
                 input{
                     width: 71px;
                     height: 28px;

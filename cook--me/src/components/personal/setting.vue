@@ -167,12 +167,12 @@ i{
 		.el-input__inner{
 			 width : 200px;
 			 background: none;
-			 border: 1px solid #000000;
+			 border: 1px solid #999;
 			 font-size: 16px;
 		}
 		//input文本框中placeholder字体颜色修改
 		.el-input__inner::-webkit-input-placeholder{
-			color: #000000;
+			color: #7d0035;
 		}
 		input{
 			font-size: 16px;
@@ -292,8 +292,10 @@ i{
 			width: 100%;
 			text-align: center;
 			.userInfo{
-				width : 120px;
+				width : 140px;
 				height: 40px;
+				color:white;
+				font-size:20px;
 				outline: none;
 				border: none;
 				background: deeppink;

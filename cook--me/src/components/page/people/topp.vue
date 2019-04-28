@@ -14,9 +14,18 @@
             </div>
         </div>
         <div class="right">
+<<<<<<< HEAD
             <div><i class="iconfont">&#xe84d;</i>   我的粉丝</div>
             <p @click="$router.push('/information')">点我设置个人信息哦<i class="el-icon-edit"></i></p>
         </div>
+=======
+            <div><p @click="$router.push('/fensi')">粉丝</p><i>|</i><p @click="$router.push('/guanzhu')">关注</p></div>
+            <p @click="$router.push('/information')" class="dian">点我设置个人信息哦<i class="el-icon-edit"></i></p>
+        </div>
+        <button @click="$router.push('/topTab')">
+            我的菜谱
+        </button>
+>>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
     </div>
 </template>
 
@@ -24,7 +33,11 @@
     export default {
         name: "topp",
         methods:{
+<<<<<<< HEAD
            
+=======
+
+>>>>>>> 55bb8bc3da748cb029b3807aebb5b618ea9802cc
         }
 
     }
@@ -39,6 +52,7 @@
         .left{
             width:554px;
             float:left;
+            margin-top:10px;
             .tou{
               float:left;
                img{
@@ -70,7 +84,7 @@
         }
         .right{
             float:right;
-            p{
+            .dian{
                 margin-top:48px;
                 padding:16px 18px;
                 margin-left:20px;
@@ -82,6 +96,8 @@
                 color:white;
                 cursor:pointer;
                 background:lightskyblue;
+                letter-spacing:1px;
+                /*调字间距*/
                 i{
                     font-size:30px;
                     padding-left:10px;
@@ -90,7 +106,7 @@
             }
             div{
                 margin-top:48px;
-                padding:11px 18px;
+                padding:16px 22px;
                 font-size:20px;
                 text-align:center;
                 border-radius:10px;
@@ -98,29 +114,32 @@
                 color:white;
                 cursor:pointer;
                 background:pink;
+                p{
+                    float:left;
+                    letter-spacing:2px;
+                }
                 i{
-                    font-size:30px;
-                    padding-left:10px;
+                    float:left;
                     color:hotpink;
+                    margin:0 4px;
                 }
             }
             div:hover{box-shadow:2px 2px 10px yellowgreen;}
-            p:hover{box-shadow:2px 2px 10px yellowgreen;}
+            p:hover{color:deeppink;}
         }
         button{
             position: absolute;
-            top:0;
+            top:5px;
             left:238px;
             width:88px;
             height:40px;
-            font-size:18px;
+            font-size:16px;
             border:none;
             cursor:pointer;
-            border-radius: 20px;
-            background:yellowgreen;
+            background:lightgrey;
             color:lavenderblush;
             text-align: center;
-            box-shadow: 2px 2px 10px yellowgreen;
+            box-shadow: 2px 2px 10px #9A9895;
         }
     }
 </style>

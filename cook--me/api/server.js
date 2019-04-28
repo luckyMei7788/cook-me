@@ -155,7 +155,21 @@ app.post("/sys/user/selectCommodityDetails",function (req,res) {
 		product:{
 			"productId":1,
 			"productName":"金针菇",
-			"pice":5,
+			"price":5,
+			"unit":"g",
+			"sales":16,
+			"merit":"1、金针菇氨基酸的含量非常丰富，高于一般菇类，尤其是赖氨酸的含量特别高，赖氨酸具有促进儿童智力发育的功能。\n" +
+				"2、金针菇，不仅可以预防和治疗肝脏病，而且也适合高血压患者、肥胖者和中老年人食用，这主要是因为它是一种高钾低钠食品[2]\n" +
+				"3、金针菇可抑制血脂升高，降低胆固醇，防治心脑血管疾病。食用金针菇具有抵抗疲劳、抗菌消炎、消除重金属盐类物质、抗肿瘤的作用。\n" +
+				"⒋ 金针菇可抑制血脂升高，降低胆固醇，防治心脑血管疾病；\n" +
+				"⒌ 食用金针菇具有抵抗疲劳，抗菌消炎、[3]。\n" +
+				"⒍经常食用金针菇，不仅可以预防和治疗肝脏病及胃、肠道溃疡，而且也适合高血压患者、肥胖者和中老年人食用，这主要是因为它是一种高钾低钠食品。\n" +
+				"7.金针菇营养成分十分丰富，如蛋白质、维生素B1、B2等，具有利湿热、宽胸、利尿、止血、下乳的功效，并且治产后乳汁不下，用金针菇炖瘦猪肉食用，极有功效。\n",
+		},
+		product:{
+			"productId":2,
+			"productName":"A",
+			"price":5,
 			"unit":"g",
 			"sales":16,
 			"merit":"1、金针菇氨基酸的含量非常丰富，高于一般菇类，尤其是赖氨酸的含量特别高，赖氨酸具有促进儿童智力发育的功能。\n" +
@@ -206,7 +220,20 @@ app.post("/sys/user/shopcar",function(req,res){
 	res.json({
 		R:{
 			code:0,
-			msg:"进行修改成功"
+			msg:"商品的添加修改成功"
+		}
+	})
+})
+
+app.post("/sys/alipay/pay",function(req,res){
+	res.json({
+		R:{
+			code:0,
+			result:"<form name=\"punchout_form\" method=\"post\" action=\"https://openapi.alipaydev.com/gateway.do?charset=utf-8&method=alipay.trade.page.pay&sign=FNkVzrHtBJC0%2Bj8nB7DSRWIuprbDSkB3nhNfJTH45fZihkMzBKUdnbmNN8UlB8h0YiR03fwFtf1f7hlEHDgjs67beKJuYmiaQWdfuuwM%2FKfhZmOhlXBSI823ObRKjQxI%2BKiPr1XfAOjS03mG4d%2FKsHQOjXkUS6mmQkoGFLMkLTyRNbsyAKbjF%2B%2F9oHu8Hm4xQWwhNqFtLJ1gIomZxOjPxYP2lVSWnuALu8uk27oiAW6ROCYioPpeSxM6YFrzXCg2dzK4x1qg0oknRnaYDXLR8vcx4QQuI5RdkAmN0Xik6CFB5vKOR0lsjmDlAhyJNZffCo%2BEUYEwa51TILFnjJ9iZQ%3D%3D&return_url=http%3A%2F%2Fs24293p248.qicp.vip%2Fsys%2Freturn.html&notify_url=http%3A%2F%2Fs24293p248.qicp.vip%2Fsys%2Fcallback.html&version=1.0&app_id=2016092600600592&sign_type=RSA2&timestamp=2019-04-26+16%3A50%3A01&alipay_sdk=alipay-sdk-java-3.4.49.ALL&format=json\">\n" +
+				"<input type=\"hidden\" name=\"biz_content\" value=\"{&quot;out_trade_no&quot;:&quot;1555636552404&quot;,&quot;total_amount&quot;:&quot;1&quot;,&quot;subject&quot;:&quot;白菜500g、香菇300g、&quot;,&quot;product_code&quot;:&quot;FAST_INSTANT_TRADE_PAY&quot;}\">\n" +
+				"<input type=\"submit\" value=\"立即支付\" style=\"display:none\" >\n" +
+				"</form>\n" +
+				"<script>document.forms[0].submit();</script>"
 		}
 	})
 })

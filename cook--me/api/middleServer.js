@@ -8,13 +8,17 @@ app.use(bodyParser.json());
 app.all("*", function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "content-type");
-    res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST. OPTIONS");
+    res.header("Access-Control-Allow-Methods", "DELETE, PUT, GET, POST,OPTIONS");
     next();
 })
 
 /*****************注册手机号失焦验证手机号是否存在*************************/
 app.post("*", function(req, res){
 	var body = req.body;
+	var path = req.getContextPath()
+	console.log(path);
+	var url = "http://39.106.68.255:8080"+path;
+	console.log(url);
     //URL请求的地址，第二个参数-回调，err报错信息，responseText返回信息，body返回所有信息
     request({
 		url,
@@ -22,6 +26,7 @@ app.post("*", function(req, res){
 	}, function(err, responseText,body){
         if(!err && responseText.statusCode === 200){
             let obj = JSON.parse(responseText);
+			console.log(obj);
             res.json({
                 obj
             })
@@ -61,4 +66,7 @@ app.get("*", function(req, res){
 			console.log("error");
 		}
 	})
+})
+app.listen(8080, function(){
+	console.log("success");
 })

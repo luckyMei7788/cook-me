@@ -38,7 +38,7 @@
         methods:{
             selectUser(){
                 console.log(222)
-                this.$axios.get("/cookme/sys/user/selectBest").then(({data})=>{
+                this.$axios.post("/cookme/sys/user/selectBest").then(({data})=>{
                     this.usName=data.useName;
                     this.usHead=data.usHead;
                     this.usJob=data.usJob;
