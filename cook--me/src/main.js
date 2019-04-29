@@ -23,3 +23,13 @@ new Vue({
   router,
   render: function (h) { return h(App) }
 }).$mount('#app');
+
+
+//路由拦截
+/* router.beforeEach((to, from, next)={
+	if(localStorage.usMobile){
+		alert("您已经登陆")
+	}else{
+		next();
+	}
+}) */

@@ -71,7 +71,10 @@ export default new Router({
     {
       path:'/passwordLogin',
       name:'passwordLogin',
-      component:passwordLogin
+      component:passwordLogin,
+			/* meta : {
+				isAuthorization : true;
+			} */
     },
     {
       path:'/reg',

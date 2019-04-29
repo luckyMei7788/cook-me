@@ -7,9 +7,9 @@
 			<div class="nav">
 				<el-tabs v-model="activeName" @tab-click="handleClick">
 					<el-tab-pane label="基本信息" name="first" @click="bgcolor" tabindex="0" aria-selected="true">
-						<keep-alive ><setting ></setting></keep-alive>
-						
-						<!-- <setting></setting> -->
+						<keep-alive >
+							<setting ></setting>
+						</keep-alive>
 					</el-tab-pane>
 					<el-tab-pane label="设置头像" name="second" @click="bgcolor" tabindex="-1">
 						<headPortrait></headPortrait>
@@ -43,7 +43,8 @@
 		components : {
 			setting,
 			headPortrait
-		}
+		},
+		
 	}
 </script>
 
@@ -85,6 +86,7 @@ i{
 			border-radius: 2px;
 			cursor: pointer;
 			box-shadow: 2px 2px 2px 10px #bfbebe;
+			outline: none;
 		}
 		h2{
 			margin-left : 100px;

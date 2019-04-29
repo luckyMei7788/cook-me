@@ -127,7 +127,7 @@
                         }) */  
 						this.$axios.get("/cookme/sys/user/sendCode/"+usMobile).then(({data})=>{
 							if(data.code === 0){
-							    console.log(data.msg);
+							    alert(data.msg);
 							}else{
 							    alert(data.msg);
 							}
@@ -321,6 +321,7 @@
                     background: #fac200;
                     display: inline-block;
                     float: right;
+					cursor: pointer;
                 }
             }
             .agreement{
@@ -362,6 +363,7 @@
                     font-size: 22px;
                     color: #FFFFFF;
                     border-radius: 12px;
+					cursor: pointer;
                 }
             }
         }

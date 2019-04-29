@@ -101,6 +101,7 @@
 								this.$router.push({name : "home"});
 								// console.log(111111, "登陆成功");
 							}else{
+								console.log(1111111);
 								alert(data.msg);
 							}
 						})
@@ -213,6 +214,7 @@ body{
 					font-size: 22px;
 					color: #FFFFFF;
 					border-radius: 12px;
+					cursor: pointer;
 				}
 				p{
 					width : 320px;

@@ -1,5 +1,6 @@
 
-import setting from "../../components/personal/setting"
+import setting from "../../components/personal/setting";
+import headPortrait from "../../components/personal/headPortrait";
 
 export default [
   {
@@ -11,5 +12,13 @@ export default [
 			isAuthorization : true
 		}
   },
-
+	{
+		path: '/headPortrait',
+		name: 'headPortrait',
+		component: headPortrait,
+		meta : {
+			keepAlive : true,
+			isAuthorization : true
+		}
+	}
 ]

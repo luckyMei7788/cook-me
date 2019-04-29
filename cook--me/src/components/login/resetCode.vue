@@ -205,6 +205,7 @@ body{
 					color: #FFFFFF;
 					border-radius: 6px;
 					font-size: 14px;
+					cursor: pointer;
 				}
 			}
 			.hint-code-last{
@@ -227,6 +228,7 @@ body{
 				font-size: 22px;
 				color: #FFFFFF;
 				border-radius: 12px;
+				cursor: pointer;
 			}
 			p{
 				width: 320px;

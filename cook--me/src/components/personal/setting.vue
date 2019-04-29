@@ -127,8 +127,8 @@ export default {
 		}
 	},
 	component : {
-			AreaSelect : AreaSelect
-		}
+		AreaSelect : AreaSelect
+	},
 }
 
 </script>

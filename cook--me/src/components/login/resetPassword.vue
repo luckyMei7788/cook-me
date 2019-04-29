@@ -172,6 +172,7 @@ body{
 				font-size: 22px;
 				color: #FFFFFF;
 				border-radius: 12px;
+				cursor: pointer;
 				//margin-left : 40px;
 			}
 		}
