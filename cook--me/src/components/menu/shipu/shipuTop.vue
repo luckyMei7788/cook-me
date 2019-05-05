@@ -33,39 +33,41 @@
                     <dt>家常菜谱</dt>
                     <dd>家常菜</dd>
                     <dd>私家菜</dd>
+                    <dd>凉菜</dd>
                     <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
+                    <dd>热菜</dd>
+                    <dd>汤粥</dd>
+                    <dd>素食</dd>
+                    <dd>酱料蘸料</dd>
+                    <dd>微波炉</dd>
+                    <dd>火锅底料</dd>
+                    <dd>甜品点心</dd>
+                    <dd>糕点主食</dd>
+                    <dd>卤酱</dd>
+                    <dd>干果制作</dd>
+                    <dd>时尚饮品</dd>
                 </dl>
                 <dl>
                     <dt>每日三餐</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
+                    <dd>早餐</dd>
+                    <dd>午餐</dd>
+                    <dd>晚餐</dd>
+                    <dd>下午茶</dd>
+                    <dd>夜宵</dd>
                 </dl>
                 <dl>
                     <dt>人群</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
+                    <dd>老年人</dd>
+                    <dd>产妇</dd>
+                    <dd>孕妇</dd>
+                    <dd>宝宝食谱</dd>
                 </dl>
                 <dl>
                     <dt>功效</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
+                    <dd>疾病调理</dd>
+                    <dd>功能性调理</dd>
+                    <dd>海脏腑调理鲜</dd>
+                    <dd>人群膳食</dd>
                 </dl>
                 
             </div>

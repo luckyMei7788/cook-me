@@ -6,10 +6,9 @@
 			
 					<li><a href="javascript:;">欢迎光临CookMe菜场</a></li>
 					
-				<router-link to="/order">
-					<li><a href="javascript:;">我的订单</a></li>
-				</router-link>
-				
+
+					<li><a href="javascript:;" @click="ding">我的购物车</a></li>
+
 				<router-link to="/about">
 					<li><a class="a1" href="javascript:;">关于我们</a></li>
 				</router-link>
@@ -43,6 +42,19 @@
 			};
 		},
 		methods:{
+			ding(){
+				this.$axios.post("/cookme/sys/user/myshopcar")
+						.then(({data})=>{
+							console.log(data.msg);
+							this.list = data;
+							console.log(data.list);
+							if(this.list.length <=0){
+								this.$router.push({name:"greensNullShopping"})
+							}else{
+								this.$router.push({name:"Shopping"})
+							}
+						})
+			},
 			searchGoods(){
 				// {参数示例
 				// “limit” : 10,

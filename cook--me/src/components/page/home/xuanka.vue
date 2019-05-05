@@ -10,7 +10,9 @@
         <div class="demo-text" v-if="active2 === sort">
             <ul>
                 <li v-for="item in picIma" >
-                    <img :src="JavaUrl+item.productImages" alt="">
+                    <router-link :to="{path:'/green',query:{Aid:item.productId}}">
+                        <img :src="JavaUrl+item.productImages" alt="">
+                    </router-link>
                 </li>
             </ul>
         </div>
@@ -23,6 +25,7 @@
             return {
                 active2:0,
                 sort:0,
+                Aid:1,
                 picIma:[],
                 JavaUrl:"http://39.106.68.255/"
             }
@@ -32,6 +35,12 @@
                 this.sort=sort;
                 this.$axios.post("/cookme/sys/shop/selectByType/"+this.sort,{}).then(({data})=>{
                     this.picIma=data.bestProduct;
+                    console.log(data);
+                })
+            },
+            pro(){
+                this.$axios.get("/cookme/sys/user/selectCommodityDetails?productId="+this.productId).then(({data})=>{
+                    this.Aid=data.product.productId;
                     console.log(data);
                 })
             }

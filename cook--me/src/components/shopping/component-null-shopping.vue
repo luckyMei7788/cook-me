@@ -7,9 +7,9 @@
             <div class="logo-nav">
                 <ul class="logo-ul">
                     <li><a href="#">欢迎光临CookMe菜场</a></li>
-                    <li><a href="#">我的订单</a></li>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">帮助中心</a></li>
+                    <li @click="com"><a href="#">我的购物车</a></li>
+                    <li @click="com1"><a href="#">关于我们</a></li>
+                    <li @click="com2"><a href="#">帮助中心</a></li>
                 </ul>
             </div>
         </div>
@@ -55,6 +55,25 @@
     export default {
         name: "component-null-shopping",
         methods:{
+            com(){
+                this.$axios.post("/cookme/sys/user/myshopcar")
+                    .then(({data})=>{
+                        console.log(data.msg);
+                        this.list = data;
+                        console.log(data.list);
+                        if(this.list.length <=0){
+                            this.$router.push({name:"greensNullShopping"})
+                        }else{
+                            this.$router.push({name:"Shopping"})
+                        }
+                    })
+            },
+            com1(){
+                this.$router.push({name:"about"});
+            },
+            com2(){
+                this.$router.push({name:"introduce"});
+            },
             goShopping(){
                 this.$router.push({name:"cai"});
             }

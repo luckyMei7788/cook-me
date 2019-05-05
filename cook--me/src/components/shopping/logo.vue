@@ -4,8 +4,8 @@
         <div class="header">
             <div class="header-nav">
                 <ul class="header-nav-ul">
-                    <li><a href="#">欢迎光临CookMe菜场</a></li>
-                    <li><a href="#">我的订单</a></li>
+                    <li><a href="#" >欢迎光临CookMe菜场</a></li>
+                    <li @click="com"><a href="#" >购物车</a></li>
                     <li><a class="a1" href="#">关于我们</a></li>
                     <li><a href="#">帮助中心</a></li>
                 </ul>
@@ -55,7 +55,12 @@
 
 <script>
     export default {
-        name: "public"
+        name: "public",
+        methods:{
+            com(){
+                this.$router.push({name:"Shopping"});
+            },
+        }
     }
 </script>
 

@@ -2,9 +2,11 @@
     <div class="shoucang">
         <ul>
             <li v-for="(items,index) in bookList2" >
-                <img :src="JavaUrl+items.bookImage" alt="">
-                <p>{{items.bookName}}</p>
-                <p>{{items.bookDetails}}</p>
+                <router-link :to="{path:'/menuDetail',query:{bookId:items.bookId}}">
+                    <img :src="JavaUrl+items.bookImage">
+                    <p class="p1">-&nbsp;{{items.bookName}}&nbsp;-</p>
+                    <p class="p2">&nbsp;&nbsp;&nbsp;&nbsp;{{items.bookDetails}}</p>
+                </router-link>
                 <!--<div>{{items.bookComment}}<i class="el-icon-star-on"></i></div>-->
             </li>
         </ul>
@@ -17,6 +19,7 @@
         data(){
             return{
                 usId:1,
+                bookId:1,
                 bookList2:[],
                 JavaUrl:"http://39.106.68.255/"
             }
@@ -25,6 +28,7 @@
             caiPu(){
                 this.$axios.get("/cookme/sys/user/selectMyHome").then(({data})=>{
                     this.bookList2=data.cookbook2;
+                    this.bookId=data.cookbook2.bookId;
                     console.log(data);
                 })
             }
@@ -56,8 +60,15 @@
                 width:282px;
                 height:240px;
             }
-            p{
+            .p1{
                 text-align:center;
+                color:yellow;
+            }
+            .p2{
+                text-align:left;
+                color:brown;
+                font-size:16px;
+                margin:5px;
             }
             div{
                 position:absolute;

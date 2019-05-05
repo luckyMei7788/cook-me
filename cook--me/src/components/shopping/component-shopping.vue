@@ -6,9 +6,9 @@
             <div class="logo-nav">
                 <ul class="logo-ul">
                     <li><a href="#">欢迎光临CookMe菜场</a></li>
-                    <li><a href="#">我的订单</a></li>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">帮助中心</a></li>
+                    <li @click="com"><a href="#">我的购物车</a></li>
+                    <li @click="com1"><a href="#">关于我们</a></li>
+                    <li @click="com2"><a href="#">帮助中心</a></li>
                 </ul>
             </div>
         </div>
@@ -55,7 +55,7 @@
                         <p>合计:<b>{{sumPrice}}元</b></p>
                         <p>
                             <input type="button" @click="go" value="继续购物" />
-                            <input type="button" @click="account()" value="去结算" />
+                            <input  type="button" @click="account()" value="去结算" />
                         </p>
                     </div>
                 </div>
@@ -106,6 +106,25 @@
           }
         },
         methods:{
+            com(){
+                this.$axios.post("/cookme/sys/user/myshopcar")
+                    .then(({data})=>{
+                        console.log(data.msg);
+                        this.list = data;
+                        console.log(data.list);
+                        if(this.list.length <=0){
+                            this.$router.push({name:"greensNullShopping"})
+                        }else{
+                            this.$router.push({name:"Shopping"})
+                        }
+                    })
+            },
+            com1(){
+                this.$router.push({name:"about"});
+            },
+            com2(){
+                this.$router.push({name:"introduce"});
+            },
             gennerId:function (index){
                 // console.log(index);
                 return index;
@@ -184,7 +203,19 @@
                 console.log("这是点击获取的id"+id);
                 console.log(this.list[id].carCount);
                 var productId = this.list[id].productId;
-                this.list[id].carCount = this.list[id].carCount +=1;
+                this.list[id].carCount = this.list[id].carCount +=1
+                // var shopCarDto = {
+                //     productId:productId,
+                //     carCount:carCount
+                // }
+                // this.$axios.post("/cookme/sys/user/shopcar",shopCarDto,{
+                //     headers:{
+                //         "content-type":"application/json"
+                //     }
+                // }).then(({data})=>{
+                //     console.log("-------------");
+                //         console.log(data);
+                //     })
             },
             subtract:function(id){
                 if(this.list[id].carCount <=1){
@@ -204,33 +235,36 @@
                     alert("您还没有选中商品!");
                 }else{
                     var Arr =[] ;
-                    this.list.forEach(v=>{
+                    // this.list.forEach(v=>{
                         var goods = [];
                         console.log("???????????????");
-                        console.log(v);
-                        this.AllArr.forEach(id=>{
+                        // console.log(v);
+                        this.AllArr.forEach((id,index,array)=>{
+                            var a= [];
                             console.log("aaaaaaaaaaaaaaaaaaaa");
                             console.log(id);
+                            console.log(array);
+
                             var love = {
                                 productId: id,
-                                productNum:v.carCount
+                                productNum:this.list[index].carCount
                             };
                             var m = love;
                             console.log("mmmmmmmmmmmmmmmmmmmmmmmmmm");
                             console.log(m);
                             console.log("**************************");
                              goods.push(m);
-                            // console.log(love);
+                            a.push(m);
+                            console.log(a);
                             // for(var i = 0;i<=love.length;i++){
                             //     var list = [];
                             //     list.push(love);
                             //     console.log(list);
                             // }
-
                         })
                         Arr = goods;
                         console.log(goods);
-                    })
+                    // })
                    console.log(Arr);
                     this.$axios.post("/cookme/sys/order/itemandpro",Arr,{
                         headers:{
@@ -331,6 +365,10 @@
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                }
+                ul li:nth-child(3) {
+                    margin-left: -12px;
+                    width: 20px;
                 }
                 ul li:nth-child(4){
                     ol li{

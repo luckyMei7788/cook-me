@@ -8,9 +8,9 @@
             <div class="logo-nav">
                 <ul class="logo-ul">
                     <li><a href="#">欢迎光临CookMe菜场</a></li>
-                    <li><a href="#">我的订单</a></li>
-                    <li><a href="#">关于我们</a></li>
-                    <li><a href="#">帮助中心</a></li>
+                    <li @click="com"><a href="#">我的购物车</a></li>
+                    <li @click="com1"><a href="#">关于我们</a></li>
+                    <li @click="com2"><a href="#">帮助中心</a></li>
                 </ul>
             </div>
             <div class="logo-b">
@@ -47,7 +47,10 @@
                 <div class="goodInfo">
                     商品详情
                 </div>
-                <div class="goodText">{{goodsList.productMassage}}</div>
+                <div class="goodText">
+                    <img :src="img+goodsList.productImages" />
+                    <p>{{goodsList.productMassage}}</p>
+                </div>
             </div>
         </div>
 
@@ -92,6 +95,25 @@
             }
         },
         methods:{
+            com(){
+                this.$axios.post("/cookme/sys/user/myshopcar")
+                    .then(({data})=>{
+                        console.log(data.msg);
+                        this.list = data;
+                        console.log(data.list);
+                        if(this.list.length <=0){
+                            this.$router.push({name:"greensNullShopping"})
+                        }else{
+                            this.$router.push({name:"Shopping"})
+                        }
+                    })
+            },
+            com1(){
+                this.$router.push({name:"about"});
+            },
+            com2(){
+                this.$router.push({name:"introduce"});
+            },
             handleChange(value){
                 // console.log(value);
             },
@@ -334,7 +356,7 @@
         }
         .contet-goodsInfo{
             width:956px;
-            min-height:397px;
+            min-height:412px;
             background:#ffffff;
             border:1px solid #1e7902;
             margin:30px auto;
@@ -347,7 +369,21 @@
                 text-align:center;
             }
             .goodText{
+                width:956px;
+                height:52px;
                 text-align:left;
+                img{
+                    width: 200px;
+                    height: 200px;
+                }
+                p{
+                    width: 362px;
+                    position: relative;
+                    font-size: 16px;
+                    z-index: 1;
+                    top: -116px;
+                    left: 306px;
+                }
             }
         }
     }

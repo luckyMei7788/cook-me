@@ -8,10 +8,12 @@
                 <li v-for="(items,index) in userList">
                     <div><img :src="JavaUrl+items.usHead"></div>
                     <div><span>{{items.usName}}&nbsp;&nbsp;</span></div>
-                    <div><span>{{items.usSex==0?items.usSex='男':items.usSex='女'}}&nbsp;&nbsp;</span></div>
+                    <div><span>{{items.usSex===0?items.usSex='男':items.usSex='女'}}&nbsp;&nbsp;</span></div>
                     <div><span>{{items.usEmail}}&nbsp;&nbsp;</span></div>
                     <div><span>菜谱数：{{items.usBookcount}}&nbsp;&nbsp;</span></div>
-                    <div><button @click="guanzhu">更多</button></div>
+                    <router-link :to="{path:'/fensi',query:{usId:items.usId}}">
+                        <div><button>更多</button></div>
+                    </router-link>
                    <!-- <div class="text">
                         <p>我来自：</p>
                         <p>性别：</p>
@@ -34,6 +36,7 @@
             return{
                 userList:[],
                 usSex:"",
+                usId:"",
                 JavaUrl:"http://39.106.68.255/"
             }
 
@@ -44,13 +47,10 @@
                 this.$axios.post("/cookme/sys/user/selectBest").then(({data})=>{
                     this.usName=data.useName;
                     this.usHead=data.usHead;
-                    //this.usFanscount=data.usFanscount;
                     this.userList=data.bestUser;
+                    this.usId=data.bestUser.usId;
                     console.log(data)
                 })
-            },
-            guanzhu(){
-                this.$router.push({name:"anotherFans"});
             }
         },
         mounted(){

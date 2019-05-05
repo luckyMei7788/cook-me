@@ -107,9 +107,8 @@ export default {
 
 <style lang="less">
 .lsm{
-    background: #fae8c8;
+    background: url("../../../static/syImg/timg (7).jpg");
     .cen{
-        background:#fae8c8;
         width: 990px;
         margin:0 auto;
         .c-top{

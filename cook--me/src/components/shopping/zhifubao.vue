@@ -19,7 +19,9 @@
             <div class="content-zhifubao">
                 <div class="zhifubao-header">
                     <div class="info-logo">
-                        <div class="logo-a">logo</div>
+                        <div class="logo-a">
+                            <div class="logo-a"><img src="../../static/syImg/xxx.png" alt=""></div>
+                        </div>
                         <p class="p">提交订单</p>
                 </div>
                 </div>
@@ -114,12 +116,16 @@
                     width:779px;
                     height:101px;
                     .logo-a{
-                        width:100px;
-                        height:100px;
-                        background:#e5e5e5;
+                        width:160px;
+                        height:60px;
                         text-align:center;
                         line-height:6;
                         float:left;
+                        margin-top:4px;
+                        img{
+                            width:100%;
+                            line-height:60px;
+                        }
                     }
                     .p{
                         float:left;

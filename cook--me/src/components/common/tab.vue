@@ -2,7 +2,7 @@
     <div class="top">
         <div class="head">
             <div class="head-i">
-                <i class="el-icon-star-on"></i><i class="el-icon-star-on"></i><i class="el-icon-star-on"></i>
+                <img src="../../static/syImg/xxx.png" alt="">
             </div>
             <div id="tt" class="tt">
 				<div class="exit" @click="logOut">
@@ -76,10 +76,10 @@
             .head-i{
                 float:left;
                 padding:27px 30px;
-                i{
-                    font-size:30px;
-                    color:hotpink;
+                img{
+                    width:160px;
                 }
+
             }
             .tt{
                 width:1200px;

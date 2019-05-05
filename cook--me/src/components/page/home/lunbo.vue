@@ -2,7 +2,11 @@
     <div class="lunbo">
         <div class="demo-text"  v-if="active1 === type_id">
             <div class="big-s">
-                <div v-for="(items,index) in picUrl"><img :src="JavaUrl+items.bookImage" alt=""></div>
+                <div v-for="(items,index) in picUrl">
+                    <router-link :to="{path:'/menuDetail',query:{bookId:items.bookId}}">
+                        <img :src="JavaUrl+items.bookImage" alt="">
+                    </router-link>
+                </div>
             </div>
         </div>
         <div class="kuang">
@@ -43,9 +47,9 @@
         data () {
             return {
                 picUrl:[],
-                //pic:require(this.bookImage),
                 active1:0,
                 type_id:0,
+                bookId:1,
                 JavaUrl:"http://39.106.68.255/"
             };
         },
@@ -54,9 +58,9 @@
                 this.type_id= type_id;
                 //console.log(this.type_id);
                 this.$axios.get("/cookme/sys/book/selectByTimeType?typeId="+this.type_id).then(({data})=>{
-                    //this.bookImage=data.bookImage;
                     this.picUrl= data.timeType;
-                    //console.log(data);
+                    this.bookId= data.timeType.bookId;
+                    console.log(data);
                 })
             }
         },

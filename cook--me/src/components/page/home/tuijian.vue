@@ -3,9 +3,11 @@
         <h1>CookMe · 今日推荐</h1>
         <ul>
             <li v-for="(items,index) in bookList">
-                <img :src="JavaUrl+items.bookImage" alt="">
-                <p>{{items.bookName}}</p>
-                <p>{{items.bookDetails}}</p>
+                <router-link :to="{path:'/menuDetail',query:{bookId:items.bookId}}">
+                    <img :src="JavaUrl+items.bookImage" alt="">
+                    <p class="p1">-&nbsp;{{items.bookName}}&nbsp;-</p>
+                    <p class="p2">&nbsp;&nbsp;&nbsp;&nbsp;{{items.bookDetails}}</p>
+                </router-link>
             </li>
         </ul>
     </div>
@@ -17,16 +19,16 @@
         data(){
             return{
                 bookList:[],
+                bookId:1,
                 JavaUrl:"http://39.106.68.255/"
             }
         },
         methods:{
             tuiJian(){
                 this.$axios.post("/cookme/sys/book/selectByBest").then(({data})=>{
-                    this.bookName=data.bookName;
-                    this.bookDetails=data.bookDetails;
                     this.bookList=data.bestType;
-                    console.log("data");
+                    this.bookId=data.bestType.bookId;
+                    console.log(data);
                 })
             }
         },
@@ -39,7 +41,7 @@
 <style scoped lang="less">
     .tuijian{
         width:1200px;
-        margin:80px auto;
+        margin:50px auto;
         overflow: hidden;
         h1{
             font-size:36px;
@@ -62,15 +64,16 @@
                     height:200px;
                     border-radius:20px;
                 }
-                :nth-child(2){
+                .p1{
                     text-align: center;
                     width:210px;
                     height:30px;
-                    font-size:14px;
+                    color:brown;
+                    font-size:15px;
                 }
-                :nth-child(3){
+                .p2{
                     height:62px;
-                    text-align: center;
+                    text-align:left;
                     padding:20px 10px;
                     margin-top:4px;
                     font-size:12px;
@@ -83,7 +86,7 @@
                     white-space: nowrap;
 
                 }
-                :nth-child(3):hover{
+                .p2:hover{
                     position: absolute;
                     width:210px;
                     height:214px;

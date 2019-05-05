@@ -8,9 +8,9 @@
             <div class="logo-nav">
                 <ul class="logo-ul">
                     <li><a href="#">欢迎光临CookMe菜场</a></li>
-                    <li @click="com"><a href="#">我的购物车</a></li>
-                    <li @click="com1"><a href="#">关于我们</a></li>
-                    <li @click="com2"><a href="#">帮助中心</a></li>
+                    <li><a href="#">我的订单</a></li>
+                    <li><a href="#">关于我们</a></li>
+                    <li><a href="#">帮助中心</a></li>
                 </ul>
             </div>
         </div>
@@ -18,7 +18,7 @@
         <div class="Order-content">
             <div class="content-info">
                 <div class="info-logo">
-                    <div class="logo-a"><img src="../../static/syImg/xxx.png" alt=""></div>
+                    <div class="logo-a">logo</div>
                     <p>确认订单</p>
                 </div>
                 <div class="info-content">
@@ -149,25 +149,6 @@
         //   this.getQuery();
         // },
         methods:{
-            com(){
-                this.$axios.post("/cookme/sys/user/myshopcar")
-                    .then(({data})=>{
-                        console.log(data.msg);
-                        this.list = data;
-                        console.log(data.list);
-                        if(this.list.length <=0){
-                            this.$router.push({name:"greensNullShopping"})
-                        }else{
-                            this.$router.push({name:"Shopping"})
-                        }
-                    })
-            },
-            com1(){
-                this.$router.push({name:"about"});
-            },
-            com2(){
-                this.$router.push({name:"introduce"});
-            },
             breakShopping(){
                 this.$router.push({name:"Shopping"});
             },
@@ -285,16 +266,12 @@
                 position: relative;
                 top: 12px;
                 .logo-a{
-                    width:160px;
-                    height:60px;
+                    width:100px;
+                    height:100px;
+                    background:#e5e5e5;
                     text-align:center;
                     line-height:6;
                     float:left;
-                    margin-top:16px;
-                    img{
-                        width:100%;
-                        line-height:60px;
-                    }
                 }
                 p{
                     float:left;
@@ -419,7 +396,6 @@
                                 }
                                 ul li:nth-child(2){
                                     margin-left:86px;
-                                    width:17px;
                                 }
                             }
                         }

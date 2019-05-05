@@ -2,39 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b903a347-5882-4831-85be-81caa499d6ed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/fensi.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cook--me/src/router/cai/caiRouter.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cook--me/src/router/peopleSet/peopleSet.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cook--me/src/static/cai-img/img.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cook--me/src/static/syImg/07.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cook--me/src/static/syImg/littledog.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/api/middleServer.js" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/api/middleServer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/api/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/api/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/cai/about-us/about-us.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/cai/about-us/about.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/cai/help-center/introduce.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/cai/help-center/introduce.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/assets/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/cai/help-center/intro.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/cai/help-center/intro.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/cai/logo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/cai/logo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/cai/order/order.vue" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/common/tab.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/common/tab.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/login/userAgreement.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/login/userAgreement.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/foot.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/foot.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/menu/shipu/menuDetail.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/menu/shipu/menuDetail.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/menu/shipu/shipuTop.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/menu/shipu/shipuTop.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/lunbo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/lunbo.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/middleChu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/middleChu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/topM.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/topM.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/tuijian.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/tuijian.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/guanzhu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/guanzhu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/home/xuanka.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/home/xuanka.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/gailan.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/gailan.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/caipu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/caipu.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/shoucang.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/shoucang.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/people/topp.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/people/topp.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/page/shipu.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/page/shipu.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/personal/information.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/personal/information.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/personal/setting.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/personal/setting.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/component-confirm-An-Order.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/component-confirm-An-Order.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/component-greens-shopping.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/component-greens-shopping.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/component-null-shopping.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/component-null-shopping.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/component-shopping.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/component-shopping.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/zhifubao.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/zhifubao.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/src/router.js" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/router.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cook--me/vue.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/vue.config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/components/shopping/logo.vue" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/components/shopping/logo.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cook--me/src/router/cai/caiRouter.js" beforeDir="false" afterPath="$PROJECT_DIR$/cook--me/src/router/cai/caiRouter.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cook--me/node_modules/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -47,10 +38,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cook--me/src/components/personal/information.vue">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/cook--me/src/components/shopping/component-confirm-An-Order.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="187">
+              <caret line="292" column="36" selection-start-line="292" selection-start-column="36" selection-end-line="292" selection-end-column="36" />
+            </state>
+          </provider>
         </entry>
       </file>
     </leaf>
@@ -58,11 +53,30 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1382" />
-    <option name="height" value="744" />
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/people/topTab.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/caipu.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/people/topTab/shoucang.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/home/tuijian.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/home/lunbo.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/home/xuanka.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/menu/shipu/menuDetail.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/home/middleChu.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/page/people/topp.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/menu/shipu/shipuTop.vue" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/common/tab.vue" />
+        <option value="$PROJECT_DIR$/cook--me/public/index.html" />
+        <option value="$PROJECT_DIR$/cook--me/src/components/shopping/component-confirm-An-Order.vue" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="558" />
+    <option name="y" value="84" />
+    <option name="width" value="1293" />
+    <option name="height" value="951" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -70,11 +84,128 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="public" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="cai" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="common" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="menu" type="462c0819:PsiDirectoryNode" />
+              <item name="shipu" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="home" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="people" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="page" type="462c0819:PsiDirectoryNode" />
+              <item name="people" type="462c0819:PsiDirectoryNode" />
+              <item name="topTab" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cook-me" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cook-me" type="462c0819:PsiDirectoryNode" />
+              <item name="cook--me" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="shopping" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\h5-1822text\cook-me\cook--me\src\components\menu\shipu" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -99,22 +230,21 @@
       <option name="presentableId" value="Default" />
       <updated>1556434858937</updated>
       <workItem from="1556434873799" duration="13000" />
+      <workItem from="1557057954880" duration="8152000" />
+      <workItem from="1557066427955" duration="805000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="13000" />
+    <option name="totallyTimeSpent" value="8970000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2494043" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -122,6 +252,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.3285968" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -133,6 +267,143 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/cook--me/src/components/personal/information.vue">
       <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/menu/shipu/shipuRight.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="39" selection-start-line="4" selection-start-column="16" selection-end-line="6" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/topTab/gailan.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="901">
+          <caret line="53" column="21" lean-forward="true" selection-start-line="53" selection-start-column="21" selection-end-line="53" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/home/lunbo.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="49" selection-start-line="49" selection-end-line="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/home/tuijian.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="476">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="e#223#229#0" expanded="true" />
+            <element signature="e#247#253#0" expanded="true" />
+            <element signature="e#289#295#0" expanded="true" />
+            <element signature="e#295#301#0" expanded="true" />
+            <element signature="e#301#307#0" expanded="true" />
+            <element signature="e#307#313#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/topTab/shoucang.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="748">
+          <caret line="68" column="28" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
+          <folding>
+            <element signature="e#282#288#0" expanded="true" />
+            <element signature="e#306#312#0" expanded="true" />
+            <element signature="e#352#358#0" expanded="true" />
+            <element signature="e#358#364#0" expanded="true" />
+            <element signature="e#364#370#0" expanded="true" />
+            <element signature="e#370#376#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/menu/menu.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/home/middleChu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="70" selection-start-line="13" selection-start-column="70" selection-end-line="13" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/assets/logo.png" />
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/menu/shipu/shipuTop.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/guanzhu.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/home/xuanka.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="34" selection-start-line="14" selection-start-column="20" selection-end-line="14" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/menu/shipu/menuDetail.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1853">
+          <caret line="109" column="55" selection-start-line="109" selection-start-column="55" selection-end-line="109" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/public/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/topTab/caipu.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="16" selection-start-line="8" selection-start-column="16" selection-end-line="8" selection-end-column="30" />
+          <folding>
+            <element signature="e#276#282#0" expanded="true" />
+            <element signature="e#300#306#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/common/tab.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="52" selection-start-line="4" selection-start-column="52" selection-end-line="4" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/home/topM.vue">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/topTab.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="22" selection-start-line="6" selection-start-column="22" selection-end-line="6" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/page/people/topp.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="495">
+          <caret line="36" column="29" selection-start-line="36" selection-start-column="29" selection-end-line="36" selection-end-column="29" />
+          <folding>
+            <element signature="e#429#435#0" expanded="true" />
+            <element signature="e#435#441#0" expanded="true" />
+            <element signature="e#441#447#0" expanded="true" />
+            <element signature="e#447#453#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cook--me/src/components/shopping/component-confirm-An-Order.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="292" column="36" selection-start-line="292" selection-start-column="36" selection-end-line="292" selection-end-column="36" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>

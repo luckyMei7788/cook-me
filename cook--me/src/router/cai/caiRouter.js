@@ -1,6 +1,6 @@
 import about from "../../components/cai/about-us/about"
 import introduce from "../../components/cai/help-center/introduce"
-import order from "../../components/cai/order/order"
+import order from "../../views/shopping/confirmAnOrder"
 import searchList from "../../components/cai/searchList"
 
 export default [
@@ -23,5 +23,5 @@ export default [
 		path:'/searchList',
 		name:'searchList',
 		component:searchList
-	}
+	},
 ]

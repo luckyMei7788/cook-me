@@ -2,15 +2,16 @@
     <div class="topp">
         <div class="left">
             <div class="tou">
-                <img src="../../../static/syImg/04/tx10.jpg" alt="">
+                <img :src="JavaUrl+usHead" alt="">
             </div>
             <div class="tou_right">
-                <p>名字</p>
+                <p>{{usName}}</p>
                 <p>
-                    <span>性别</span>
-                    <span>地区</span>
+                    <span>男</span>
+                    <span>{{usJob}}</span>
                 </p>
-                <p>暂时没有个人签名哦！</p>
+                <p>现居：{{usNowhome}}</p>
+                <span>座右铭：{{usMessage}}&nbsp;&nbsp;&nbsp;&nbsp;</span><span>邮箱：{{usEmail}}</span>
             </div>
         </div>
         <div class="right">
@@ -26,8 +27,33 @@
 <script>
     export default {
         name: "topp",
-        methods:{
+        data(){
+            return{
+                usName:"",
+                usMessage:"",
+                usHead:"",
+                usJob:"",
+                usEmail:"",
+                usNowhome:"",
+                JavaUrl:"http://39.106.68.255/"
+            }
 
+        },
+        methods:{
+            txt(){
+                this.$axios.get("/cookme/sys/user/selectById").then(({data})=>{
+                    this.usName=data.user.usName;
+                    this.usMessage=data.user.usMessage;
+                    this.usNowhome=data.user.usNowhome;
+                    this.usJob=data.user.usJob;
+                    this.usHead=data.user.usHead;
+                    this.usEmail=data.user.usEmail;
+                    console.log(data);
+                })
+            }
+        },
+        mounted(){
+            this.txt();
         }
 
     }
@@ -65,7 +91,6 @@
                         font-size:16px;
                         padding-right:20px;
                     }
-
                 }
                 :nth-child(3){
                     font-size:16px;
