@@ -3,15 +3,15 @@
 		<div class="another-nav">
 			<div class="nav-left">
 			    <div class="tou">
-			        <img src="../../static/syImg/04/tx10.jpg" alt="">
+			        <img :src="imgUrl+user.usHead" alt="">
 			    </div>
 			    <div class="tou_right">
-			        <p>他人主页</p>
+			        <p>{{user.usName}}</p>
 			        <p>
-			            <span>性别</span>
-			            <span>地区</span>
+			            <span>性别：<i>{{sex}}</i></span>
+			            <span>地区：<i>{{user.usNowhome}}</i></span>
 			        </p>
-			        <p>暂时没有个人签名哦！</p>
+			        <p>介绍 : {{user.usMessage}}</p>
 			    </div>
 			</div>
 			<div class="nav-right">
@@ -28,8 +28,25 @@
 		name:"another-person",
 		data() {
 			return {
-				
+				user : "",
+				sex:"",
+				imgUrl : "http://39.106.68.255/"
 			};
+		},
+		methods:{
+			
+		},
+		mounted() {
+			var usId = localStorage.usId;
+			this.$axios.get("/cookme/sys/user/selectHeHome?usId="+usId).then(({data})=>{
+				console.log(data);
+				this.user = data.user;
+				if(data.user.usSex === 0){
+					this.sex = "男";
+				}else{
+					this.sex = "女";
+				}
+			})
 		}
 	}
 </script>
@@ -73,6 +90,9 @@
 		            span{
 		                font-size:16px;
 		                padding-right:20px;
+						i{
+							font-size:16px;
+						}
 		            }
 		
 		        }

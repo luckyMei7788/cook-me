@@ -1,14 +1,14 @@
 <template>
     <div class="foot">
-        <div class="logo">
-            <div class="logo_left">
+        <div class="logoo">
+            <div class="logoo_left">
                 <h1>CookMe</h1>
                 <p>
                     不再为美食而苦恼 <br>
                     不再错过美味
                 </p>
             </div>
-            <div class="logo_img">
+            <div class="logoo_img">
                 <ul>
                     <li>
                         <img src="../../../static/syImg/01/weibo.jpg" alt="">
@@ -86,12 +86,11 @@
     width:100%;
     overflow: hidden;
     margin:0 auto;
-    .logo{
+    .logoo{
         width:990px;
-        height: 212px;
         margin:0 auto;
         height:300px;
-        .logo_left{
+        .logoo_left{
             padding:40px 0;
             float:left;
             h1{
@@ -108,7 +107,7 @@
                 float: left;
             }
         }
-        .logo_img{
+        .logoo_img{
             padding:40px 0;
             float:right;
             li{

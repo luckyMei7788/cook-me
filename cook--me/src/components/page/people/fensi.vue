@@ -7,7 +7,7 @@
 		<div class="fans-section" >
 			<div class="section" v-for="(items, index) in data" :key="index" >
 				<div class="left">
-					<div class="image" @click="another(items.id)"><img src="../../../static/login/img/head.jpeg" alt=""></div>
+					<div class="image" @click="another(items.usId)"><img :src="imgUrl+items.usHead" alt=""></div>
 					<button @click="addAttention(items.id, items.attentionId, items.fansId, items.status)">+ 关注</button>
 				</div>
 				<div class="right">
@@ -30,7 +30,8 @@
 		data(){
 			return{
 				data : [],
-				myAttention : []
+				myAttention : [],
+				imgUrl : "http://39.106.68.255/"
 			}
 		},
 		methods:{
@@ -88,32 +89,11 @@
 						}
 					})
 				}
-				
-				
-				
-				
-				
-				/* else{ //取消关注
-					status =1;
-					var id = id;
-					var attentionId = attention;
-					var fansId = fans;
-					console.log(id, status, attentionId, fansId);
-					//添加关注
-					this.$axios.post("/cookme/sys/user/attention", {
-						id,
-						attentionId,
-						fansId,
-						status
-					}).then(({data})=>{
-						alert("成功");
-					})
-				}		 */
 			},
-			another(id){
-				var id = id;
-				localStorage.id = id;
-				console.log(id);
+			another(usId){
+				var usId = usId;
+				localStorage.usId = usId;
+				console.log(usId);
 				//跳转到他人主页
 				this.$router.push({name : "anotherPerson"});
 				// this.$router.push({name : "passwordLogin"});
@@ -122,10 +102,9 @@
 		mounted(){
 			//我的粉丝-关注我的人
 			this.$axios.post("/cookme/sys/user/fans").then(({data})=>{
+				this.data = data;
 				console.log("粉丝的数据");
 				console.log(data);
-				this.data = data;
-				console.log(this.data);
 			})
 		},
 		

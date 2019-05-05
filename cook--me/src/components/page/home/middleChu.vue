@@ -6,9 +6,11 @@
         <div class="paihang">
             <ul>
                 <li v-for="(items,index) in userList">
-                    <!--<div><img src="JavaUrl+items.usHead" alt=""></div>-->
-                    <div><span>{{items.usName}}</span></div>
-                    <div><p>{{items.usJob}}</p></div>
+                    <div><img :src="JavaUrl+items.usHead"></div>
+                    <div><span>{{items.usName}}&nbsp;&nbsp;</span></div>
+                    <div><span>{{items.usSex==0?items.usSex='男':items.usSex='女'}}&nbsp;&nbsp;</span></div>
+                    <div><span>{{items.usEmail}}&nbsp;&nbsp;</span></div>
+                    <div><span>菜谱数：{{items.usBookcount}}&nbsp;&nbsp;</span></div>
                     <div><button @click="guanzhu">更多</button></div>
                    <!-- <div class="text">
                         <p>我来自：</p>
@@ -31,7 +33,8 @@
         data(){
             return{
                 userList:[],
-                JavaUrl:"http://39.106.68.255:8080"
+                usSex:"",
+                JavaUrl:"http://39.106.68.255/"
             }
 
         },
@@ -41,7 +44,6 @@
                 this.$axios.post("/cookme/sys/user/selectBest").then(({data})=>{
                     this.usName=data.useName;
                     this.usHead=data.usHead;
-                    this.usJob=data.usJob;
                     //this.usFanscount=data.usFanscount;
                     this.userList=data.bestUser;
                     console.log(data)
@@ -70,34 +72,28 @@
         }
     }
     .paihang{
-        width:420px;
+        width:460px;
         float:right;
         ul{
             overflow: hidden;
             li {
                 overflow: hidden;
-                font-size:18px;
+                font-size:16px;
                 padding-bottom:10px;
                 div{
                     overflow: hidden;
                     float:left;
-                    p{
-                       width:134px;
-                    }
                     span{
                         width:134px;
                         color:brown;
-                        font-size:20px;
-
                     }
                     button{
-                        background:#d8316c;
-                        font-size:18px;
-                        width:66px;
-                        height:39px;
+                        background:hotpink;
+                        width:52px;
+                        height:32px;
                         color:white;
                         border:none;
-                        border-radius:10px;
+                        border-radius:6px;
                         cursor:pointer;
                         i{
                             color:#fff;

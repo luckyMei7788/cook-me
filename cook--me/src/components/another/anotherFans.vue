@@ -5,15 +5,16 @@
 			<a href="#" @click="$router.push('/anotherAttention')">关注</a>
 		</div>
 		<div class="fans-section" >
-			<div class="section" v-for="item in 9">
+			<div class="section" v-for="item in fansInfo">
 				<div class="left">
-					<div class="image"><img src="../../static/login/img/head.jpeg" alt=""></div>
-					<button>+ 关注</button>
+					<div class="image"><img :src="imgUrl+item.usHead" alt=""></div>
+					<button >+ 关注</button>
+					<!-- <button @click="addAttention(item.id, item.attentionId, item.fansId, item.status)">+ 关注</button> -->
 				</div>
 				<div class="right">
-					<p>名字</p>
-					<span>粉丝</span>&nbsp; <i>0</i>
-					<span>菜谱</span>&nbsp; <i>0</i>
+					<p>{{item.usName}}</p>
+					<span>粉丝</span>&nbsp; <i>{{item.usFanscount}}</i>
+					<span>菜谱</span>&nbsp; <i>{{item.usBookcount}}</i>
 				</div>	
 			</div>	
 		</div>
@@ -29,8 +30,38 @@
 		name:"another-fans",
 		data() {
 			return {
-				
+				fansInfo : "",
+				imgUrl : "http://39.106.68.255/"
 			};
+		},
+		methods:{
+			//查看别人的主页-加关注
+			/* addAttention(id, attention, fans, status){
+				var status = status;
+				if(status === 1){ //添加关注
+					var id = id;
+					var fansId = attention;
+					var attentionId = fans;
+					console.log(status, fansId, attentionId);
+					//添加关注
+					this.$axios.post("/cookme/sys/user/attention", {
+						attentionId,
+						fansId,
+						status
+					}).then(({data})=>{
+						//console.log(data);
+						alert("添加关注成功");
+					})
+				}
+			} */
+		},
+		mounted() {
+			//页面加载后渲染粉丝信息
+			var usId = localStorage.usId;
+			this.$axios.get("/cookme/sys/user/selectOtherFans?usId="+usId).then(({data})=>{
+				console.log(data);
+				this.fansInfo = data;
+			})
 		}
 	}
 </script>

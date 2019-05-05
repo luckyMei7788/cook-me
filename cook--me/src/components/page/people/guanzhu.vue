@@ -7,8 +7,8 @@
 		<div class="fans-section">
 			<div class="section" v-for="items in data" >
 				<div class="left">
-					<div class="image" @click="another(items.id)"><img src="../../../static/login/img/guanzhu.jpg" alt=""></div>
-					<button @click="cancelAttention(items.id, items.attentionId, items.fansId, items.status)">取消关注</button>
+					<div class="image" @click="another(items.usId)"><img :src="imgUrl+items.usHead" alt=""></div>
+					<button @click="cancelAttention(items.id, items.attentionId, items.fansId, items.status)">取 关</button>
 				</div>
 				<div class="right">
 					<p>{{items.usName}}</p>
@@ -30,7 +30,8 @@
         name: "guanzhu",
 		data(){
 			return{
-				data : ""
+				data : "",
+				imgUrl : "http://39.106.68.255/"
 			}
 		},
 		methods:{
@@ -76,10 +77,10 @@
 					})
 				}
 			},
-			another(id){
-				var id = id;
-				localStorage.id = id;
-				console.log(id);
+			another(usId){
+				var usId = usId;
+				localStorage.usId = usId;
+				console.log(usId);
 				//跳转到他人主页
 				this.$router.push({name : "anotherPerson"});
 				// this.$router.push({name : "passwordLogin"});

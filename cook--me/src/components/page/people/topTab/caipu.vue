@@ -1,11 +1,11 @@
 <template>
     <div class="caipu">
         <ul>
-            <li v-for="items in 12">
-                <img src="../../../../static/syImg/02/02-yexiao-danchaofan.jpg" alt="">
-                <p>菜品名称</p>
-                <p>菜品介绍</p>
-                <div>点赞<i class="el-icon-star-on"></i></div>
+            <li v-for="(items,index) in bookList" >
+                <img :src="JavaUrl+items.bookImage" alt="">
+                <p>{{items.bookName}}</p>
+                <p>{{items.bookDetails}}</p>
+                <!--<div>{{items.bookComment}}<i class="el-icon-star-on"></i></div>-->
             </li>
         </ul>
     </div>
@@ -13,7 +13,27 @@
 
 <script>
     export default {
-        name: "caipu"
+        name: "caipu",
+        data(){
+            return{
+                usId:1,
+                bookList:[],
+                JavaUrl:"http://39.106.68.255/"
+            }
+
+        },
+        methods:{
+            caiPu(){
+                this.$axios.get("/cookme/sys/user/selectMyHome").then(({data})=>{
+                    this.bookList=data.cookbook1;
+                    console.log(data);
+                })
+            }
+
+        },
+        mounted(){
+            this.caiPu()
+        }
     }
 </script>
 
@@ -25,15 +45,18 @@
         li{
             float:left;
             width:320px;
-            height:400px;
+            /*overflow: hidden;*/
+            height:518px;
             background:saddlebrown;
+            border-radius:10px;
             margin:20px 20px;
             color:white;
             position: relative;
             img{
-                margin-top:10px;
-                margin-left:36px;
-                width:242px;
+                border-radius: 10px;
+                margin:15px 20px;
+                width:282px;
+                height:240px;
             }
             p{
                 text-align:center;

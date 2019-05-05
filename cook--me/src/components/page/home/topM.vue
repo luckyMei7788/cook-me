@@ -18,7 +18,9 @@
         data(){
             return{
                 JavaUrl:"http://39.106.68.255:8080",
-                 formCai:""
+                formCai:"",
+                limit:"12",
+                offset:"0"
             }
         },
         methods:{
@@ -26,7 +28,9 @@
                 // var formCai= JSON.stringify(this.$refs.formCai.value);
                 console.log(this.formCai);
                 this.$axios.post("/cookme/sys/book/fuzzySelectBook/search"+this.formCai,{}).then(({data})=>{
-                    this.search=data.search;
+                    this.formCai=data.search;
+                    this.limit=data.limit;
+                    this.offset=data.offset;
                     console.log(data);
                 })
             }

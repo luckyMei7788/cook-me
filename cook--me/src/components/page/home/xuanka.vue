@@ -1,29 +1,17 @@
 <template>
     <mu-container>
         <mu-tabs :value.sync="active2" color="pink" indicator-color="deeppink" full-width inverse>
-            <mu-tab>水果</mu-tab>
-            <mu-tab>蔬菜</mu-tab>
-            <mu-tab>五谷</mu-tab>
-            <mu-tab>生鲜</mu-tab>
+            <mu-tab @click="cai(0)">蔬菜水果</mu-tab>
+            <mu-tab @click="cai(1)">家禽肉类</mu-tab>
+            <mu-tab @click="cai(2)">水产冻品</mu-tab>
+            <mu-tab @click="cai(3)">豆腐禽蛋</mu-tab>
+            <mu-tab @click="cai(4)">干货粮油</mu-tab>
         </mu-tabs>
-        <div class="demo-text" v-if="active2 === 0">
+        <div class="demo-text" v-if="active2 === sort">
             <ul>
-                <li v-for="item in 6" ><img src="../../../static/syImg/03/03-sg-yeiz.jpg" alt=""></li>
-            </ul>
-        </div>
-        <div class="demo-text" v-if="active2 === 1">
-            <ul>
-                <li v-for="item in 6" ><img src="../../../static/syImg/02/02-wucan-jiachanglachaotudousi.jpg" alt=""></li>
-            </ul>
-        </div>
-        <div class="demo-text" v-if="active2 === 2">
-            <ul>
-                <li v-for="item in 6" ><img src="../../../static/syImg/02/02-zaocna-xianggujidanzaocanbing.jpg" alt=""></li>
-            </ul>
-        </div>
-        <div class="demo-text" v-if="active2 === 3">
-            <ul>
-                <li v-for="item in 6" ><img src="../../../../api/img/02-wancan-banlihongshaorou.jpg" alt=""></li>
+                <li v-for="item in picIma" >
+                    <img :src="JavaUrl+item.productImages" alt="">
+                </li>
             </ul>
         </div>
     </mu-container>
@@ -33,20 +21,28 @@
     export default {
         data () {
             return {
-                active2: 0
-            };
+                active2:0,
+                sort:0,
+                picIma:[],
+                JavaUrl:"http://39.106.68.255/"
+            }
+        },
+        methods:{
+            cai(sort){
+                this.sort=sort;
+                this.$axios.post("/cookme/sys/shop/selectByType/"+this.sort,{}).then(({data})=>{
+                    this.picIma=data.bestProduct;
+                    console.log(data);
+                })
+            }
+        },
+        mounted(){
+            this.cai(0);
         }
     };
 </script>
 
 <style scoped lang="less">
-    /*.xxka{*/
-        /*width:1200px;*/
-        /*height:270px;*/
-        /*margin:50px auto;*/
-        /*position:relative;*/
-        /*box-shadow:2px 2px 20px #999;*/
-        /**/
         .mu-tab{
             font-size:18px;
         }

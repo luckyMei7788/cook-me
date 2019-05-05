@@ -5,15 +5,15 @@
 			<a href="#" @click="$router.push('/anotherAttention')">关注</a>
 		</div>
 		<div class="fans-section" >
-			<div class="section" v-for="item in 9">
+			<div class="section" v-for="item in anotherAttention">
 				<div class="left">
-					<div class="image"><img src="../../static/login/img/guanzhu.jpg" alt=""></div>
-					<button>+ 关注</button>
+					<div class="image"><img :src="imgUrl+item.usHead" alt=""></div>
+					<button>取  关</button>
 				</div>
 				<div class="right">
-					<p>他人关注</p>
-					<span>粉丝</span>&nbsp; <i>0</i>
-					<span>菜谱</span>&nbsp; <i>0</i>
+					<p>{{item.usName}}</p>
+					<span>粉丝</span>&nbsp; <i>{{item.usFanscount}}</i>
+					<span>菜谱</span>&nbsp; <i>{{item.usBookcount}}</i>
 				</div>	
 			</div>	
 		</div>
@@ -29,8 +29,16 @@
 		name:"another-attention",
 		data() {
 			return {
-				
+				anotherAttention : "",
+				imgUrl : "http://39.106.68.255/"
 			};
+		},
+		mounted() {
+			//点击的当前用户的usId
+			var usId = localStorage.usId;
+			this.$axios.get("/cookme/sys/user/selectOtherAttention?usId="+usId).then(({data})=>{
+				this.anotherAttention = data;
+			})
 		}
 	}
 </script>

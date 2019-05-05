@@ -1,153 +1,218 @@
 <template>
     <div class="gailan">
-        <div class="top_">
-            <div class="top">
-                <p>发布的菜谱（数量）</p>
-                <button @click="$router.push('/caipu')">更多</button>
-            </div>
-            <div class="topG">
-                <ul>
-                    <li v-for="items in 6">
-                        <img src="../../../../static/syImg/02/02-xiawucha-hiataizhishicui.jpg" alt="">
-                        <p>菜品名称</p>
-                        <p>菜品介绍</p>
-                        <div>点赞<i class="el-icon-star-on"></i></div>
-                    </li>
-                </ul>
-            </div>
+        <div class="addCai">
+            <input type="text" placeholder="添加菜谱名称" v-model="bookName">
+            <p>菜谱类型<input type="text" v-model="typeId"></p>
         </div>
+        <div class="middleCai">
+            <div class="left">
+                <h4>添加菜谱封面图</h4>
+                <div class="fm">
+                    <el-upload
+                            action="/cookme/sys/user/book/addBook"
+                            list-type="picture-card"
+                            :on-preview="handlePictureCardPreview"
+                            :auto-upload="false"
+                            :on-remove="handleRemove"
+                            ref="bookImagefile">
+                        <i class="el-icon-plus"></i>
+                    </el-upload>
+                    <el-dialog :visible.sync="dialogVisible" size="tiny">
+                        <img width="100%" :src="dialogImageUrl" alt="">
+                    </el-dialog>
+                </div>
+            </div>
 
-        <div class="middle_">
-            <div class="middle">
-                <p>我的收藏</p>
-                <button>更多</button>
-            </div>
-            <div class="topG">
+        </div>
+        <div class="xinxi">
+            <i class="iconfont">&#xe78a;</i><input type="text" placeholder="点击添加菜品描述" v-model="bookDetails">
+            <p>用料</p>
+            <div class="tableC">
                 <ul>
-                    <li v-for="items in 6">
-                        <img src="../../../../static/syImg/02/02-wancan-roumoshaoqiezi.jpg" alt="">
-                        <p>菜品名称</p>
-                        <p>菜品介绍</p>
-                        <div>点赞<i class="el-icon-star-on"></i></div>
+                    <li v-for="item in 4">
+                        <div>
+                            <input type="text" placeholder="比如：面粉" ref="matName"><input type="text" placeholder="比如：200g" ref="matDosage">
+                            <i @click="del" class="iconfont">&#xe847;</i>
+                        </div>
                     </li>
                 </ul>
+
+
+            </div>
+            <div class="aadd">
+                <button @click="addY"><i class="iconfont">&#xe84a;</i> 追加一行用料</button>
+            </div>
+            <div class="buzhou">
+                <!--<p>批量上传步骤图，按住Ctrl批量上传文件</p>-->
+                <p>点击添加菜谱步骤</p>
+                <div>
+                    <div class="b1">
+                        <el-upload
+                                action="https://jsonplaceholder.typicode.com/posts/"
+                                list-type="picture-card"
+                                :on-preview="handlePictureCardPreview"
+                                :on-remove="handleRemove"
+                                v-model="stepImageFile">
+                            <i class="el-icon-plus"></i>
+                        </el-upload>
+                        <el-dialog :visible.sync="dialogVisible" size="tiny">
+                            <img width="100%" :src="dialogImageUrl" alt="">
+                        </el-dialog>
+                    </div>
+
+                </div>
             </div>
         </div>
+        <button class="btn" @click="addAll">发布菜谱</button>
     </div>
 </template>
 
 <script>
     export default {
-        name: "gailan"
+        name: "gailan",
+        methods: {
+            handleRemove(file, fileList) {
+                console.log(file, fileList);
+            },
+            handlePictureCardPreview(file) {
+                this.dialogImageUrl = file.url;
+                this.dialogVisible = true;
+            },
+            addY(){
+
+            },
+            del(){
+               // this.group.splice(index, 1)
+            },
+            addAll(){
+                this.$refs.bookImagefile.submit();
+                this.$axios.post("/cookme/sys/user/book/addBook",{
+                    bookName:this.bookName,
+                    bookImagefile:this.bookImagefile,
+                    bookDetails:this.bookDetails,
+                    material:[{
+                        matName:this.$refs.matName.value,
+                        matDosage:this.$refs.matDosage.value,
+                    }],
+                    stepDTOS:[{
+                        stepImageFile:this.stepImageFile,
+                    }],
+                    types:[{
+                        typeId:this.typeId
+                    }]
+
+                }).then(({data})=>{
+                    if(data.code===0){
+                        alert("添加成功")
+                    }else{
+                        alert(data.msg);
+                    }
+                })
+            }
+        },
+        data() {
+            return {
+                imageUrl: '',
+                group:[],
+                dialogImageUrl: '',
+                dialogVisible: false,
+                JavaUrl:"http://39.106.68.255/",
+                //上传参数
+                bookName:"",
+                bookImagefile:"",
+                bookDetails:"",
+                stepImageFile:"",
+                matName:"",
+                matDosage:"",
+                material:[],
+                typeId:"",
+                stepDTOS:[],
+                types:[]
+
+            }
+        }
     }
 </script>
 
 <style scoped lang="less">
     .gailan{
-        width:1110px;
+        width:1090px;
         overflow: hidden;
         margin:0 auto;
-        .top_{
-
-            .top{
-                width:1110px;
-                margin:0 auto;
-                overflow: hidden;
-                padding-bottom: 10px;
-                font-size:16px;
-                color:brown;
-                border-bottom:1px dashed pink;
-                :nth-child(1){
-                    float:left;
-                }
-                :nth-child(2){
-                    width:80px;
-                    height:30px;
-                    text-align:center;
-                    color:brown;
-                    float:right;
-                    margin-right:20px;
-                    background:pink;
-                    border:none;
-                    border-radius: 10px;
-                }
+        background: lightgrey;
+        .btn{
+            margin-left:500px;
+            margin-bottom:20px;
+            background: yellowgreen;
+            color:white;
+            font-size:18px;
+            padding:10px 20px;
+            border-radius: 4px;
+            border:none;
+        }
+        .addCai{
+            input{
+                border:none;
+                margin:40px 40px;
+                padding:10px 6px;
             }
-            .topG{
-                clear: both;
-                width:1110px;
-                margin:0 auto;
-                li{
-                    float:left;
-                    width:320px;
-                    height:400px;
-                    background:saddlebrown;
-                    margin:20px 20px;
-                    color:white;
-                    position: relative;
-                    img{
-                        margin-top:10px;
-                        margin-left:36px;
-                        width:242px;
-                    }
-                    p{
-                        text-align:center;
-                    }
-                    div{
-                        position:absolute;
-                        bottom:10px;
-                        right:10px;
-                    }
+        }
+        .middleCai{
+            .left{
+                float:left;
+                margin:0 40px;
+
+                h4{
+                    font-weight: normal;
+                }
+                .fm{
+                   margin-bottom: 40px;
                 }
             }
         }
-        .middle_{
-            .middle{
-                width:1110px;
-                margin:0 auto;
-                overflow: hidden;
-                padding-bottom: 10px;
-                font-size:16px;
-                color:brown;
-                border-bottom:1px dashed pink;
-                :nth-child(1){
-                    float:left;
-                }
-                :nth-child(2){
-                    width:80px;
-                    height:30px;
-                    text-align:center;
-                    color:brown;
-                    float:right;
-                    margin-right:20px;
-                    background:pink;
-                    border:none;
-                    border-radius: 10px;
+        .xinxi{
+            clear: both;
+            margin:40px 40px;
+            p{
+                margin-bottom: 20px;
+            }
+            input{
+                border:none;
+                padding:4px;
+                margin-bottom:20px;
+            }
+            .tableC{
+                ul{
+                    li{
+                        clear:both;
+                        div{
+                            float: left;
+                            input{
+                                margin-right:20px;
+                            }
+                        }
+                    }
                 }
             }
-            .topG{
-                clear: both;
-                width:1110px;
-                margin:0 auto;
-                li{
-                    float:left;
-                    width:320px;
-                    height:400px;
-                    background:burlywood;
-                    margin:20px 20px;
+            .aadd{
+                clear:both;
+                margin:40px 0;
+                button{
+                    border:none;
                     color:white;
-                    position: relative;
-                    img{
-                        margin-top:10px;
-                        margin-left:36px;
-                        width:242px;
-                    }
+                    font-size:16px;
+                    background:yellowgreen;
+                    padding:6px;
+                    border-radius:4px;
+                }
+            }
+            .buzhou{
+                margin:40px 0;
+                div{
                     p{
-                        text-align:center;
-                    }
-                    div{
-                        position:absolute;
-                        bottom:10px;
-                        right:10px;
+                        background: white;
+                        padding:50px;
+                        margin:10px 0;
                     }
                 }
             }

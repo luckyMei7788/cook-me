@@ -129,6 +129,7 @@
             background:lightgrey;
             color:lavenderblush;
             text-align: center;
+            outline: none;
             box-shadow: 2px 2px 10px #9A9895;
         }
     }
