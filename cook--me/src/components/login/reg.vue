@@ -69,7 +69,7 @@
                         }).then(({data})=>{
 							console.log(data);
 							if(data.code === 0){
-								console.log("手机号可用")
+								console.log("手机号可用");
 							}else{
 								alert(data.msg);
 							}

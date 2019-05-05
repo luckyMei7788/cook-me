@@ -94,14 +94,18 @@
 							usPassword
 						}).then(({data})=>{
 							if(data.code === 0){
-								alert("登陆成功");
-								//将手机号记录到localStorage，方便其他页面判断是否登录执行相应的功能
-								localStorage.usMobile = usMobile;
-								//登录成功跳转首页
-								this.$router.push({name : "home"});
-								// console.log(111111, "登陆成功");
+								if(!localStorage.usMobile){//判断是否登录，如果不存在localStorage.usMobile则登录
+									alert("登陆成功");
+									//将手机号记录到localStorage，方便其他页面判断是否登录执行相应的功能
+									localStorage.usMobile = usMobile;
+									//登录成功跳转首页
+									this.$router.push({name : "home"});
+									// console.log(111111, "登陆成功");
+								}else{//已登录，报提示信息
+									alert("您已登录");
+								}
+								
 							}else{
-								console.log(1111111);
 								alert(data.msg);
 							}
 						})

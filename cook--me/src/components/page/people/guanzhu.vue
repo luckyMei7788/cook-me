@@ -5,15 +5,15 @@
     		<a href="#" @click="$router.push('/guanzhu')">关注</a>
     	</div>
 		<div class="fans-section">
-			<div class="section" v-for="items in 9">
+			<div class="section" v-for="items in data" >
 				<div class="left">
-					<div class="image"><img src="../../../static/login/img/guanzhu.jpg" alt=""></div>
-					<button>+ 关注</button>
+					<div class="image" @click="another(items.id)"><img src="../../../static/login/img/guanzhu.jpg" alt=""></div>
+					<button @click="cancelAttention(items.id, items.attentionId, items.fansId, items.status)">+ 关注</button>
 				</div>
 				<div class="right">
-					<p>名字</p>
-					<span>粉丝</span>&nbsp; <i>0</i>
-					<span>菜谱</span>&nbsp; <i>0</i>
+					<p>{{items.usName}}</p>
+					<span>粉丝</span>&nbsp; <i>{{items.usFanscount}}</i>
+					<span>菜谱</span>&nbsp; <i>{{items.usBookcount}}</i>
 				</div>	
 				</div>
 			</div>
@@ -30,13 +30,50 @@
         name: "guanzhu",
 		data(){
 			return{
-				
+				data : ""
+			}
+		},
+		methods:{
+			//我的关注-取消关注
+			cancelAttention(id, attention, fans, status){
+				var id = id;
+				var fansId = attention;
+				var attentionId = fans;
+				var status = status;
+				console.log(status, fansId, attentionId);
+				if(status === 0){
+					status = 1; //取消关注
+					//添加关注
+					this.$axios.post("/cookme/sys/user/attention", {
+						id,
+						attentionId,
+						fansId,
+						status
+					}).then(({data})=>{
+						console.log(data);
+						if(data.code === 0){
+							alert("取消关注成功")
+						}else{
+							alert(data.msg);
+						}
+					})
+				}
+			},
+			another(id){
+				var id = id;
+				localStorage.id = id;
+				console.log(id);
+				//跳转到他人主页
+				this.$router.push({name : "anotherPerson"});
+				// this.$router.push({name : "passwordLogin"});
 			}
 		},
 		mounted(){
+			//我关注的人
 			this.$axios.post("/cookme/sys/user/selectMyAttention").then(({data})=>{
 				console.log("我的关注数据");
-				console.log(data)
+				console.log(data);
+				this.data = data;
 			})
 		}
     }
@@ -118,6 +155,7 @@
 	}
 	.fans-bottom{
 		text-align: center;
+		clear: both;
 		button{
 			width : 140px;
 			height: 50px;

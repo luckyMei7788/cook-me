@@ -3,12 +3,12 @@
 		<form action="post">
 			<p>
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;昵称
-				<input type="text" placeholder="请输入您的昵称" ref="usName">
+				<input type="text" placeholder="请输入您的昵称" ref="usName" :value="user.usName"> <!--后台获取数据渲染-->
 				<span>七天之内只能修改一次</span>
 			</p>
 			<div class="person">
 				<span>个人介绍</span>
-				<textarea name="" id="" cols="70" rows="12" ref="usMessage"></textarea>
+				<textarea name="" id="" cols="70" rows="12" ref="usMessage">{{user.usMessage}}</textarea>
 			</div>
 			<p class="sexuality">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别
@@ -19,22 +19,22 @@
 			</p>
 			<div class="block birthday">
 				<span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;生日</span>
-				<el-date-picker v-model="value1" type="date" placeholder="选择日期" ref="usBirthday">
-				
+				<el-date-picker v-model="birthday" type="date" placeholder="选择日期" ref="usBirthday" >
+					
 				</el-date-picker>
 			</div>
 			<div class="block">
 				<span class="demonstration address">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;地址</span>
 				
-				<area-select :level="2" type="all" v-model="send_search_form.selected" :data="pcaa" :placeholders="placeholders" ref="usNowhome1">
+				<area-select :level="2" type="all" v-model="send_search_form.selected" :data="pcaa" :placeholders="placeholders" ref="usNowhome1" >
 					
 				</area-select>
-				<el-input v-model="input" placeholder="请输入详细地址" ref="usNowhome2" class="specificAddress"></el-input>
+				<input placeholder="请输入详细地址" ref="usNowhome2" class="specificAddress" :value="user.usNowhome">
 			</div>
 			
 			<div class="block ">
 				<span class="demonstration">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;职业</span>
-				<el-input placeholder="请输入内容" class="professional" ref="usJob" v-model="job"></el-input>
+				<input placeholder="请输入内容" class="professional" ref="usJob" :value="user.usJob" >
 			</div>
 			<div class="last">
 				<input type="button" value="确定" class="userInfo" @click="userInfoBtn">
@@ -57,7 +57,7 @@ export default {
 					return time.getTime() > Date.now();
 				}
 			},
-			value1: '',
+			birthday: '',
 			value: [], 
 			input: '',
 			job : "",
@@ -73,6 +73,7 @@ export default {
 				state : "",
 				selected : []
 			},
+			user : "",
 		}	
 	},
 	methods : {
@@ -129,6 +130,15 @@ export default {
 	component : {
 		AreaSelect : AreaSelect
 	},
+	mounted() {
+		//获取个人信息
+		this.$axios.get("/cookme/sys/user/selectById").then(({data})=>{
+			this.user = data.user;
+			this.birthday = data.usBirthday;
+			this.usNowhome1 = data.usNowhome;
+			console.log(data.user);
+		})
+	}
 }
 
 </script>
@@ -159,7 +169,7 @@ i{
 		// padding-right: 40px;
 		width : 1080px;
 		min-height : 800px;
-		margin-left : 100px;
+		margin: 0 auto;
 		margin-top:20px;
 		padding-top:20px;
 		background:rgba(187,194,195,.3);
@@ -185,13 +195,15 @@ i{
 			input{
 				outline: none;
 				border: 1px solid #999;
-				width : 376px;
+				width : 366px;
+				padding-left: 12px;
 				height: 40px;
 				position: relative;
 				top : -6px;
 				margin-left: 16px;
 				background: none;
 				color : #7d0035;
+				border-radius: 4px;
 			}
 			input::-webkit-input-placeholder{
 				color : #7d0035;
@@ -217,6 +229,8 @@ i{
 				border: 1px solid #999;
 				font-size: 20px;
 				color : #7d0035;
+				border-radius: 4px;
+				padding-left: 12px;
 			}
 		}
 		p:nth-child(3){
@@ -259,6 +273,12 @@ i{
 			}
 			.professional{
 				width : 200px;
+				height : 40px;
+				padding-left: 12px;
+				background: none;
+				outline: none;
+				border: 1px solid #999;
+				border-radius: 4px;
 			}
 			.area-select-wrap{
 				display: inline-block;
@@ -279,13 +299,19 @@ i{
 				}	
 			}
 			.specificAddress{
-				width: 200px;
-				float: right;
-				position: relative;
-				top: 18px;
-				left: -102px;
+				width: 634px;
+				display: block;
+				height: 40px;
+				background: none;
+				outline: none;
+				border: 1px solid #999;
+				border-radius: 4px;
+				margin : 20px 0px 0 144px;
+				padding-left: 12px;
 				.el-input__inner{
-					margin-left : 60px;
+					width: 634px;
+					margin-left : 144px;
+					margin-top : 30px;
 				}
 			}
 		}

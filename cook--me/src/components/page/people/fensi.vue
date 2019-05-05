@@ -4,16 +4,16 @@
 			<a href="#" @click="$router.push('/fensi')">粉丝</a>
 			<a href="#" @click="$router.push('/guanzhu')">关注</a>
 		</div>
-		<div class="fans-section">
-			<div class="section" v-for="items in 9">
+		<div class="fans-section" >
+			<div class="section" v-for="(items, index) in data" :key="index" >
 				<div class="left">
-					<div class="image"><img src="../../../static/login/img/head.jpeg" alt=""></div>
-					<button>+ 关注</button>
+					<div class="image" @click="another(items.id)"><img src="../../../static/login/img/head.jpeg" alt=""></div>
+					<button @click="addAttention(items.id, items.attentionId, items.fansId, items.status)">+ 关注</button>
 				</div>
 				<div class="right">
-					<p>名字</p>
-					<span>粉丝</span>&nbsp; <i>0</i>
-					<span>菜谱</span>&nbsp; <i>0</i>
+					<p>{{items.usName}}</p>
+					<span>粉丝</span>&nbsp; <i>{{items.usFanscount}}</i>
+					<span>菜谱</span>&nbsp; <i>{{items.usBookcount}}</i>
 				</div>	
 			</div>	
 		</div>
@@ -29,15 +29,64 @@
         name: "fensi",
 		data(){
 			return{
-				
+				data : [],
+			}
+		},
+		methods:{
+			//加关注
+			addAttention(id, attention, fans, status){
+				var status = status;
+				if(status === 1){ //添加关注
+					status = 0;
+					var id = id;
+					var fansId = attention;
+					var attentionId = fans;
+					console.log(status, fansId, attentionId);
+					//添加关注
+					this.$axios.post("/cookme/sys/user/fans", {
+						attentionId,
+						fansId,
+						status
+					}).then(({data})=>{
+						console.log(data);
+						alert("添加关注成功");
+					})
+				}else{ //取消关注
+					status =1;
+					var id = id;
+					var attentionId = attention;
+					var fansId= fans;
+					console.log(id, status, attentionId, fansId);
+					//添加关注
+					this.$axios.post("/cookme/sys/user/fans", {
+						id,
+						attentionId,
+						fansId,
+						status
+					}).then(({data})=>{
+						alert("成功");
+					})
+				}		
+			},
+			another(id){
+				var id = id;
+				localStorage.id = id;
+				console.log(id);
+				//跳转到他人主页
+				this.$router.push({name : "anotherPerson"});
+				// this.$router.push({name : "passwordLogin"});
 			}
 		},
 		mounted(){
+			//我的粉丝-关注我的人
 			this.$axios.post("/cookme/sys/user/fans").then(({data})=>{
 				console.log("粉丝的数据");
-				console.log(data)
+				console.log(data);
+				this.data = data;
+				console.log(this.data);
 			})
-		}
+		},
+		
     }
 </script>
 
@@ -101,9 +150,9 @@
 			}
 			.right{
 				float: left;
-				margin-left: 30px;
+				margin-left: 20px;
 				p{
-					font-size : 30px;
+					font-size : 24px;
 					margin-top : 20px;
 					margin-bottom : 30px;
 				}
@@ -118,6 +167,7 @@
 	}
 	.fans-bottom{
 		text-align: center;
+		clear: both;
 		button{
 			width : 140px;
 			height: 50px;

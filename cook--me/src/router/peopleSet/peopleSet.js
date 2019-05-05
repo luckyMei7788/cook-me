@@ -11,5 +11,5 @@ export default [
         path:"/fensi",
         name:'fensi',
         component:guanzhu
-    }
+    },
 ]

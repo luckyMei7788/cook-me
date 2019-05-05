@@ -7,6 +7,10 @@ import people from './components/page/people'
 import topTab from './components/page/people/topTab'
 import guanzhu from './components/page/people/guanzhu'
 import fensi from './components/page/people/fensi'
+import anotherPerson from './components/another/anotherPerson'
+import anotherFans from "./components/another/anotherFans"
+import anotherAttention from "./components/another/anotherAttention"
+
 import information from './components/personal/information'
 import personlRouter from './router/personal/personlRouter'
 
@@ -59,8 +63,7 @@ export default new Router({
           path:"/fensi",
           component:fensi,
           name:'fensi'
-
-        }
+        },
       ]
     },
     {
@@ -86,6 +89,25 @@ export default new Router({
       name:'green',
       component:green,
     },
+		{
+			path:"/anotherPerson",
+			name:'anotherPerson',
+			component:anotherPerson,
+			children:[
+				{
+					alias : "/",
+				  path: '/anotherFans',
+				  name: 'anotherFans',
+				  component: anotherFans
+				},
+				{
+				  path: '/anotherAttention',
+				  name: 'anotherAttention',
+				  component: anotherAttention
+				}
+			]
+			  
+		}
     
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
