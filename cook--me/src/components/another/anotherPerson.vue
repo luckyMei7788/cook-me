@@ -55,6 +55,7 @@
 .another{
 	width : 100%;
 	height: 100%;
+	
 	background: url("../../static/login/img/bj.jpg") no-repeat;
 	background-size : 100% 100%;
 	overflow: hidden;

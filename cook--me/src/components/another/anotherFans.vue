@@ -68,6 +68,7 @@
 
 <style lang="less">
 .anotherFans{
+	min-height: 500px;
 	.fans-nav{
 		width: 1110px;
 		margin: 50px auto;

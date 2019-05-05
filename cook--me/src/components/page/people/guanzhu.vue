@@ -99,6 +99,7 @@
 
 <style scoped lang="less">
 .fans{
+	min-height: 600px;
 	.fans-nav{
 		width: 1110px;
 		margin: 50px auto;
