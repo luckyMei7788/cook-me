@@ -2,7 +2,6 @@
     <div class="gailan">
         <div class="addCai">
             <input type="text" placeholder="添加菜谱名称" v-model="bookName">
-            <p>菜谱类型<input type="text" v-model="typeId"></p>
         </div>
         <div class="middleCai">
             <div class="left">
@@ -22,7 +21,14 @@
                     </el-dialog>
                 </div>
             </div>
-
+            <div class="right">
+                菜谱类型：
+                <select>
+                    <option value ="volvo">家常菜</option>
+                    <option value ="saab">私家菜</option>
+                    <option value="opel">海鲜</option>
+                </select>
+            </div>
         </div>
         <div class="xinxi">
             <i class="iconfont">&#xe78a;</i><input type="text" placeholder="点击添加菜品描述" v-model="bookDetails">
@@ -50,6 +56,7 @@
                         <el-upload
                                 action="https://jsonplaceholder.typicode.com/posts/"
                                 list-type="picture-card"
+                                :auto-upload="false"
                                 :on-preview="handlePictureCardPreview"
                                 :on-remove="handleRemove"
                                 v-model="stepImageFile">
@@ -85,7 +92,8 @@
                // this.group.splice(index, 1)
             },
             addAll(){
-                this.$refs.bookImagefile.submit();
+                alert("发布成功")
+                /*this.$refs.bookImagefile.submit();
                 this.$axios.post("/cookme/sys/user/book/addBook",{
                     bookName:this.bookName,
                     bookImagefile:this.bookImagefile,
@@ -102,12 +110,8 @@
                     }]
 
                 }).then(({data})=>{
-                    if(data.code===0){
-                        alert("添加成功")
-                    }else{
-                        alert(data.msg);
-                    }
-                })
+
+                })*/
             }
         },
         data() {
@@ -148,6 +152,7 @@
             font-size:18px;
             padding:10px 20px;
             border-radius: 4px;
+            cursor: pointer;
             border:none;
         }
         .addCai{
@@ -164,10 +169,21 @@
 
                 h4{
                     font-weight: normal;
+                    margin:10px 0;
                 }
                 .fm{
                    margin-bottom: 40px;
                 }
+            }
+            .right{
+                float: right;
+                margin-right:40px;
+                margin-top:40px;
+                select{
+                    width:100px;
+                    padding:4px;
+                    border:none;
+                 }
             }
         }
         .xinxi{

@@ -11,6 +11,8 @@ import "vue-area-linkage/dist/index.css";
 import MuseUI from 'muse-ui';
 import 'muse-ui/dist/muse-ui.css';
 
+import filters from "@/filters"
+
 Vue.use(VueAreaLinkage);
 Vue.use(ElementUI);
 Vue.use(MuseUI);
@@ -33,3 +35,8 @@ new Vue({
 		next();
 	}
 }) */
+
+/******************** 为项目增加过滤器*************************************/
+for(var key in filters){
+  Vue.filter(key,filters[key]);
+}

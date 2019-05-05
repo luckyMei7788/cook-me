@@ -1,440 +1,59 @@
 <template>
     <div>
-        <div>
-             <div class="toplsm">
-                <ul>
-                    <li>
-                        <a href="#">我的美食属性</a>
-                    </li>
-                    <li>
-                        <a href="#">家常菜谱</a>
-                    </li>
-                    <li>
-                        <a href="#">中华菜系</a>
-                    </li>
-                    <li>
-                        <a href="#">各地小吃</a>
-                    </li>
-                    <li>
-                        <a href="#">外国菜谱</a>
-                    </li>
-                    <li>
-                        <a href="#">烘焙</a>
-                    </li>
-                    <li>
-                        <a href="#">厨房百科</a>
-                    </li>
-                    <li>
-                        <a href="#">食材百科</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="top-t">
-                <dl>
-                    <dt>家常菜谱</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                    <dd>家常菜</dd>
-                </dl>
-                <dl>
-                    <dt>每日三餐</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                </dl>
-                <dl>
-                    <dt>人群</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                </dl>
-                <dl>
-                    <dt>功效</dt>
-                    <dd>家常菜</dd>
-                    <dd>私家菜</dd>
-                    <dd>海鲜</dd>
-                    <dd>家常菜</dd>
-                </dl>
-                
-            </div>
-
-        </div>
+        <shipu-top></shipu-top>       
         <div class="center">
             印象中的味道
             <div class="center-r">
-                <span>最新</span>
+                <span :class="{'active':zxr===0 }" @click="zxr=0">最新</span>
                 <span></span>
-                <span>最热</span>
+                <b :class="{'active2':zxr===1 }" @click="zxr=1">最热</b>
             </div>
             
         </div>
 
         <div class="main">
-            <div class="main-l">
-                <!--Tabs-->
-                <el-tabs type="border-card">
-                    <el-tab-pane label="普通筛选">
-
-                        <el-row class="tac">
-                            <el-col :span="12">
-                                <el-menu
-                                default-active="2"
-                                class="el-menu-vertical-demo"
-                                @open="handleOpen"
-                                @close="handleClose">
-                                    <el-submenu index="1">
-                                        <template slot="title">
-                                        <span>选择难度</span>
-                                        </template>
-                                        <el-menu-item index="1-1">新手尝试</el-menu-item>
-                                        <el-menu-item index="1-2">初级入门</el-menu-item>
-                                        <el-menu-item index="1-3">初中水平</el-menu-item>
-                                        <el-menu-item index="1-2">中级掌厨</el-menu-item>
-                                    </el-submenu>
-
-                                    <el-submenu index="2">
-                                        <template slot="title">
-                                        <span>选择工艺</span>
-                                        </template>
-                                        <el-menu-item index="1-1">新手尝试</el-menu-item>
-                                        <el-menu-item index="1-2">初级入门</el-menu-item>
-                                        <el-menu-item index="1-3">初中水平</el-menu-item>
-                                        <el-menu-item index="1-2">中级掌厨</el-menu-item>
-                                    </el-submenu>
-                                    <el-submenu index="3">
-                                        <template slot="title">
-                                        <span>选择口味</span>
-                                        </template>
-                                        <el-menu-item index="1-1">新手尝试</el-menu-item>
-                                        <el-menu-item index="1-2">初级入门</el-menu-item>
-                                        <el-menu-item index="1-3">初中水平</el-menu-item>
-                                        <el-menu-item index="1-2">中级掌厨</el-menu-item>
-                                    </el-submenu>
-                                
-                                
-                                
-                                </el-menu>
-                            </el-col>
-                        </el-row>
-
-                    </el-tab-pane>
-
-                     <el-tab-pane label="食材筛选">
-                        <el-input v-model="input" placeholder="请输入你想查找的食材">
-                                
-                        </el-input>
-                        <dl class="aslps">
-                            <dt>按数量排序</dt>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                            <dd>
-                                <a href="#">
-                                    <span>应季</span>
-                                    <b>苹果</b>
-                                    <em>30</em>
-                                </a>
-                            </dd>
-                        </dl>
-
-
-                     </el-tab-pane>
-                </el-tabs>
-
-              
-                <!--清除浮动-->
-                <div class="main-clear">
-
-                </div>
-
-                <div class="ad">
-                    <div class="block">
-                        <el-carousel height="260px" width="225px">
-                            <el-carousel-item v-for="(img,index) in imgList" :key="index">
-                                <img v-bind:src="img.url" class="pic">
-                            </el-carousel-item>
-                        </el-carousel>
-                </div>
-                    
-                
-                </div>
-                
-                
- 
-                
-            </div>
-            <div class="main-r">
-                
-                    <ul>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic2.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic8.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic2.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic7.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic7.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic8.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        <li>
-                            <img src="../../static/menu/pic1.jpg" alt="">
-                            <p class="main-r-bot1">
-                                <b>韩国部队锅</b>
-                                <span>6000人气</span>
-                                <em>随心所欲</em>
-                            </p>
-                            <p class="main-r-bot2">   
-                                <i>五步/30分钟</i>
-                                <i>微热/甜味</i>
-                            </p> 
-                        </li>
-                        
-                        
-                    </ul>
-                    <div class="pagelsm"> 
-                        &nbsp;
-                        <!--分页-->
-                        <el-pagination
-                            background
-                            layout="prev, pager, next"
-                            :total="1000">
-                        </el-pagination>
-                    </div>
-                  
-               
-            </div>
             
-
+            <shipu-left></shipu-left>
+            <shipu-right :zxr="zxr"></shipu-right>
         </div>
-        <div class="main-clear">
-
-        </div>
-       
-       
-
+        <div class="main-clear"></div>
+        <!-- <div style="clear:both;"></div> -->
         <foot></foot>
     </div>
 </template>
 
 <script>
     import foot from "./home/foot.vue"
-
+    import shipuTop from "../menu/shipu/shipuTop.vue"
+    import shipuRight from "../menu/shipu/shipuRight.vue"
+    import shipuLeft from "../menu/shipu/shipuLeft.vue"
+    
     export default {
         name: "shipu",
         data(){
             return {
-                input:'',
-                imgList:[
-                    {url:require('../../static/menu/pic6.jpg')},
-                    {url:require('../../static/menu/pic4.jpg')},
-                    {url:require('../../static/menu/pic5.jpg')},
-                    {url:require('../../static/menu/pic3.jpg')}
-                ]
+                zxr:0,
+                isActive:1,
+                yspdone:1,
+                yspdtwo:2,
+                
+                data:{}
             }
         },
         methods: {
-            handleOpen(key, keyPath) {
-            },
-            handleClose(key, keyPath) {
+            shift(num,ys){
+                this.zxr=num;
+                this.isActive=ys;
             }
         },
         components:{
-            foot
+            foot,
+            shipuTop,
+            shipuRight,
+            shipuLeft
+        },
+        mounted(){
+            //this.detail()
         }
     }
 </script>
@@ -443,58 +62,7 @@
 a{
     color:#333;
 }
-.toplsm{
-    height: 50px;
-    width: 990px;
-    background: rgba(255,255,255,0.5);
-    margin:0 auto;
-    margin-top:20px;
-    ul{
-        li{float:left;
-            height: 50px;
-            line-height: 50px;
-            color: #333;
-            font-size: 14px;
-            font-weight: bold;
-           
-            a{
-                color: #333;
-                display: inline-block;
-                vertical-align: top;
-                height: 50px;
-                padding: 0px 24px;
-            }
-             a:hover{background:#fff;color:red;}
-        }
-    }
-}
-/*二级标题*/
-.top-t{
-    width: 990px;
-    margin:0 auto;
-    background:#fff;
-    overflow: hidden;
-    dl{padding: 10px 16px 14px;
-    display: inline-block;
-        dt{
-            display: Block;
-            height: 42px;
-            line-height: 42px;
-            font-size: 24px;
-            color: #333;
-        }
-        dd{ float: left;
-            padding: 0px 8px;
-            display: inline-block;
-            vertical-align: top;
-            height: 28px;
-            line-height: 28px;
-            color: #666;
-            cursor: pointer;
-        }
-        dd:hover{background:red;color:#fff;}
-    }
-}
+
 .center{
     width: 990px;
     margin:0 auto;
@@ -506,13 +74,26 @@ a{
     display: block;
     .center-r{
         float:right;
+       
+        .active2{
+            color:#999;
+        }
+        .active{
+            color:#999;
+        }
         span{
             font-size:14px; color:#FF3232;
             display:block;float:left;
+            cursor:pointer;
         }
         span:nth-of-type(2){
         width:1px;height:14px;background:#333;
         margin:54px 8px;
+        }
+        b{
+            font-size:14px; color:#FF3232;
+            display:block;float:left;
+            cursor:pointer;font-weight:normal;
         }
         
     }
@@ -689,90 +270,7 @@ a{
         .pic{width:232px;height:100%;}
        
     }
-    .main-r{
-        width:756px;float:right;
-        ul{
-            li{
-                float:left;margin-left:20px;margin-bottom:16px;height:342px;
-                overflow:hidden;
-                text-align:left;
-                img{display:block;}
-                img:hover{background:rgb(240, 234, 234);}
-                img:hover .main-r-bot2{display:block;}
-                .main-r-bot1{
-                    b{display: block;
-                        height: 24px;
-                        line-height: 24px;
-                        padding: 0 14px;margin-top:12px;
-                        font-size: 14px;
-                        color: #333;
-                        font-weight: bold;
-                    }
-                    span{display: block;
-                        height: 26px;
-                        line-height: 26px;
-                        padding: 0px 14px 0px;
-                        font-size: 12px;
-                        color: #999;
-                    }
-                    em{ display: block;
-                        height: 23px;
-                        line-height: 23px;
-                        padding: 0px 14px 0px;
-                        font-size: 12px;
-                        color: #ff3232;
-                        font-style: normal;
-                    }
-                }
-                .main-r-bot2{
-                    display:none;
-                    i{ display: block;
-                        height: 23px;
-                        line-height: 23px;
-                        padding: 20px 0 0 20px;
-                        font-size: 12px;
-                        color: #999;
-                        font-style: normal;
-                    }
-                }
-                
-            }
-            li:hover{background:rgb(240, 234, 234);}
-            li:hover .main-r-bot2{display:block;}
-            li:hover .main-r-bot1{display:none;}
-        }
-        .pagelsm{padding-bottom:40px;text-align:right;
-            .btn-prev{
-                    height:40px;width:40px;text-align: center;
-                    line-height: 40px;
-            }
-            .btn-next{
-                    height:40px;width:40px;text-align: center;
-                    line-height: 40px;
-            }
-            .el-pager{
-                
-                
-                .number{
-                    height:40px;width:40px;text-align: center;
-                    line-height: 40px;
-                }
-                .active{
-                    height:40px;
-                }
-                .el-icon-more{
-                    height:40px;width:40px;text-align: center;
-                    line-height: 40px;
-                
-                }
-                .more:hover{
-                   height:40px;width:40px;text-align: center;
-                    line-height: 40px;
-                }
-                
-            }
-        }
-    }
+    
     
 }
 .main-clear{clear:both;}

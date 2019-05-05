@@ -50,7 +50,7 @@
                 })
             },
             guanzhu(){
-                this.$router.push({name:"guanzhu"})
+                this.$router.push({name:"anotherFans"});
             }
         },
         mounted(){

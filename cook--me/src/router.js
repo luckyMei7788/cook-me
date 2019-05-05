@@ -21,6 +21,8 @@ import loginRouter from "./router/login/loginRouter";
 import shoppingRouter from "./router/shopping/shoppingRouter";
 import caiRouter from "./router/cai/caiRouter";
 
+import menuRouter from './router/menu/menuRouter';
+
 
 Vue.use(Router)
 
@@ -116,5 +118,5 @@ export default new Router({
       //   return import(/* webpackChunkName: "about" */ './views/About.vue')
       // }
 
-  ].concat(loginRouter,shoppingRouter, personlRouter,caiRouter)
+  ].concat(loginRouter,shoppingRouter, personlRouter,caiRouter,menuRouter)
 })

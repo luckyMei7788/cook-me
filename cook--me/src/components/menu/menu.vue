@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name:'menu-index'
+    name:'menu'
 }
 </script>
 
