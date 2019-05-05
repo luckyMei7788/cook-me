@@ -27,7 +27,7 @@
                     <div class="success">
                         <p class="img"><img src="../../static/shopping/img/success.gif"></p>
                         <p class="text">订单提交成功</p>
-                        <i>您的订单编号为:</i>
+                        <i>您的订单编号为:{{list.orderNum}}</i>
                     </div>
                     <p>请选择以下方式付款</p>
                     <div class="success-a">
@@ -35,7 +35,7 @@
                             <img src="../../static/shopping/img/支付宝.png" />
                             <b>支付宝</b>
                         </a>
-                        <p class="money">需付款金额:<b>3.70</b>元</p>
+                        <p class="money">需付款金额:<b>{{list.amount}}</b>元</p>
                     </div>
                 </div>
             </div>
@@ -70,7 +70,8 @@
         name: "zhifubao",
         data(){
           return {
-              zhifubaoForm:[]
+              zhifubaoForm:[],
+              list:JSON.parse(this.$route.query.listSumA),
           }
         },
         methods:{
@@ -88,7 +89,10 @@
                         window.open(routeData.href, '_blank');
                     })
             }
-        }
+        },
+        mounted(){
+            console.log(this.list);
+        },
     }
 </script>
 

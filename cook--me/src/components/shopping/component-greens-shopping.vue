@@ -15,19 +15,19 @@
             </div>
             <div class="logo-b">
                 <!-- <img src="../../static/shopping/img/菜市场banner01-1.jpg" /> -->
-                <div class="logo-b-input">
-                    <input type="text"  /><div class="input-div"><a href="#"><img src="../../static/shopping/img/放大镜.png" /></a></div>
-                </div>
+                <!--<div class="logo-b-input">-->
+                    <!--<input type="text"  /><div class="input-div"><a href="#"><img src="../../static/shopping/img/放大镜.png" /></a></div>-->
+                <!--</div>-->
             </div>
         </div>
         <!-- content -->
         <div class="content">
             <div class="content-goods">
-                <div class="goods-photo"><img src="../../static/shopping/img/金针菇.jpg" /></div>
+                <div class="goods-photo"><img :src="img+goodsList.productImages" /></div>
                 <div class="goods-info">
                     <p class="goodsName"><b>{{goodsList.productName}}</b></p>
                     <p class="goodsPrice">售&nbsp;&nbsp;价:￥{{goodsList.price}}</p>
-                    <p class="goods-g">单&nbsp;&nbsp;位:{{goodsList.unit}}</p>
+                    <p class="goods-g">单&nbsp;&nbsp;位:&nbsp;{{goodsList.unit}}</p>
                     <div class="shopping-num">
                         <p>购买人数</p>
                         <p>{{goodsList.sales}}</p>
@@ -47,7 +47,7 @@
                 <div class="goodInfo">
                     商品详情
                 </div>
-                <div class="goodText">{{goodsList.merit}}</div>
+                <div class="goodText">{{goodsList.productMassage}}</div>
             </div>
         </div>
 
@@ -87,8 +87,9 @@
                 num:1,
                 goodsList:[],
                 list:[],
-                productId:1,
-            };
+                productId:this.$route.query.Aid,
+                img:"http://39.106.68.255:80/",
+            }
         },
         methods:{
             handleChange(value){

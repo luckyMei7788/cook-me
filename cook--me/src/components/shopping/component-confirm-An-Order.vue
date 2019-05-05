@@ -19,15 +19,34 @@
             <div class="content-info">
                 <div class="info-logo">
                     <div class="logo-a">logo</div>
-                    <p @click="a">确认订单</p>
+                    <p>确认订单</p>
                 </div>
                 <div class="info-content">
                     <p>收货地址</p>
                     <div class="info-content-select">
-                        <div class="address">
-                            <a href="javascript:;"><img src="../../static/shopping/img/添加.png" /></a>
-                            <p>添加新地址</p>
+                        <div class="address"   v-show="addressShow">
+                            <area-select type='all' :level='2' v-model="send_search_form.selected" :data="pcaa" v-show="addressShow" ref="address"></area-select>
+                            <b>姓名：</b><input type="text" class="name1" v-model="usName">
+                            <b>手机号：</b><input type="number" class="num1" v-model="usPhone"><br>
+                            <b>收货地址：</b><input type="text" class="add1" v-model="adddetail">
+                            <b>邮编：</b><input type="number" class="email" v-model="usU"><br>
+                            <!--<button>修改</button>-->
+                            <button @click="addressT" class="btn">确定</button>
                         </div>
+                        <div class="addressA" style="display:none" v-show="addressAShow">
+                            姓名：{{address.conName}}<br>
+                            手机号：{{address.conMobile}}<br>
+                            收货地址：{{address.conAddress}}<br>
+                            邮编：{{address.conPostal}}
+                        </div>
+
+                       <!-- <div class="address">
+                            <a href="javascript:;"><img src="../../static/shopping/img/添加.png" /></a>
+                            <p>
+                                &lt;!&ndash;添加地址&ndash;&gt;
+
+                            </p>
+                        </div>-->
                         <div class="info">
                             <div class="info-header">
                                 <b class="info-b">商品</b>
@@ -45,8 +64,8 @@
                                     <ul>
                                         <li>{{item.productName}}</li>
                                         <li>{{item.price}}</li>
-                                        <li>{{item.carCount}}</li>
-                                        <li>{{item.price*item.carCount}}</li>
+                                        <li>{{item.productNum}}</li>
+                                        <li>{{item.price*item.productNum}}</li>
                                     </ul>
                                 </div>
                             </div>
@@ -56,10 +75,10 @@
                             <div class="goodsA">
                                 <div class="goodsA-sum">
                                     <p>商品件数:&nbsp;&nbsp;{{indexA}}</p>
-                                    <p>商品总价:&nbsp;&nbsp;2.00</p>
-                                    <p>应付金额:&nbsp;&nbsp;<b>2.00</b></p>
+                                    <p>商品总价:&nbsp;&nbsp;{{sumPrice}}.00</p>
+                                    <p>应付金额:&nbsp;&nbsp;<b>{{sumPrice}}.00</b></p>
                                 </div>
-                                <button @click="zhifu">去结算</button>
+                                <button @click="zhifu">提交订单</button>
                                 <button @click="breakShopping">返回购物车</button>
                             </div>
                         </div>
@@ -94,61 +113,137 @@
 </template>
 
 <script>
+    import {AreaSelect} from "vue-area-linkage";
+    import 'vue-area-linkage/dist/index.css';
+    import { pca, pcaa } from 'area-data';
     export default {
         name: "confirmAnOrder",
         data(){
             return {
                 // list:JSON.parse(this.$route.query.listInfo),
-                list:[],
-                indexA:"",
+                pca : pca,
+                pcaa : pcaa,
+                list:JSON.parse(this.$route.query.listInfo),
+                indexA:0,
+                usName:"",
+                usPhone:"",
+                usU:"",
+                adddetail:"",
+                code:"",
+                name:[],
+                address:[],
+                addressShow:true,
+                addressAShow:false,
+
+                send_search_form : {
+                    orderCode : "",
+                    itemName : "",
+                    orderTime : [],
+                    consigneeName : "",
+                    state : "",
+                    selected : []
+                }
             }
         },
         // created(){
         //   this.getQuery();
         // },
         methods:{
-            // async getQuery(){
-            //     var listInfo = this.$route.query.listInfo;
-            //     console.log("111111"+listInfo);
-            //     this.list = JSON.parse(listInfo);
-            // },
-            a(){
-                console.log(this.list);
-            },
-            getGoodsList(){
-                this.$axios.post("/cookme/sys/user/myshopcar")
-                    .then(({data})=>{
-                        this.list = data;
-                    })
-            },
             breakShopping(){
                 this.$router.push({name:"Shopping"});
             },
+            addressT(){
+                var addNew='';
+                var address=this.$refs.address.value;
+                /*this.$refs.usName.value=this.usName;
+                this.$refs.usPhone.value=this.usPhone;
+                this.$refs.usAdd.value=this.usAdd;*/
+                // var addNew=""
+                //console.log(address);
+                address.map(function(item){
+                    for(var i in item){
+                        var addressList=item[i];
+                        console.log(addressList)
+                    }
+                    addNew+=addressList;
+                });
+                console.log(addNew);
+                    this.$axios.post("/cookme/sys/order/consignee",{
+                        conName:this.usName,
+                        conMobile:this.usPhone,
+                        conAddress:addNew,
+                        conPostal:this.usU
+                    }).then(({data})=>{
+                        this.address = data.list;
+                        /*this.usName=data.con_name;
+                        this.usAdd=data.con_address;
+                        this.usPhone=con_mobile*/
+                        console.log(data);
+                        this.name = data;
+                        this.code = data.code;
+                        if(this.address.length>0){
+                            this.addressShow = !this.addressShow;
+                            this.addressAShow = !this.addressAShow;
+                            this.address = data.list[0];
+                        }
+                        console.log(this.address);
+                    });
+
+
+
+            },
             zhifu(){
-                if(this.list.length <=0){
+                if(this.address.length <=0){
+                    alert("您还没有填写地址哦");
+                } else if(this.list.length <=0){
                     alert("你还没有商品哦");
                 }else{
-                    this.$router.push({name:"zhifubao"});
+                    var sum = {
+                        amount:this.sumPrice,
+                        remark:"尽快发货哦!"
+                    }
+                    this.$axios.post("/cookme/sys/order/aliOrder",sum,{
+                        headers:{
+                            "content-type":"application/json"
+                        }
+                    }).then(({data})=>{
+                        console.log("AAAAAAAAAA");
+                        console.log(data);
+                        console.log(data[0].amount);
+                        console.log(data[0].orderNum);
+                        var listSum = JSON.stringify({
+                            amount:data[0].amount,
+                            orderNum:data[0].orderNum
+                        })
+                        console.log(listSum);
+                        // this.$router.push({name:'confirmAnOrder',query:{listInfo:list}});//params参数为键值对,传参为router,接参为route
+                        this.$router.push({name:"zhifubao",query:{listSumA:listSum}});
+                    })
                 }
+
             },
         },
+        component : {
+            AreaSelect : AreaSelect
+        },
         mounted(){
-            this.getGoodsList();
-            this.indexA = this.list.length+1;
+            // this.getGoodsList();
+            this.indexA = this.list.length;
+            console.log(this.list);
+            //this.zhifu()
         },
         computed:{
             sumPrice(){//合计
                 var sum = 0;
-                //遍历list并判断isChecked是否为true
-                this.list.forEach(v=>{
-                    if(v.isChecked){
-                        sum += v.price*v.carCount;
-                    }
-                })
+               this.list.forEach((v,index)=>{
+                   console.log(v,index);
+                   console.log(this.list[index]);
+                   sum += this.list[index].price*this.list[index].productNum;
+                   console.log(sum);
+               })
                 return sum;
-            },
         },
-    }
+    }}
 </script>
 
 <style lang="less">
@@ -201,7 +296,7 @@
                     margin-top:26px;
                     margin-left:42px;
                     .address{
-                        width:182px;
+                        width:548px;
                         height:182px;
                         border:2px solid #cccccc;
                         text-align:center;
@@ -214,6 +309,25 @@
                         p{
                             margin-left:12px;
                             font-size:20px;
+                        }
+                        b{
+                            margin-left:20px;
+                        }
+                        .name1{
+                            margin-top:12px;
+                        }
+                        .num1{
+                            margin-top:20px;
+                        }
+                        .add1{
+                            margin-top:20px;
+                        }
+                        .email{
+                            margin-top:20px;
+                        }
+                        .btn{
+                            width:200px;
+                            margin-top:7px;
                         }
                     }
                     .info{

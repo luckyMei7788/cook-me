@@ -18,8 +18,7 @@
                 <div class="content-header">
                     <div class="content-header-nav">
                         <ul>
-                            <li><input type="checkbox" @click="handleChecked()" v-model="allChecked"/>&nbsp;&nbsp;<i>全选</i></li>
-                            <!--<img src="AllisChecked?'../img/全选.png':'../img/未选.png'" @click="AllisChecked(AllisChecked?false:true)" />-->
+                            <li><input type="checkbox"  @click="AllCheckedA()" :checked="AllArr.length===list.length"/>&nbsp;&nbsp;<i>全选</i></li>
                             <li>商品名称</li>
                             <li>单价</li>
                             <li>数量</li>
@@ -27,12 +26,11 @@
                         </ul>
                     </div>
                 </div>
-                <div v-for="(item,index) in list" :id="gennerId(index)" >
+                <div v-for="(item,index) in list" :id="gennerId(index)"  :key="index">
                 <div class="content-shopping">
                     <div class="content-shopping-nav">
                         <ul>
-                            <li><input type="checkbox" @click="isCheckedA(item.isChecked)" v-model="item.isChecked"  name="all"/></li>
-                            <!--<img :src="item.isChecked?'../../static/shopping/img/全选.png':'../../static/shopping/img/未选.png'" @click="updateisChecked(item.carId,item.isChecked?false:true)"/>-->
+                            <li><input type="checkbox" @click="checkedA(index)"  :checked="AllArr.indexOf(item.productId)>=0"/></li>
                             <li>{{item.productName}}</li>
                             <li>{{item.price}}</li>
                             <li>
@@ -51,13 +49,13 @@
                 <div class="content-footer">
                     <div class="content-footer-header">
                         <p>共&nbsp;&nbsp;{{indexA}}&nbsp;&nbsp;件商品</p>
-                        <p>已选择&nbsp;&nbsp;3&nbsp;&nbsp;件</p>
+                        <p>已选择&nbsp;&nbsp;{{goods}}&nbsp;&nbsp;件</p>
                     </div>
                     <div class="content-footer-nav">
                         <p>合计:<b>{{sumPrice}}元</b></p>
                         <p>
                             <input type="button" @click="go" value="继续购物" />
-                            <input type="button" @click="account" value="去结算" />
+                            <input type="button" @click="account()" value="去结算" />
                         </p>
                     </div>
                 </div>
@@ -100,68 +98,63 @@
         data(){
           return {
               num:1,
-              indexA:"",
+              indexA:0,
+              AllArr:[],
+
               list:[],
-              allChecked:true
+              goods:0,
           }
         },
         methods:{
             gennerId:function (index){
-                console.log(index);
-                return index
+                // console.log(index);
+                return index;
 
             },
-            //全选
-            handleChecked: function(item) {
-                //全选
-                if (this.allChecked == false) {
-                   this.list.forEach(v=>{
-                        v.isChecked = true;
+            //点击全选按钮
+            AllCheckedA() {
+                console.log(event.currentTarget.checked);//true
+                //event.currentTarget.checked表示点击完后该选择框的状态
+                if (!event.currentTarget.checked) {
+                    this.AllArr = [];//清空AllArr数组
+                    this.goods = 0;
+                } else {
+                    this.AllArr = [];//先置空，然后再重新添加，不然数组里会有重复！因为有可能点击全选之前已经选择了几个单选按钮。也就是数组里已经添加过了对应的id。
+                    this.list.forEach(v => {
+                        this.AllArr.push(v.productId);
                     })
-                } else {  //取消全选
-                    this.list.forEach(v=>{
-                        v.isChecked = false;
-                    })
+                    this.goods = this.indexA;
                 }
-                this.allChecked = !this.allChecked;
+                console.log("全选");
+                console.log(this.AllArr)
+                console.log(">>>>>>>>>>>>>>>>>>>>>>>>");
             },
-            //单选
-            isCheckedA:function(itemIsChecked){
-                if(itemIsChecked == true){
-                    this.allChecked = false;
-                    console.log("true");
-                }else{
-                    this.allChecked = false;
-                    console.log("false");
+            //点击单选按钮
+            checkedA(id) {
+                if (event.currentTarget.checked) {
+                    this.AllArr.push(this.list[id].productId);
+                    this.goods +=1;
+                } else {
+                    for (var i = 0; i < this.AllArr.length; i++) {
+                        if (this.list[id].productId === this.AllArr[i]) {
+                            this.AllArr.splice(i, 1);
+                            break;
+                        }
+                    }
+                    this.goods -=1;
                 }
-                itemIsChecked = !itemIsChecked;
-            },
-            add:function(id){
-                console.log("这是点击获取的id"+id);
-                console.log(this.list[id].carCount);
-                var productId = this.list[id].productId;
-                var carCount = this.list[id].carCount++;
-                console.log(carCount);
-                // this.$axios.post("/cookme/sys/user/allOrder",{  //修改好数量之后上传后台
-                //     productId,
-                //     carCount,
-                // }).then(({data})=>{
-                //     console.log(data);
-                // })
-            },
-            subtract:function(id){
-                if(this.list[id].carCount <=1){
-                    this.list[id].carCount=1
-                }else{
-                    this.list[id].carCount -=1;
-                }
+                console.log("单选");
+                console.log(this.AllArr)
             },
             getGoodsList(){
                 this.$axios.post("/cookme/sys/user/myshopcar")
                     .then(({data})=>{
-                        console.log(data);
+                        console.log("******商品******");
+                        // console.log(data);
                         this.list = data;
                         console.log(this.list);
+                        this.indexA = this.list.length;
+                        this.goods = this.list.length;
                     })
             },
             deleteGoods(carId){
@@ -187,70 +180,90 @@
             go(){
                 this.$router.push({name:"cai"});
             },
-            // //单选接口调用
-            // updateisChecked(carId,type){
-            //     var isChecked = [{
-            //         carId:carId,
-            //         isChecked:type
-            //     }]
-            //     this.$axios.post("/cookme/sys/user/multiple",isChecked,{
-            //         headers:{
-            //             "content-type":"application/json"
-            //         }
-            //     }).then(({data})=>{
-            //         // this.list[index].isChevked=type;
-            //         console.log("******未选多选按钮******");
-            //         console.log(data.code);
-            //         this.getGoodsList();
-            //         // console.log(data.list[index].isChevked);
-            //     })
-            // },
-            // //全选接口调用
-            // updatrAllisChecked(carId,type){
-            //     var isChecked = [{
-            //         carId:carId,
-            //         isChecked:type
-            //     }]
-            //     this.$axios.post("/cookme/sys/user/multiple",isChecked,{
-            //         headers:{
-            //             "content-type":"application/json"
-            //         }
-            //     }).then(({data})=>{
-            //         this.getGoodsList();
-            //     })
-            // },
+            add:function(id){
+                console.log("这是点击获取的id"+id);
+                console.log(this.list[id].carCount);
+                var productId = this.list[id].productId;
+                this.list[id].carCount = this.list[id].carCount +=1;
+            },
+            subtract:function(id){
+                if(this.list[id].carCount <=1){
+                    this.list[id].carCount =this.list[id].carCount=1;
+                }else{
+                    this.list[id].carCount = this.list[id].carCount -=1;
+
+
+                }
+            },
             account(){//点击结算传参
                 // let list = JSON.stringify(this.list);//将数组转为字符串进行传递
                 // this.$router.push({name:'confirmAnOrder',query:{listInfo:list}});//params参数为键值对,传参为router,接参为route
-                this.$router.push({name:'confirmAnOrder'});
+                // this.$router.push({name:'confirmAnOrder'})
+                // this.getGoodsList();
+                if(this.sumPrice === 0){
+                    alert("您还没有选中商品!");
+                }else{
+                    var Arr =[] ;
+                    this.list.forEach(v=>{
+                        var goods = [];
+                        console.log("???????????????");
+                        console.log(v);
+                        this.AllArr.forEach(id=>{
+                            console.log("aaaaaaaaaaaaaaaaaaaa");
+                            console.log(id);
+                            var love = {
+                                productId: id,
+                                productNum:v.carCount
+                            };
+                            var m = love;
+                            console.log("mmmmmmmmmmmmmmmmmmmmmmmmmm");
+                            console.log(m);
+                            console.log("**************************");
+                             goods.push(m);
+                            // console.log(love);
+                            // for(var i = 0;i<=love.length;i++){
+                            //     var list = [];
+                            //     list.push(love);
+                            //     console.log(list);
+                            // }
 
+                        })
+                        Arr = goods;
+                        console.log(goods);
+                    })
+                   console.log(Arr);
+                    this.$axios.post("/cookme/sys/order/itemandpro",Arr,{
+                        headers:{
+                            "content-type":"application/json"
+                        }
+                    }).then(({data})=>{
+                        console.log("+++++++++++++++");
+                        console.log(data);
+                        let list = JSON.stringify(data);
+                        this.$router.push({name:'confirmAnOrder',query:{listInfo:list}})
+                    })
+
+
+                }
             },
         },
         mounted(){
             this.getGoodsList();
-            this.indexA = this.list.length+1;
+            this.goods = 0;
+            console.log("++++++++++++++++++++++++");
+
         },
         computed:{
-            sumPrice(){//合计
+            sumPrice() {
                 var sum = 0;
-                //遍历list并判断isChecked是否为true
-                this.list.forEach(v=>{
-                    if(v.isChecked){
-                        sum += v.price*v.carCount;
+                //加入选择框以后的计算总价
+                this.list.forEach((v, k) => {
+                    if (this.AllArr.indexOf(v.productId) !== -1) {
+                        sum += v.price * v.carCount;
                     }
-                })
-                return sum;
+                });
+                return sum
             },
-            // AllisChecked(){//全选
-            //     var isAll = true;
-            //     for(var i; i<this.list.length;i++){
-            //         if(!this.list[i].isChecked){
-            //             isAll = false;
-            //             break;
-            //         }
-            //     }
-            //     return isAll;
-            // },
         }
 
     }
