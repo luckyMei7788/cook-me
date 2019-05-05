@@ -30,6 +30,7 @@
 		data(){
 			return{
 				data : [],
+				myAttention : []
 			}
 		},
 		methods:{
@@ -43,22 +44,63 @@
 					var attentionId = fans;
 					console.log(status, fansId, attentionId);
 					//添加关注
-					this.$axios.post("/cookme/sys/user/fans", {
+					this.$axios.post("/cookme/sys/user/attention", {
 						attentionId,
 						fansId,
 						status
 					}).then(({data})=>{
-						console.log(data);
+						//console.log(data);
 						alert("添加关注成功");
 					})
-				}else{ //取消关注
+				}else{//取消关注
+					var fansId = fans;
+					var attentionId = attention;
+					var status = status;
+					//调取我的关注数据
+					this.$axios.post("/cookme/sys/user/selectMyAttention").then(({data})=>{
+						//console.log(data);
+						//遍历我的关注
+						for(var att in data){
+							//console.log(data[att]);
+							this.myAttention = data[att];
+							//console.log(this.myAttention);
+							if(this.myAttention.attentionId === fansId){
+								status = 1;
+								var id = this.myAttention.id;
+								fansId = this.myAttention.attentionId;
+								attentionId = this.myAttention.fansId;
+								console.log(status, id, attentionId, fansId);
+								//取消关注
+								this.$axios.post("/cookme/sys/user/attention", {
+									id,
+									attentionId,
+									fansId,
+									status
+								}).then(({data})=>{
+									console.log(11111, data);
+									if(data.code === 0){
+										alert("取消关注成功")
+									}else{
+										alert(data.msg);
+									}
+								})
+							}
+						}
+					})
+				}
+				
+				
+				
+				
+				
+				/* else{ //取消关注
 					status =1;
 					var id = id;
 					var attentionId = attention;
-					var fansId= fans;
+					var fansId = fans;
 					console.log(id, status, attentionId, fansId);
 					//添加关注
-					this.$axios.post("/cookme/sys/user/fans", {
+					this.$axios.post("/cookme/sys/user/attention", {
 						id,
 						attentionId,
 						fansId,
@@ -66,7 +108,7 @@
 					}).then(({data})=>{
 						alert("成功");
 					})
-				}		
+				}		 */
 			},
 			another(id){
 				var id = id;

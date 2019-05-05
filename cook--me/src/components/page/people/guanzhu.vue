@@ -8,7 +8,7 @@
 			<div class="section" v-for="items in data" >
 				<div class="left">
 					<div class="image" @click="another(items.id)"><img src="../../../static/login/img/guanzhu.jpg" alt=""></div>
-					<button @click="cancelAttention(items.id, items.attentionId, items.fansId, items.status)">+ 关注</button>
+					<button @click="cancelAttention(items.id, items.attentionId, items.fansId, items.status)">取消关注</button>
 				</div>
 				<div class="right">
 					<p>{{items.usName}}</p>
@@ -37,13 +37,12 @@
 			//我的关注-取消关注
 			cancelAttention(id, attention, fans, status){
 				var id = id;
-				var fansId = attention;
-				var attentionId = fans;
+				var attentionId = attention;
+				var fansId = fans;
 				var status = status;
-				console.log(status, fansId, attentionId);
-				if(status === 0){
-					status = 1; //取消关注
-					//添加关注
+				console.log(id, status, fansId, attentionId);
+				if(status === 1){ //单方关注状态
+					//取消关注
 					this.$axios.post("/cookme/sys/user/attention", {
 						id,
 						attentionId,
@@ -51,11 +50,29 @@
 						status
 					}).then(({data})=>{
 						console.log(data);
+						//alert("取消关注成功");
 						if(data.code === 0){
 							alert("取消关注成功")
 						}else{
 							alert(data.msg);
 						}
+					})
+				}else{//双方关注的状态
+					status = 1;
+					//取消关注
+					this.$axios.post("/cookme/sys/user/attention", {
+						id,
+						attentionId,
+						fansId,
+						status
+					}).then(({data})=>{
+						console.log(data);
+						alert("取消关注成功");
+						/* if(data.code === 0){
+							alert("取消关注成功")
+						}else{
+							alert(data.msg);
+						} */
 					})
 				}
 			},

@@ -6,6 +6,10 @@
                 <i class="el-icon-star-on"></i><i class="el-icon-star-on"></i><i class="el-icon-star-on"></i>
             </div>
             <div id="tt" class="tt">
+				<div class="exit" @click="logOut">
+					<i class="iconfont">&#xe84c</i>
+					退出
+				</div>
                 <router-link  to="/reg">
                     <span>注册</span>
                 </router-link>
@@ -43,7 +47,17 @@
                     alert("您还没有登陆，请先登录！");
                     this.$router.push({name:'passwordLogin'})
                 }
-            }
+            },
+			//退出登录
+			logOut(){
+				if(localStorage.usMobile){
+					localStorage.usMobile = "";
+					//退出登录让其跳转到登录界面
+					this.$router.push({"name" : "passwordLogin"});
+				}else{
+					alert("您还没有登录");
+				}
+			}
         }
     }
 </script>
@@ -88,7 +102,20 @@
                         color:#999898;
                     }
                 }
-
+				.exit{
+					float: right;
+					color:#999898;
+					font-size:24px;
+					padding:27px 20px;
+					cursor: pointer;
+					.iconfont{
+						font-size: 24px;
+						
+					}
+				}
+				.exit:active{
+					color:#fda102;
+				}
             }
         }
     }
